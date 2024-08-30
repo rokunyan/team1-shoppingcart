@@ -1,0 +1,7 @@
+<h1>product-information works!</h1>
+
+[<div *ngFor="let cartProduct of cart?.products; let i = index">
+    id:{{cartProduct.id}} | Name:{{cartProduct.name}}
+</div>]
+
+<app-product-item [productsInput]="product" (actionEmitter)="executeAction($event)"></app-product-item>

@@ -1,31 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
 import { ActivatedRoute } from '@angular/router';
-import { CartService } from '../../../cart/services/cart.service';
 import { Cart } from '../../../cart/model/cart';
+import { CartService } from '../../../cart/services/cart.service';
 
 @Component({
-  selector: 'app-product-dashboard',
-  templateUrl: './product-dashboard.component.html',
-  styleUrl: './product-dashboard.component.css'
+  selector: 'app-product-information',
+  templateUrl: './product-information.component.html',
+  styleUrl: './product-information.component.css'
 })
-export class ProductDashboardComponent implements OnInit{
-
-  //used to diplay the available products
-  products:Product[] = []
-
+export class ProductInformationComponent implements OnInit {
+  productId:string = ''
+  product:Product[] = []
   //used to display the products in the cart
   cart:Cart|undefined
-
-  constructor(private productService:ProductService, private cartService: CartService){
-    
-  }
-  ngOnInit(): void {
-    this.getProducts()
-    this.getCart()
-  }
   
+  ngOnInit(): void {
+      this.productId = this.route.snapshot.paramMap.get('productId')?? '-1'
+      this.getProduct()
+      this.getCart()
+  }
+   
+  constructor(private productService:ProductService, private cartService:CartService, private route:ActivatedRoute){
+  }
+  getProduct(){
+    this.productService.getProduct(this.productId).subscribe(
+      (data: any) => {
+        this.product.push(data);
+        console.log(`[From Product Info Page] Get Product Successful!`)
+        console.log(data)
+      })
+  }
+
   executeAction(event: {data: Product, action: string }) {
     switch(event.action){
       case 'ADD TO CART':
@@ -33,21 +40,13 @@ export class ProductDashboardComponent implements OnInit{
       break;
     }
   }
-  
-  getProducts(){
-    this.productService.getProducts().subscribe(
-      (data: any) => {
-        this.products = data;
-        console.log(`[From Dashboard Page] Get Products Successful!`)
-        console.log(this.products)
-      })
-  }
+
 
   getCart(){
     this.cartService.getCart().subscribe(
       (data: any) => {
         this.cart = data;
-        console.log(`[From Dashboard Page] Get Cart Successful!`)
+        console.log(`[From Product Info Page] Get Cart Successful!`)
         console.log(this.cart)
       }
     )
@@ -70,7 +69,7 @@ export class ProductDashboardComponent implements OnInit{
   updateCart(){
     if (this.cart) {
       this.cartService.updateCart(this.cart).subscribe((data) => {
-        console.log(`[From Dashboard Page] Update Cart Successful!`)
+        console.log(`[From Product Info Page] Update Cart Successful!`)
         console.log(data);
       });
       this.getCart()
