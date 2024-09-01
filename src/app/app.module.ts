@@ -3,19 +3,27 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './shared/header/header.component';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { CartModule } from './modules/cart/cart.module';
+import { AdminPageModule } from './modules/admin-page/admin-page.module';
+import { SharedModule } from './shared/shared.module';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CartModule,
+    AdminPageModule,
+    SharedModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [AppComponent]
 })

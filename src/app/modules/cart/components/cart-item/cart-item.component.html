@@ -1,0 +1,26 @@
+<div class="item">
+    <div class="buttons">
+        <button class="delete-btn" (click)="onDelete()">
+            <i class="fa-regular fa-trash-can"></i>
+        </button>
+    </div>
+    <div class="image">
+        <img class="img-fluid" src={{cart.image}} alt="{{cart.productName}}">
+    </div>
+    <div class="description">
+        <span>{{cart.productName}}</span>
+        <span>{{cart.category}}</span>
+    </div>
+    <div class="quantity">
+        <button class="minus-btn" (click)="onDecrement()">
+            <i class="fa-solid fa-minus"></i>
+        </button>
+            <h6 class="input" contenteditable="true" (blur)="onEdit($event)" [textContent]="quantity">{{cart.quantity}}</h6>
+        <button class="plus-btn" (click)="onIncrement()">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+    </div>
+    <div class="price">
+        <h5>₱ {{cart.price  | number:'1.2-2' }}</h5>
+    </div>
+</div>

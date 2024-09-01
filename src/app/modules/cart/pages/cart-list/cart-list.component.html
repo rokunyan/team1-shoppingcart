@@ -1,0 +1,21 @@
+<div class="shopping-cart">
+  <div class="title">Shopping Cart</div>
+    <hr class="my-1">
+    <div class="item">
+      <div class="empty-cart-container" *ngIf="carts && carts.length === 0">
+        <h2>There are no items in this cart.</h2>
+        <!-- <br>
+        <button class="btn btn-outline-danger" onclick="continueShopping()">Continue Shopping</button> -->
+      </div>
+      <div *ngIf="carts && carts.length > 0">
+      <div *ngFor="let cart of carts">
+        <app-cart-item [cart]="cart"
+          (edit)="edit($event.id, $event.quantity)"
+          (delete)="delete($event)"
+          (increment)="increment($event)"
+          (decrement)="decrement($event)">
+        </app-cart-item>
+      </div>
+    </div>
+</div>
+  

@@ -1,0 +1,9 @@
+.command-bar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+  }
+  
+  button {
+    margin: 0 0.5rem;
+  }
