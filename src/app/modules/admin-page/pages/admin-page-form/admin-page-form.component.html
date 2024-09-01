@@ -1,0 +1,87 @@
+<div class="customer">
+  <div class="title">Add New Customer</div> <br>
+  <hr class="my-1">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" >
+    <div class="row">
+      <div class="col">
+        <label for="username">User Name</label>
+        <input id="username" formControlName="username" type="text" class="form-control" >
+        <div *ngIf="userForm.get('username')?.invalid && (userForm.get('username')?.dirty || userForm.get('username')?.touched)">
+          <small class="text-danger" *ngIf="userForm.get('username')?.errors?.['required']">User Name is required.</small>
+        </div>
+      </div>
+      <div class="col">
+        <label for="password">Password:</label>
+        <input id="password" formControlName="password" type="password" class="form-control">
+        <div *ngIf="userForm.get('password')?.invalid && (userForm.get('password')?.dirty || userForm.get('password')?.touched)">
+          <small class="text-danger" *ngIf="userForm.get('password')?.errors?.['required']">Password is required.</small>
+          <small class="text-danger" *ngIf="userForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters long.</small>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col">
+        <label for="firstName">First Name</label>
+        <input id="firstName" formControlName="firstName" type="text" class="form-control">
+        <div *ngIf="userForm.get('firstName')?.invalid && (userForm.get('firstName')?.dirty || userForm.get('firstName')?.touched)">
+          <small class="text-danger" *ngIf="userForm.get('firstName')?.errors?.['required']">First Name is required.</small>
+          <small class="text-danger" *ngIf="userForm.get('firstName')?.errors?.['minlength']">First Name must be at least 3 characters long.</small>
+        </div>
+      </div>
+      <div class="col">
+        <label for="lastName">Last Name</label>
+        <input id="lastName" formControlName="lastName" type="text" class="form-control">
+        <div *ngIf="userForm.get('lastName')?.invalid && (userForm.get('lastName')?.dirty || userForm.get('lastName')?.touched)">
+          <small class="text-danger" *ngIf="userForm.get('lastName')?.errors?.['required']">Last Name is required.</small>
+          <small class="text-danger" *ngIf="userForm.get('lastName')?.errors?.['minlength']">Last Name must be at least 3 characters long.</small>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col">
+        <label for="email">Email:</label>
+        <input id="email" formControlName="email" type="email" class="form-control">
+        <div *ngIf="userForm.get('email')?.invalid && (userForm.get('email')?.dirty || userForm.get('email')?.touched)">
+          <small class="text-danger" *ngIf="userForm.get('email')?.errors?.['required']">Email is required.</small>
+        </div>
+      </div>
+      <div class="col">
+        <label for="mobileNumber">Mobile Number:</label>
+        <input id="mobileNumber" formControlName="mobileNumber" type="text" class="form-control">
+        <div *ngIf="userForm.get('mobileNumber')?.invalid && (userForm.get('mobileNumber')?.dirty || userForm.get('mobileNumber')?.touched)">
+          <small class="text-danger" *ngIf="userForm.get('mobileNumber')?.errors?.['required']">Mobile Number is required.</small>
+          <small class="text-danger" *ngIf="userForm.get('mobileNumber')?.errors?.['minlength']">Mobile Number must be exactly 11 characters long.</small>
+          <small class="text-danger" *ngIf="userForm.get('mobileNumber')?.errors?.['maxlength']">Mobile Number must be exactly 11 characters long.</small>
+          <small class="text-danger" *ngIf="userForm.get('mobileNumber')?.errors?.['pattern']">Mobile Number must contain digits only.</small>
+        </div>
+      </div>
+    </div>
+    <hr class="my-3">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <button type="button" class="btn btn-outline-danger" (click)="onCancel()">Cancel</button>
+        <button type="button" class="btn btn-secondary ms-2" (click)="onClear()">Clear</button>
+      </div>
+      <button class="btn btn-info save" type="submit">Add Customer</button>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+  <!-- <ng-container formArrayName="interests">
+    <label for="interests">Interests </label>
+    <div class="input-group mb-3"  *ngFor="let interest of interestsFormArray.controls; index as i">
+      <input [formControlName]="i" class="form-control">
+      <button type="button" (click)="removeInterest(i)" class="btn btn-danger">Remove</button>
+    </div>
+  </ng-container>
+  <button type="button" (click)="addInterest()" class="btn btn-info">Add</button>
+  <br> -->
+
+
+ 
