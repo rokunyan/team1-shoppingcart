@@ -49,11 +49,11 @@ export class CartListComponent {
   }
 
   continueShopping(): void {
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/admin-page']);
   }
 
   payment(): void {
-    this.router.navigate(['/admin-page']);
+    this.router.navigate(['/user-profile']);
   }
 
 }
