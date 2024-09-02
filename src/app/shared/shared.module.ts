@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
+import { CommandBarComponent } from './command-bar/command-bar.component';
 
 
 
@@ -9,12 +10,14 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     HeaderComponent,
+    CommandBarComponent,
   ],
   imports: [
     CommonModule, RouterModule
   ],
   exports:[
-    HeaderComponent
+    HeaderComponent,
+    CommandBarComponent
   ]
 })
 export class SharedModule { }
