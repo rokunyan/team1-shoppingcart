@@ -47,7 +47,7 @@ export class AdminPageFormComponent implements OnInit, OnDestroy{
       const blog = this.adminPageService.getUserById(this.userId).subscribe({
         next: (user: User) => {
           this.userForm.patchValue({
-              username: user.username,
+              username: user.userName,
               firstName: user.firstName,
               middleName: user.middleName,
               lastName: user.lastName,
@@ -84,7 +84,7 @@ export class AdminPageFormComponent implements OnInit, OnDestroy{
           const newId = users.length + 1;
           const user: User = {
             id: newId,
-            username: formValue.username,
+            userName: formValue.userName,
             firstName: formValue.firstName,
             middleName: formValue.middleName,
             lastName: formValue.lastName,

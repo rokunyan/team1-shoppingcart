@@ -1,14 +1,14 @@
 export interface User {
     id: number,
-    username: string,
+    userName: string,
+    email:string,
+    password:string,
     firstName: string,
-    middleName: string | null,
+    middleName: string,
     lastName: string,
-    birthDate: Date | null,
-    interests: string[] | null,
-    password: string,
-    email: string,
+    birthDate: string,
     mobileNumber: string,
+    interests: string[],
     isActive: boolean,
     isAdmin: boolean
 }
