@@ -1,0 +1,28 @@
+<div *ngFor="let product of products">
+    <div>
+        Id: {{product?.id}} <br/>
+        <b>Name: {{product?.name}}</b><br/>
+        Category: {{product?.category}}<br/>
+        Quantity: {{product?.quantity}}<br/>
+        Price: {{product?.price}}<br/>
+        Status: {{product?.status}}<br/>
+        Image: {{product?.image}}<br/>
+        Items Sold: {{product?.itemsSold}}<br/>
+                            <!-- This is /dashboard/product/:id -->
+        <button [routerLink]="['product', product?.id]" routerLinkActive="router-link-active" >More Info</button>
+        <button class="btn btn-success" (click)="executeAction(product, 'ADD TO CART')">ADD TO CART</button><br/><br/>
+    </div>      
+</div>
+
+<!-- 
+export interface Product {
+    id?:string,
+    name:string,
+    category:string,
+    quantity:number,
+    price:number,
+    status:string,
+    image:string,
+    itemsSold:number
+}
+     -->
