@@ -3,11 +3,11 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, withFetch } from '@angular/common/http';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { CartModule } from './modules/cart/cart.module';
+import { AdminPageModule } from './modules/admin-page/admin-page.module';
 
 @NgModule({
   declarations: [
@@ -17,10 +17,10 @@ import { CartModule } from './modules/cart/cart.module';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,
     RouterModule,
     SharedModule,
-    CartModule
+    CartModule,
+    AdminPageModule
   ],
   providers: [
     provideClientHydration(),

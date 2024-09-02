@@ -38,8 +38,12 @@ const routes: Routes = [
     path: 'cart',
     loadChildren: () =>
       import('./modules/cart/cart.module').then((m) => m.CartModule),
-  }
-
+  },
+  {
+    path: 'admin-page',
+    loadChildren: () =>
+      import('./modules/admin-page/admin-page.module').then((m) => m.AdminPageModule),
+  },
 ];
 
 @NgModule({
