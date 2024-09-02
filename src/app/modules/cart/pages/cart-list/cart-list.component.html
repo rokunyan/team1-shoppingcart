@@ -1,5 +1,6 @@
+<app-header></app-header>
 <div *ngIf="carts && carts.length > 0">
-    <!-- <app-command-bar [commands]="pay" class="pay"></app-command-bar> -->
+    <app-command-bar [commands]="pay" class="pay"></app-command-bar>
   </div>
   <div class="shopping-cart">
     <div class="empty-cart-container" *ngIf="carts && carts.length === 0">

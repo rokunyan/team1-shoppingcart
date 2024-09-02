@@ -1,47 +1,46 @@
-<div>
-    <app-command-bar [commands]="add" class="command-bar"></app-command-bar>
+<app-header></app-header>
+
+<div class="container-fluid">
+  <app-command-bar [commands]="add" class="command-bar mb-3"></app-command-bar>
+
+  <div class="empty-cart-container" *ngIf="users && users.length === 0">
+    <h2 class="text-center">There are no customers.</h2>
+  </div>
+
+  <div *ngIf="users && users.length > 0">
+    <div class="container">
+      <h2 class="title">Customers</h2>
+    </div>
+
+    <div class="container">
+      <table class="table table-striped table-bordered table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">User ID</th>
+            <th scope="col">Username</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Interests</th>
+            <th scope="col">Role</th>
+            <th scope="col">Status</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.userName }}</td>
+            <td>{{ user.firstName + ' ' + user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.interests }}</td>
+            <td>{{ user.isAdmin ? 'Admin' : 'Customer' }}</td>
+            <td>{{ user.isActive ? 'Active' : 'Inactive' }}</td>
+            <td>
+              <button *ngIf="user.isActive" (click)="deactivate(user)" class="btn btn-outline-danger btn-sm" type="button">Deactivate</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-   
-   <div>
-     <div class="empty-cart-container" *ngIf="users && users.length === 0">
-       <h2>There are no customers.</h2>
-     </div>
-     <div *ngIf="users && users.length > 0">
-     <div class="container title">Customers</div>
-     <div class="container">
-       <table class="table table-striped table-bordered">
-           <thead>
-             <tr>
-               <th scope="col">User ID</th>
-               <th scope="col">Username</th>
-               <th scope="col">Full Name</th>
-               <th scope="col">Email</th>
-               <th scope="col">Interests</th>
-               <th scope="col">Role</th>
-               <th scope="col">Status</th>
-               <th scope="col"></th>
-             </tr>
-           </thead>
-           <tbody>
-             <tr *ngFor="let user of users">
-               <td>{{ user.id }}</td>
-               <td>{{ user.userName }}</td>
-               <td>{{ user.firstName + ' ' + user.lastName }}</td>
-               <td>{{ user.email }}</td>
-               <td>{{ user.interests.join(', ') }}</td>
-               <td>{{ user.isAdmin ? 'Admin' : 'Customer' }}</td>
-               <td>{{ user.isActive ? 'Active' : 'Inactive' }}</td>
-               <td> <button *ngIf="user.isActive" (click)="deactivate(user)" class="btn btn-outline-danger btn-sm" type="button">Deactivate</button> </td>
-             </tr>
-           </tbody>
-       </table>
-     </div>
-   </div>
-   
-   
-   <!-- <tr *ngFor="let user of users">
-     <app-admin-page-item
-       [user]="user"
-       (deactivate)="deactivate($event)">
-     </app-admin-page-item>
-   </tr> -->

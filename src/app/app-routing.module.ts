@@ -20,7 +20,7 @@ const routes: Routes = [
     path: 'admin-dashboard',
     loadChildren: () =>
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
-    canActivate: [adminGuard]
+    // canActivate: [adminGuard]
   },
   {
     path: 'login',
