@@ -149,7 +149,7 @@
   ],
   "users": [
     {
-      "id": "1",
+      "id":1,
       "userName": "iambored",
       "firstName": "Name Change",
       "middleName": "Middle",
