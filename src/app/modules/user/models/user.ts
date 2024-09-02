@@ -4,11 +4,11 @@ export interface User {
     email:string,
     password:string,
     firstName: string,
-    middleName: string,
+    middleName: string | null,
     lastName: string,
-    birthDate: string,
+    birthDate: string | null,
     mobileNumber: string,
-    interests: string[],
+    interests: string[] | null[],
     isActive: boolean,
     isAdmin: boolean
 }

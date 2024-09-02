@@ -1,20 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Cart } from '../model/cart';
-import { map, Observable, of, switchMap, tap } from 'rxjs';
+import { forkJoin, map, Observable, of, switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   private serverUrl = 'http://localhost:3000/carts';
-  userId: number | null = 1;
+  userId: string = "2";
   status: string =  "added";
 
   constructor(private http: HttpClient) {}
 
   getCarts(): Observable<Cart[]>{
-    if (this.userId === null || this.userId === 0) {
+    if (this.userId === null || this.userId === "0") {
       console.log('Cart is empty');
       return of([]);
     }
@@ -35,14 +35,14 @@ export class CartService {
     )
   }
 
-  deleteItemToCart(id: number): Observable<Cart>  {
+  deleteItemToCart(id: string): Observable<Cart>  {
     const url = `${this.serverUrl}/${id}`;
     return this.http.delete<Cart>(url).pipe(
       tap(() => console.log(`Deleted cart ${id}`))
     );
   }
 
-  incrementCart(id: number): Observable<Cart> {
+  incrementCart(id: string): Observable<Cart> {
     const url = `${this.serverUrl}/${id}`;
     return this.http.get<Cart>(url).pipe(
       map(cart => {
@@ -56,7 +56,7 @@ export class CartService {
     )
   }
 
-  decrementCart(id: number): Observable<Cart> {
+  decrementCart(id: string): Observable<Cart> {
     const url = `${this.serverUrl}/${id}`;
     return this.http.get<Cart>(url).pipe(
       map(cart => {
@@ -78,7 +78,7 @@ export class CartService {
     );
   }
 
-  editQuantity(id: number, quantity: number): Observable<Cart> {
+  editQuantity(id: string, quantity: number): Observable<Cart> {
     const url = `${this.serverUrl}/${id}`;
     return this.http.get<Cart>(url).pipe(
       map(cart => {
@@ -104,7 +104,7 @@ export class CartService {
   getCart(){
     console.log(`[From Cart Service] Getting cart with user id (user.id not implemented yet)...`)
     return this.http.get<any[]>(`${this.serverUrl}/carts`).pipe(
-      map((carts) => carts.find((cart: Cart) => cart.userId === 1 ))
+      map((carts) => carts.find((cart: Cart) => cart.userId === "1" ))
     )
   }
 

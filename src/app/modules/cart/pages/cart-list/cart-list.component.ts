@@ -28,22 +28,22 @@ export class CartListComponent {
       .subscribe((carts: Cart[]) => this.carts = carts);
   }
 
-  delete(id: number): void {
+  delete(id: string): void {
     this.cartService.deleteItemToCart(id)
       .subscribe(() => console.log(this.loadCarts()));
   }
 
-  increment(id: number): void {
+  increment(id: string): void {
     this.cartService.incrementCart(id)
     .subscribe(updatedCart => this.loadCarts())
   }
 
-  decrement(id: number): void {
+  decrement(id: string): void {
     this.cartService.decrementCart(id)
     .subscribe(updatedCart => this.loadCarts())
   }
 
-  edit(id: number, quantity: number): void {
+  edit(id: string, quantity: number): void {
     this.cartService.editQuantity(id, quantity)
     .subscribe(updatedCart => this.loadCarts())
   }

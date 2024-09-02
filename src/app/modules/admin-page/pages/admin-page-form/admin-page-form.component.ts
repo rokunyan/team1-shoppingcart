@@ -31,7 +31,7 @@ export class AdminPageFormComponent {
       interests: this.fb.array([this.fb.control('')]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
       email: new FormControl('',Validators.required),
-      mobileNumber: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern('^[0-9]{11}$')]),
+      mobileNumber: new FormControl('', [Validators.minLength(11), Validators.maxLength(11), Validators.pattern('^[0-9]{11}$')]),
       isActive: new FormControl(true),
       isAdmin: new FormControl(false)
     })

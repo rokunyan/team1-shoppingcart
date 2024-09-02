@@ -11,10 +11,10 @@ export class CartItemComponent {
   quantity: number = 0;
 
 
-  @Output() edit = new EventEmitter<{id: number, quantity: number}>();
-  @Output() delete = new EventEmitter<number>();
-  @Output() increment = new EventEmitter<number>();
-  @Output() decrement = new EventEmitter<number>();
+  @Output() edit = new EventEmitter<{id: string, quantity: number}>();
+  @Output() delete = new EventEmitter<string>();
+  @Output() increment = new EventEmitter<string>();
+  @Output() decrement = new EventEmitter<string>();
 
   ngOnInit() {
       if(this.cart) 
