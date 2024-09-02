@@ -1,0 +1,129 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Smartphone",
+      "category": "Electronics",
+      "quantity": 50,
+      "price": 299.99,
+      "status": "Available",
+      "image": "product1.jpg",
+      "itemsSold": 120
+    },
+    {
+      "id": "2",
+      "name": "Fiction Book",
+      "category": "Books",
+      "quantity": 120,
+      "price": 19.99,
+      "status": "Available",
+      "image": "product2.jpg",
+      "itemsSold": 60
+    },
+    {
+      "id": "3",
+      "name": "T-Shirt",
+      "category": "Clothing",
+      "quantity": 200,
+      "price": 49.99,
+      "status": "Available",
+      "image": "product3.jpg",
+      "itemsSold": 150
+    },
+    {
+      "id": "4",
+      "name": "Face Cream",
+      "category": "Beauty",
+      "quantity": 75,
+      "price": 24.99,
+      "status": "Available",
+      "image": "product4.jpg",
+      "itemsSold": 80
+    },
+    {
+      "id": "5",
+      "name": "Basketball",
+      "category": "Sports",
+      "quantity": 30,
+      "price": 99.99,
+      "status": "Available",
+      "image": "product5.jpg",
+      "itemsSold": 40
+    },
+    {
+      "id": "6",
+      "name": "Sofa",
+      "category": "Furniture",
+      "quantity": 10,
+      "price": 399.99,
+      "status": "Available",
+      "image": "product6.jpg",
+      "itemsSold": 25
+    },
+    {
+      "id": "7",
+      "name": "Action Figure",
+      "category": "Toys",
+      "quantity": 150,
+      "price": 29.99,
+      "status": "Available",
+      "image": "product7.jpg",
+      "itemsSold": 90
+    },
+    {
+      "id": "8",
+      "name": "Organic Apples",
+      "category": "Grocery",
+      "quantity": 500,
+      "price": 5.99,
+      "status": "Available",
+      "image": "product8.jpg",
+      "itemsSold": 300
+    },
+    {
+      "id": "9",
+      "name": "Car Battery",
+      "category": "Automotive",
+      "quantity": 20,
+      "price": 129.99,
+      "status": "Available",
+      "image": "product9.jpg",
+      "itemsSold": 10
+    },
+    {
+      "id": "10",
+      "name": "Diamond Ring",
+      "category": "Jewelry",
+      "quantity": 5,
+      "price": 499.99,
+      "status": "Available",
+      "image": "product10.jpg",
+      "itemsSold": 15
+    }
+  ],
+  "carts": [
+    {
+      "id": "1",
+      "userId": "1",
+      "products": []
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "userName": "iambored",
+      "firstName": "Name Change",
+      "middleName": "Middle",
+      "lastName": "Soon",
+      "birthDate": "2000-02-15",
+      "password": "abcd1234",
+      "email": "sample@gmail.com",
+      "mobileNumber": "63918485697",
+      "isActive": true,
+      "isAdmin": false,
+      "interests": [
+        "swimming"
+      ]
+    }
+  ]
+}
