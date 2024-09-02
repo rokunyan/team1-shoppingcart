@@ -105,7 +105,24 @@
     {
       "id": "1",
       "userId": "1",
-      "products": [
+      "products": []
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "userName": "iambored",
+      "firstName": "Name Change",
+      "middleName": "Middle",
+      "lastName": "Soon",
+      "birthDate": "2000-02-15",
+      "password": "abcd1234",
+      "email": "sample@gmail.com",
+      "mobileNumber": "63918485697",
+      "isActive": true,
+      "isAdmin": false,
+      "interests": [
+        "swimming"
       ]
     }
   ]
