@@ -10,17 +10,17 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full',
   },
-  {
-    path: 'dashboard',
-    loadChildren: () =>
-      import('./modules/products/products.module').then((m) => m.ProductsModule),
-    canActivate: [userGuard]
-  },
+  // {
+  //   path: 'dashboard',
+  //   loadChildren: () =>
+  //     import('./modules/products/products.module').then((m) => m.ProductsModule),
+  //   canActivate: [userGuard]
+  // },
   {
     path: 'admin-dashboard',
     loadChildren: () =>
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
-    canActivate: [adminGuard]
+    // canActivate: [adminGuard]
   },
   {
     path: 'login',
@@ -33,8 +33,17 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/user/user.module').then((m) => m.UserModule),
     canActivate: [userGuard]
-  }
-
+  },
+  {
+    path: 'cart',
+    loadChildren: () =>
+      import('./modules/cart/cart.module').then((m) => m.CartModule),
+  },
+  {
+    path: 'admin-page',
+    loadChildren: () =>
+      import('./modules/admin-page/admin-page.module').then((m) => m.AdminPageModule),
+  },
 ];
 
 @NgModule({
