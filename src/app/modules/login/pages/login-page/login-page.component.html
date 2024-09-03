@@ -3,9 +3,9 @@
     <h1 class="h3 mb-3 fw-bold">Please sign in</h1>
       <form [formGroup]="loginForm">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="sample@domain.com" formControlName ="email">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="******" formControlName ="password">
+        <input type="email" id="email" name="email" placeholder="sample@domain.com" formControlName ="email" required="required"> 
+      <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="******" formControlName ="password" required="required">
         <p><a class="link-underline-primary" routerLink="forgot-password">Forgot your password? Click here</a></p>
         <button type="submit" class="btn btn-primary" (click)="login()">Sign In</button>
       </form>

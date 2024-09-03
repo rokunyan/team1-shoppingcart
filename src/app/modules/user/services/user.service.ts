@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { User } from '../models/user';
 
 @Injectable({
@@ -8,8 +8,9 @@ import { User } from '../models/user';
 export class UserService {
 
   serviceURL = "http://localhost:3000/"
-  
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) {
+  }
 
   getAllUsers = () =>{
     return this.http.get(`${this.serviceURL}users`)
@@ -17,14 +18,21 @@ export class UserService {
 
   getCurrentUser = () => {
     
-    let session = localStorage.getItem('session');
+    let session: any 
+  
+    if (typeof window !== 'undefined' && window.localStorage) {
+      session = localStorage.getItem('session');
+    }
+  
     if(session){
       return JSON.parse(session)
     }
   }
 
   updateUser = (user : User) => {
-    localStorage.setItem('session', JSON.stringify(user))
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem('session', JSON.stringify(user))
+    }
     return this.http.put(`${this.serviceURL}users/${user.id}`, user)
   }
 }

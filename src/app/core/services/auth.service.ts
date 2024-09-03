@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { UserService } from '../../modules/user/services/user.service';
 import { User } from '../../modules/user/models/user';
 import { tap } from 'rxjs';
@@ -26,7 +26,9 @@ export class AuthService {
     let user = this.validUsers?.find((u) => u.email === email && u.password === password && u.isActive)
     if(user){
       this.session = user;
-      localStorage.setItem('session', JSON.stringify(this.session))
+      if (typeof window !== 'undefined' && window.localStorage) {
+        localStorage.setItem('session', JSON.stringify(this.session));
+      }
     }
     return user
   }
