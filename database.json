@@ -1,3 +1,4 @@
+
 {
   "products": [
     {
@@ -104,8 +105,47 @@
   "carts": [
     {
       "id": "1",
-      "userId": "1",
-      "products": []
+      "userId": 1,
+      "productName": "Cake Bento Pan",
+      "description": "heart-shaped",
+      "category": "Kitchen & Dining",
+      "quantity": 2,
+      "price": 110,
+      "status": "added",
+      "image": "https://img.lazcdn.com/g/p/26df99add205ff922b0b2e3ba2c5f84e.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "2",
+      "userId": 1,
+      "productName": "Diving Mask Swimming Goggles",
+      "description": "Black",
+      "category": "Sports & Outdoors",
+      "quantity": 2,
+      "price": 420,
+      "status": "added",
+      "image": "https://img.lazcdn.com/g/ff/kf/Sc65805c4c3fe4e5c87360f90c85b0ba5u.jpg_720x720q80.jpg"
+    },
+    {
+      "id": "3",
+      "userId": 2,
+      "productName": "Diving Mask Swimming Goggles",
+      "description": "Black",
+      "category": "Sports & Outdoors",
+      "quantity": 1,
+      "price": 210,
+      "status": "added",
+      "image": "https://img.lazcdn.com/g/ff/kf/Sc65805c4c3fe4e5c87360f90c85b0ba5u.jpg_720x720q80.jpg"
+    },
+    {
+      "id": "4",
+      "userId": 2,
+      "productName": "Diving Mask Swimming Goggles",
+      "description": "Black",
+      "category": "Sports & Outdoors",
+      "quantity": 1,
+      "price": 210,
+      "status": "added",
+      "image": "https://img.lazcdn.com/g/ff/kf/Sc65805c4c3fe4e5c87360f90c85b0ba5u.jpg_720x720q80.jpg"
     }
   ],
   "users": [

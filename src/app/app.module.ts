@@ -4,9 +4,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { SharedModule } from './shared/shared.module';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from './shared/shared.module';
+import { CartModule } from './modules/cart/cart.module';
+import { AdminPageModule } from './modules/admin-page/admin-page.module';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,14 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    CartModule,
+    AdminPageModule
   ],
   providers: [
     provideClientHydration(),
-    provideHttpClient() //new http client module
+    provideHttpClient(withFetch()) //new http client module
   ],
   bootstrap: [AppComponent]
 })
