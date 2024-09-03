@@ -1,5 +1,9 @@
-<div class="command-bar">
-    <button *ngFor="let command of commands" (click)="onCommandClick(command)" [ngClass]="getButtonClass(command)">
-      {{ command.label }}
-    </button>
-  </div>
+<div class="command-bar d-flex flex-row-reverse">
+  <button
+    *ngFor="let command of commands"
+    (click)="onCommandClick(command)"
+    [ngClass]="getButtonClass(command)"
+  >
+    {{ command.label }}
+  </button>
+</div>

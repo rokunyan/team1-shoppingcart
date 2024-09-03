@@ -46,7 +46,7 @@ export class CartService {
         )
       ),
       tap((filteredCarts) =>
-        console.log('Fetched and filtered arts:', filteredCarts)
+        console.log('Fetched and filtered carts:', filteredCarts)
       )
     );
   }
@@ -73,11 +73,11 @@ export class CartService {
   // }
 
   addItemToCart(newItem: Cart): Observable<Cart> {
-    return this.getCart().pipe(
+    return this.getCarts().pipe(
       switchMap((carts) => {
-        const existingCart = carts.find(
-          (cart: Cart) => cart.productId === newItem.productId
-        );
+        const existingCart = carts.find((cart: Cart) => {
+          cart.productId === newItem.productId && cart.status === 'added';
+        });
 
         if (existingCart) {
           existingCart.quantity += newItem.quantity;
@@ -174,14 +174,12 @@ export class CartService {
   }
 
   // derek's
-  getCart() {
-    console.log(
-      `[From Cart Service] Getting cart with user id (user.id not implemented yet)...`
-    );
-    return this.http
-      .get<any[]>(`${this.serverUrl}/carts`)
-      .pipe(map((carts) => carts.find((cart: Cart) => cart.userId === '1')));
-  }
+  // getCart(){
+  //   console.log(`[From Cart Service] Getting cart with user id (user.id not implemented yet)...`)
+  //   return this.http.get<any[]>(`${this.serverUrl}/carts`).pipe(
+  //     map((carts) => carts.find((cart: Cart) => cart.userId === "1" ))
+  //   )
+  // }
 
   updateCart(updatedCart: Cart) {
     return this.http
