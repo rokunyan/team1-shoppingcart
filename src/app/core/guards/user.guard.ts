@@ -10,11 +10,7 @@ export const userGuard: CanActivateFn = (route, state) => {
     if(!currentUser.isActive){
       inject(Router).navigateByUrl('/login')
       return false
-    } else if (currentUser.isAdmin){
-      inject(Router).navigateByUrl('/admin-dashboard')
-      return false
-    }
-    else {return true} 
+    } return true
   } else
     {
       inject(Router).navigateByUrl('/login')
