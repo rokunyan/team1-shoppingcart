@@ -33,11 +33,6 @@ export class CartService {
   getCarts(): Observable<Cart[]> {
     const currentUserId = this.getCurrentUserId();
     if (currentUserId === null || currentUserId === '0') {
-
-  getCarts(): Observable<Cart[]>{
-    this.userId = "1"
-    if (this.userId === null || this.userId === "0") {
-
       console.log('Cart is empty');
       return of([]);
     }
@@ -63,7 +58,19 @@ export class CartService {
   //     return of([]);
   //   }
 
- 
+  //   return this.http.get<Cart[]>(this.serverUrl).pipe(
+  //     map((carts) =>
+  //       carts.filter(
+  //         (cart) =>
+  //           (this.userId ? cart.userId === this.userId : true) &&
+  //           (this.status ? cart.status === this.status : true)
+  //       )
+  //     ),
+  //     tap((filteredCarts) =>
+  //       console.log('Fetched and filtered arts:', filteredCarts)
+  //     )
+  //   );
+  // }
 
   addItemToCart(newItem: Cart): Observable<Cart> {
     return this.getCart().pipe(
@@ -166,15 +173,15 @@ export class CartService {
     );
   }
 
-
-   // derek's
-  getCart(){
-  console.log(`[From Cart Service] Getting cart with user id (user.id not implemented yet)...`)
-  return this.http.get<any[]>(`${this.serverUrl}/carts`).pipe(
-   map((carts) => carts.find((cart: Cart) => cart.userId === "1" ))
-   )
+  // derek's
+  getCart() {
+    console.log(
+      `[From Cart Service] Getting cart with user id (user.id not implemented yet)...`
+    );
+    return this.http
+      .get<any[]>(`${this.serverUrl}/carts`)
+      .pipe(map((carts) => carts.find((cart: Cart) => cart.userId === '1')));
   }
-
 
   updateCart(updatedCart: Cart) {
     return this.http
