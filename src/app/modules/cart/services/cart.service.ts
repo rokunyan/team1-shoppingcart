@@ -63,19 +63,7 @@ export class CartService {
   //     return of([]);
   //   }
 
-  //   return this.http.get<Cart[]>(this.serverUrl).pipe(
-  //     map((carts) =>
-  //       carts.filter(
-  //         (cart) =>
-  //           (this.userId ? cart.userId === this.userId : true) &&
-  //           (this.status ? cart.status === this.status : true)
-  //       )
-  //     ),
-  //     tap((filteredCarts) =>
-  //       console.log('Fetched and filtered arts:', filteredCarts)
-  //     )
-  //   );
-  // }
+ 
 
   addItemToCart(newItem: Cart): Observable<Cart> {
     return this.getCart().pipe(
