@@ -26,6 +26,12 @@ body {
   height: 32rem;
 }
 
+/* .cart{
+  float:left; 
+  overflow-y: auto;
+  height: 100px;
+} */
+
 .flex {
   display: flex;
   flex-wrap: wrap;

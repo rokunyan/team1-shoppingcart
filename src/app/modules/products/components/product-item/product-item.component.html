@@ -1,6 +1,7 @@
 <div class="product-container">
     Id: {{product?.id}} 
-    <h4 class="fw-normal">{{product?.name}}</h4>
+    <h4 class="fw-normal">{{product?.name}}</h4>    
+    <h3>₱ {{product?.price  | number:'1.2-2' }}</h3>
     <img class="image" src={{product?.image}} alt="{{product?.name}}"><br>
     <div class="button-container">
         <button class="btn btn-secondary" [routerLink]="['product', product?.id]" routerLinkActive="router-link-active">More Info</button>

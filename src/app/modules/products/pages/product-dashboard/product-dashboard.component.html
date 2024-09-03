@@ -1,11 +1,10 @@
 <app-header></app-header>
 <h1>Dashboard</h1>
 <h2>Cart</h2>
-[<div *ngFor="let cartProduct of carts; let i = index">
+[<div class="cart" *ngFor="let cartProduct of carts; let i = index">
         id:{{cartProduct.id}} | Name:{{cartProduct.productName}}
 </div>
 ]
-
 
 <div class="marketing flex">
         <div class="product-container" *ngFor="let product of products">
