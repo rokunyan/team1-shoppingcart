@@ -1,4 +1,3 @@
-
 {
   "products": [
     {
@@ -8,8 +7,9 @@
       "quantity": 50,
       "price": 299.99,
       "status": "Available",
-      "image": "product1.jpg",
-      "itemsSold": 120
+      "image": "https://i5.walmartimages.com/asr/20caa881-9f84-478b-8259-b9c3448e1007_1.0872b05362d97ff68033417572228b40.jpeg",
+      "itemsSold": 120,
+      "desc": "A high-end smartphone with a sleek design and powerful features."
     },
     {
       "id": "2",
@@ -18,8 +18,9 @@
       "quantity": 120,
       "price": 19.99,
       "status": "Available",
-      "image": "product2.jpg",
-      "itemsSold": 60
+      "image": "https://i5.walmartimages.com/asr/a58297ac-8ecb-4f0a-84c0-448c4e19ecdf_1.43b633adf7684c59828db8231c0be073.jpeg",
+      "itemsSold": 60,
+      "desc": "An intriguing fiction book that will keep you hooked from start to finish."
     },
     {
       "id": "3",
@@ -28,8 +29,9 @@
       "quantity": 200,
       "price": 49.99,
       "status": "Available",
-      "image": "product3.jpg",
-      "itemsSold": 150
+      "image": "https://www.filmyvastra.com/wp-content/uploads/2019/06/Black-Wide-tshirt-without-hanger-Recovered-scaled.jpg",
+      "itemsSold": 150,
+      "desc": "A comfortable and stylish t-shirt perfect for everyday wear."
     },
     {
       "id": "4",
@@ -38,8 +40,9 @@
       "quantity": 75,
       "price": 24.99,
       "status": "Available",
-      "image": "product4.jpg",
-      "itemsSold": 80
+      "image": "https://i5.walmartimages.com/seo/Pond-s-Dry-Skin-Face-Moisturizer-Cream-Daily-Facial-Moisturizing-10-1-oz_55227e41-ecf5-48f2-8c52-8038d490741d_1.c0d83fae8668961ab4bd1c583d1a9da1.jpeg",
+      "itemsSold": 80,
+      "desc": "A nourishing face cream that leaves your skin feeling smooth and hydrated."
     },
     {
       "id": "5",
@@ -48,18 +51,20 @@
       "quantity": 30,
       "price": 99.99,
       "status": "Available",
-      "image": "product5.jpg",
-      "itemsSold": 40
+      "image": "https://res-2.cloudinary.com/russell-corp-australia-pty-ltd/image/upload/c_lpad,dpr_2.0,f_auto,h_400,q_auto,w_400/media/catalog/product/5/1/5197-exc_tf-500_excel_sz7-s1.jpg",
+      "itemsSold": 40,
+      "desc": "A durable basketball suitable for both indoor and outdoor play."
     },
     {
       "id": "6",
-      "name": "Sofa",
+      "name": "Chair",
       "category": "Furniture",
       "quantity": 10,
       "price": 399.99,
       "status": "Available",
-      "image": "product6.jpg",
-      "itemsSold": 25
+      "image": "https://m.media-amazon.com/images/I/61VqPRU2-UL._AC_SL1500_.jpg",
+      "itemsSold": 25,
+      "desc": "A comfortable and spacious sofa perfect for relaxing at home."
     },
     {
       "id": "7",
@@ -68,18 +73,20 @@
       "quantity": 150,
       "price": 29.99,
       "status": "Available",
-      "image": "product7.jpg",
-      "itemsSold": 90
+      "image": "https://dynamic.zacdn.com/9-VD_kgVgmdzdtKicZ43tdZIdUk=/filters:quality(70):format(webp)/https://static-ph.zacdn.com/p/aquaman-4267-2495613-2.jpg",
+      "itemsSold": 90,
+      "desc": "A detailed action figure that will delight collectors and kids alike."
     },
     {
       "id": "8",
-      "name": "Organic Apples",
-      "category": "Grocery",
+      "name": "Electric Fan",
+      "category": "Accessories",
       "quantity": 500,
       "price": 5.99,
       "status": "Available",
-      "image": "product8.jpg",
-      "itemsSold": 300
+      "image": "https://d1rlzxa98cyc61.cloudfront.net/catalog/product/1/6/169956.jpg?auto=webp&format=pjpg&width=640",
+      "itemsSold": 300,
+      "desc": "Fresh and delicious organic apples, perfect for a healthy snack."
     },
     {
       "id": "9",
@@ -88,8 +95,9 @@
       "quantity": 20,
       "price": 129.99,
       "status": "Available",
-      "image": "product9.jpg",
-      "itemsSold": 10
+      "image": "https://cdn.media.halfords.ie/i/washford/950295?w=620&h=480&qlt=default&fmt=auto&v=1",
+      "itemsSold": 10,
+      "desc": "A reliable car battery with long-lasting performance."
     },
     {
       "id": "10",
@@ -98,8 +106,9 @@
       "quantity": 5,
       "price": 499.99,
       "status": "Available",
-      "image": "product10.jpg",
-      "itemsSold": 15
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEo0LzPLh2Xaeu9XkMshpoHCe-rfmL81hscA&s",
+      "itemsSold": 15,
+      "desc": "A stunning diamond ring that exudes elegance and luxury."
     }
   ],
   "carts": [
@@ -146,6 +155,17 @@
       "price": 210,
       "status": "added",
       "image": "https://img.lazcdn.com/g/ff/kf/Sc65805c4c3fe4e5c87360f90c85b0ba5u.jpg_720x720q80.jpg"
+    },
+    {
+      "id": "3",
+      "userId": "1",
+      "productId": "2",
+      "productName": "Fiction Book",
+      "category": "Books",
+      "quantity": 120,
+      "price": 19.99,
+      "status": "added",
+      "image": "https://i5.walmartimages.com/asr/a58297ac-8ecb-4f0a-84c0-448c4e19ecdf_1.43b633adf7684c59828db8231c0be073.jpeg"
     }
   ],
   "users": [

@@ -8,11 +8,11 @@ import { Product } from '../../models/product';
 })
 export class ProductItemComponent {
 
-  @Input('productsInput') products:Product[]|undefined
+  @Input('productsInput') product:Product|undefined
   @Output() actionEmitter = new EventEmitter()
   
 
-  executeAction = (data:Product, action:string) => {
+  executeAction = (data:any, action:string) => {
     switch(action){
       case 'ADD TO CART':
       this.actionEmitter.emit({data, action})
