@@ -13,7 +13,6 @@ export class CartService {
 
   constructor(private http: HttpClient) {}
 
-<<<<<<< admin-page
   private getCurrentUser = () => {
     let session = localStorage.getItem('session');
     if (session) {
@@ -181,12 +180,12 @@ export class CartService {
 
 
    // derek's
-  // getCart(){
-  //   console.log(`[From Cart Service] Getting cart with user id (user.id not implemented yet)...`)
-  //   return this.http.get<any[]>(`${this.serverUrl}/carts`).pipe(
-  //     map((carts) => carts.find((cart: Cart) => cart.userId === "1" ))
-  //   )
-  // }
+  getCart(){
+  console.log(`[From Cart Service] Getting cart with user id (user.id not implemented yet)...`)
+  return this.http.get<any[]>(`${this.serverUrl}/carts`).pipe(
+   map((carts) => carts.find((cart: Cart) => cart.userId === "1" ))
+   )
+  }
 
 
   updateCart(updatedCart: Cart) {
