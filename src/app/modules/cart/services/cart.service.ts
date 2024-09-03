@@ -14,6 +14,7 @@ export class CartService {
   constructor(private http: HttpClient) {}
 
   getCarts(): Observable<Cart[]>{
+    this.userId = "1"
     if (this.userId === null || this.userId === "0") {
       console.log('Cart is empty');
       return of([]);
@@ -101,12 +102,12 @@ export class CartService {
   }
 
    // derek's
-  getCart(){
-    console.log(`[From Cart Service] Getting cart with user id (user.id not implemented yet)...`)
-    return this.http.get<any[]>(`${this.serverUrl}/carts`).pipe(
-      map((carts) => carts.find((cart: Cart) => cart.userId === "1" ))
-    )
-  }
+  // getCart(){
+  //   console.log(`[From Cart Service] Getting cart with user id (user.id not implemented yet)...`)
+  //   return this.http.get<any[]>(`${this.serverUrl}/carts`).pipe(
+  //     map((carts) => carts.find((cart: Cart) => cart.userId === "1" ))
+  //   )
+  // }
 
   updateCart(updatedCart:Cart){
     return this.http

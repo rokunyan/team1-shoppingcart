@@ -10,12 +10,12 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full',
   },
-  // {
-  //   path: 'dashboard',
-  //   loadChildren: () =>
-  //     import('./modules/products/products.module').then((m) => m.ProductsModule),
-  //   canActivate: [userGuard]
-  // },
+  {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('./modules/products/products.module').then((m) => m.ProductsModule),
+    canActivate: [userGuard]
+  },
   {
     path: 'admin-dashboard',
     loadChildren: () =>

@@ -1,8 +1,8 @@
 <h1>Dashboard</h1>
 <h2>Cart</h2>
 
-[<div *ngFor="let cartProduct of cart?.products; let i = index">
-        id:{{cartProduct.id}} | Name:{{cartProduct.name}}
+[<div *ngFor="let cartProduct of carts; let i = index">
+        id:{{cartProduct.id}} | Name:{{cartProduct.productName}}
 </div>
 ]
 <app-product-item [productsInput]="products" (actionEmitter)="executeAction($event)"></app-product-item>

@@ -16,7 +16,7 @@ export class ProductDashboardComponent implements OnInit{
   products:Product[] = []
 
   //used to display the products in the cart
-  cart:Cart|undefined
+  carts:Cart[] = []
 
   constructor(private productService:ProductService, private cartService: CartService){
     
@@ -44,39 +44,50 @@ export class ProductDashboardComponent implements OnInit{
   }
 
   getCart(){
-    this.cartService.getCart().subscribe(
+    this.cartService.getCarts().subscribe(
       (data: any) => {
-        this.cart = data;
+        this.carts = data;
         console.log(`[From Dashboard Page] Get Cart Successful!`)
-        console.log(this.cart)
+        console.log(this.carts)
       }
     )
   }
 
-  addToCart(product:Product){
-    if(product.status === "Added"){
-      //If add to cart pero nasa cart na siya, add nalang ung quantity of the product in the cart.
+  /**
+   *export interface Cart {
+    id: string,
+    userId: string,
+    productId: number,
+    productName: string,
+    description: string,
+    category: string,
+    quantity: number,
+    price: number,
+    status: string,
+    image: string
+}
+   */
+  
+    addToCart(product: Product): void {
+      let cartSize =  this.carts.length + 1;
+      
+      const cartItem = {
+        id: cartSize.toString(),
+         userId: "1", 
+         productId: product.id,
+         productName: product.name,
+         description: product.description,
+         category: product.category, 
+         quantity: product.quantity, 
+         price: product.price,
+         status: "added", 
+         image: product.image,
+         };
+      this.cartService.addItemToCart(cartItem).subscribe(
+        item => {
+          console.log('Item added to cart:', item);
+        },
+      )
     }
-    else{
-      product.status = "Added"
-      //I was thinking add the product once lang sa cart
-    }
-    //For now, just adding just 1 product sa cart every click even if duplicate.
-    this.cart?.products.push(product);
-    console.log(product)
-    this.updateCart()
-  }
-
-  updateCart(){
-    if (this.cart) {
-      this.cartService.updateCart(this.cart).subscribe((data) => {
-        console.log(`[From Dashboard Page] Update Cart Successful!`)
-        console.log(data);
-      });
-      this.getCart()
-    } else {
-      console.error('Cart is not defined.');
-    }
-  }
 
 }
