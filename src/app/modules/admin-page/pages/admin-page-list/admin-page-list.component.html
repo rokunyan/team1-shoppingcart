@@ -1,5 +1,4 @@
 <app-header></app-header>
-
 <div class="container-fluid">
   <app-command-bar [commands]="add" class="command-bar mb-3"></app-command-bar>
 
@@ -30,13 +29,20 @@
           <tr *ngFor="let user of users">
             <td>{{ user.id }}</td>
             <td>{{ user.userName }}</td>
-            <td>{{ user.firstName + ' ' + user.lastName }}</td>
+            <td>{{ user.firstName + " " + user.lastName }}</td>
             <td>{{ user.email }}</td>
-            <td>{{ user.interests }}</td>
-            <td>{{ user.isAdmin ? 'Admin' : 'Customer' }}</td>
-            <td>{{ user.isActive ? 'Active' : 'Inactive' }}</td>
-            <td>
-              <button *ngIf="user.isActive" (click)="deactivate(user)" class="btn btn-outline-danger btn-sm" type="button">Deactivate</button>
+            <td class="flex-wrap">{{ user.interests.join(", ") }}</td>
+            <td>{{ user.isAdmin ? "Admin" : "Customer" }}</td>
+            <td>{{ user.isActive ? "Active" : "Inactive" }}</td>
+            <td class="justify-content-center">
+              <button
+                *ngIf="user.isActive"
+                (click)="deactivate(user)"
+                class="btn btn-outline-danger btn-sm"
+                type="button"
+              >
+                Deactivate
+              </button>
             </td>
           </tr>
         </tbody>

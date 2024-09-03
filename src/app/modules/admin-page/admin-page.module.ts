@@ -6,18 +6,13 @@ import { AdminPageRoutingModule } from './admin-page-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 
-
-
 @NgModule({
-  declarations: [
-    AdminPageListComponent,
-    AdminPageFormComponent
-  ],
+  declarations: [AdminPageListComponent, AdminPageFormComponent],
   imports: [
     CommonModule,
     AdminPageRoutingModule,
     ReactiveFormsModule,
-    SharedModule
-  ]
+    SharedModule,
+  ],
 })
-export class AdminPageModule { }
+export class AdminPageModule {}
