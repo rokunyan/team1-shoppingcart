@@ -1,7 +1,7 @@
 export interface Cart {
     id: string,
     userId: string,
-    productId: number,
+    productId: string,
     productName: string,
     description: string,
     category: string,
