@@ -36,7 +36,6 @@ export class CartService {
       console.log('Cart is empty');
       return of([]);
     }
-
     return this.http.get<Cart[]>(this.serverUrl).pipe(
       map((carts) =>
         carts.filter(
@@ -49,6 +48,16 @@ export class CartService {
         console.log('Fetched and filtered carts:', filteredCarts)
       )
     );
+  }
+
+  getCartById(id: string): Observable<Cart> {
+    return this.http
+      .get<Cart>(this.serverUrl)
+      .pipe(
+        tap((filteredCarts) =>
+          console.log('Fetched and filtered carts:', filteredCarts)
+        )
+      );
   }
 
   // hard-code userId
@@ -75,17 +84,17 @@ export class CartService {
   addItemToCart(newItem: Cart): Observable<Cart> {
     return this.getCarts().pipe(
       switchMap((carts) => {
-        const existingCart = carts.find((cart: Cart) => {
-          cart.productId === newItem.productId && cart.status === 'added';
-        });
+        const existingCart = carts.find(
+          (cart: Cart) =>
+            cart.productId === newItem.productId && cart.status === 'added'
+        );
 
         if (existingCart) {
+          existingCart.price = existingCart.price / existingCart.quantity;
           existingCart.quantity += newItem.quantity;
-          existingCart.price =
-            (existingCart.price / existingCart.quantity) *
-            existingCart.quantity;
+          existingCart.price *= existingCart.quantity;
           return this.http
-            .put<Cart>(`${this.serverUrl}/${existingCart.id}`, existingCart)
+            .patch<Cart>(`${this.serverUrl}/${existingCart.id}`, existingCart)
             .pipe(
               tap((updatedCart) =>
                 console.log('Updated cart item:', updatedCart)
