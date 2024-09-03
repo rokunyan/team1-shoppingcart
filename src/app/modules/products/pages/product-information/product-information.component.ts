@@ -12,7 +12,7 @@ import { CartService } from '../../../cart/services/cart.service';
 })
 export class ProductInformationComponent implements OnInit {
   productId:string = ''
-  product:Product[] = []
+  product:Product|undefined
   //used to display the products in the cart
   carts:Cart[] = []
   
@@ -27,7 +27,7 @@ export class ProductInformationComponent implements OnInit {
   getProduct(){
     this.productService.getProduct(this.productId).subscribe(
       (data: any) => {
-        this.product.push(data);
+        this.product = data;
         console.log(`[From Product Info Page] Get Product Successful!`)
         console.log(data)
       })

@@ -8,13 +8,12 @@ import { forkJoin, map, Observable, of, switchMap, tap } from 'rxjs';
 })
 export class CartService {
   private serverUrl = 'http://localhost:3000/carts';
-  userId: string = "2";
+  userId: string = "1";
   status: string =  "added";
 
   constructor(private http: HttpClient) {}
 
   getCarts(): Observable<Cart[]>{
-    this.userId = "1"
     if (this.userId === null || this.userId === "0") {
       console.log('Cart is empty');
       return of([]);

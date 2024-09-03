@@ -5,6 +5,7 @@ import { ProductRoutingModule } from './product-routing.module';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { provideHttpClient } from '@angular/common/http';
 import { ProductInformationComponent } from './pages/product-information/product-information.component';
+import { SharedModule } from '../../shared/shared.module';
 //import { HttpClientModule } from '@angular/common/http';
 
 
@@ -18,6 +19,7 @@ import { ProductInformationComponent } from './pages/product-information/product
   imports: [
     CommonModule,
     ProductRoutingModule,
+    SharedModule,
     //HttpClientModule
   ],
   providers: [
