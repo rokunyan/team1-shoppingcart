@@ -1,7 +1,8 @@
 <div class="product-container">
     Id: {{product?.id}} 
-    <h4 class="fw-normal">{{product?.name}}</h4>    
-    <h3>₱ {{product?.price  | number:'1.2-2' }}</h3>
+    <h3 class="fw-normal">{{product?.name}}</h3>    
+    <h5 class="fw-light">({{product?.category}})<br/></h5>
+    <h3>₱ {{product?.price  | number:'1.2-2' }}</h3> 
     <img class="image" src={{product?.image}} alt="{{product?.name}}"><br>
     <form [formGroup]="form">
         <label for="quantity">Quantity:</label>

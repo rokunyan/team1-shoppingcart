@@ -7,7 +7,9 @@
 ] <br/>
  
 Product Name Search
-<input type="text" placeholder="Search..." [(ngModel)]="searchQuery" (input)="onSearch()" /> <br>
+<input type="text" placeholder="Search..." [(ngModel)]="searchModel.productNameQuery" (input)="onSearch('NAME')" /> <br>
+Product Category Search
+<input type="text" placeholder="Search..." [(ngModel)]="searchModel.productCategoryQuery" (input)="onSearch('CATEGORY')" /> <br>
 Price Tag Search
 
 <!-- <ul>

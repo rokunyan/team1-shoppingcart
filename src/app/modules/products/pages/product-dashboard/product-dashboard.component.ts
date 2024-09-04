@@ -20,7 +20,11 @@ export class ProductDashboardComponent implements OnInit{
   carts: Cart[] = [];
 
   //used for search filters
-  searchQuery: string = '';
+  searchModel = {
+      productNameQuery: '',
+      productCategoryQuery: '',
+  }
+  
   filteredProducts: Product[] = [];
 
   constructor(
@@ -96,14 +100,28 @@ export class ProductDashboardComponent implements OnInit{
 
 
 
-  onSearch() {
-    if (this.searchQuery) {
-      this.filteredProducts = this.products.filter(product =>
-        product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
-    } else {
-      this.filteredProducts = [...this.products]; // Reset to all items if search query is empty
+  onSearch(searchType: String) {
+    switch(searchType){
+      case "NAME":
+        if (this.searchModel.productNameQuery) {
+          this.filteredProducts = this.products.filter(product =>
+            product.name.toLowerCase().includes(this.searchModel.productNameQuery.toLowerCase())
+          );
+        } else {
+          this.filteredProducts = [...this.products]; // Reset to all items if search query is empty
+        }
+        break;
+      case "CATEGORY":
+        if (this.searchModel.productCategoryQuery) {
+          this.filteredProducts = this.products.filter(product =>
+            product.category.toLowerCase().includes(this.searchModel.productCategoryQuery.toLowerCase())
+          );
+        } else {
+          this.filteredProducts = [...this.products]; // Reset to all items if search query is empty
+        }
+        break;
     }
+   
   }
 
   /**
