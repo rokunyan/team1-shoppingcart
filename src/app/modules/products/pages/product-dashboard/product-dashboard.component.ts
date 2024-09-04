@@ -4,6 +4,7 @@ import { ProductService } from '../../services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../../cart/services/cart.service';
 import { Cart } from '../../../cart/model/cart';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-product-dashboard',
@@ -17,6 +18,10 @@ export class ProductDashboardComponent implements OnInit{
 
   //used to display the products in the cart
   carts: Cart[] = [];
+
+  //used for search filters
+  searchQuery: string = '';
+  filteredProducts: Product[] = [];
 
   constructor(
     private productService: ProductService,
@@ -38,6 +43,7 @@ export class ProductDashboardComponent implements OnInit{
   getProducts() {
     this.productService.getProducts().subscribe((data: any) => {
       this.products = data;
+      this.filteredProducts = data;
       console.log(`[From Dashboard Page] Get Products Successful!`);
       console.log(this.products);
     });
@@ -88,17 +94,25 @@ export class ProductDashboardComponent implements OnInit{
     });
   }
 
-  searchQuery: string = ''; // The current search query
-  items: string[] = ['Apple', 'Banana', 'Orange', 'Mango', 'Grapes']; // Example items
-  filteredItems: string[] = [...this.items]; // Initialize with all items
+
 
   onSearch() {
     if (this.searchQuery) {
-      this.filteredItems = this.items.filter(item =>
-        item.toLowerCase().includes(this.searchQuery.toLowerCase())
+      this.filteredProducts = this.products.filter(product =>
+        product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
     } else {
-      this.filteredItems = [...this.items]; // Reset to all items if search query is empty
+      this.filteredProducts = [...this.products]; // Reset to all items if search query is empty
     }
   }
+
+  /**
+   * function searchEmployee(empList, employeeName){
+    let employee  = empList.find(obj => obj['employee']  && obj['employee'].includes(employeeName));
+    if(employee){
+        return true;
+    }
+    return false;
+  }
+   */
 }

@@ -4,11 +4,17 @@
 [<div class="cart" *ngFor="let cartProduct of carts; let i = index">
         id:{{cartProduct.id}} | Name:{{cartProduct.productName}} | Quantity: {{cartProduct.quantity}}
 </div>
-]
-<!-- <input type="text" placeholder="Search..." [(ngModel)]="searchQuery" (input)="onSearch()" /> -->
+] <br/>
+ 
+Product Name Search
+<input type="text" placeholder="Search..." [(ngModel)]="searchQuery" (input)="onSearch()" /> <br>
+Price Tag Search
 
+<!-- <ul>
+  <li *ngFor="let item of filteredItems">{{ item }}</li>
+</ul> -->
 <div class="marketing flex">
-        <div class="product-container" *ngFor="let product of products">
+        <div class="product-container" *ngFor="let product of filteredProducts">
                 <app-product-item [productsInput]="product" (actionEmitter)="executeAction($event)"></app-product-item>
         </div>
 </div>        
