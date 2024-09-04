@@ -6,24 +6,22 @@ import { ProductItemComponent } from './components/product-item/product-item.com
 import { provideHttpClient } from '@angular/common/http';
 import { ProductInformationComponent } from './pages/product-information/product-information.component';
 import { SharedModule } from '../../shared/shared.module';
+import { FormsModule } from '@angular/forms';
 //import { HttpClientModule } from '@angular/common/http';
-
-
 
 @NgModule({
   declarations: [
     ProductDashboardComponent,
     ProductItemComponent,
-    ProductInformationComponent
+    ProductInformationComponent,
   ],
   imports: [
     CommonModule,
     ProductRoutingModule,
     SharedModule,
+    FormsModule,
     //HttpClientModule
   ],
-  providers: [
-    provideHttpClient()
-  ],
+  providers: [provideHttpClient()],
 })
-export class ProductsModule { }
+export class ProductsModule {}
