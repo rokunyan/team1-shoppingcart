@@ -9,12 +9,6 @@ body {
   margin: 0;
 }
 
-.empty-cart-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 200px;
-}
-
 .continue {
   display: flex;
   justify-content: center;
