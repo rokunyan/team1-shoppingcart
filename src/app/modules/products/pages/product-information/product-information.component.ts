@@ -24,55 +24,50 @@ export class ProductInformationComponent implements OnInit {
    
   constructor(private productService:ProductService, private cartService:CartService, private route:ActivatedRoute){
   }
-  getProduct(){
-    this.productService.getProduct(this.productId).subscribe(
-      (data: any) => {
-        this.product = data;
-        console.log(`[From Product Info Page] Get Product Successful!`)
-        console.log(data)
-      })
+  getProduct() {
+    this.productService.getProduct(this.productId).subscribe((data: any) => {
+      this.product = data;
+      console.log(`[From Product Info Page] Get Product Successful!`);
+      console.log(data);
+    });
   }
 
-  executeAction(event: {data: Product, action: string }) {
-    switch(event.action){
+  executeAction(event: { data: Product; action: string }) {
+    switch (event.action) {
       case 'ADD TO CART':
-        this.addToCart(event.data)
-      break;
+        this.addToCart(event.data);
+        break;
     }
   }
 
-
-  getCart(){
-    this.cartService.getCarts().subscribe(
-      (data: any) => {
-        this.carts = data;
-        console.log(`[From Product Info Page] Get Cart Successful!`)
-        console.log(this.carts)
-      }
-    )
+  getCart() {
+    this.cartService.getCarts().subscribe((data: any) => {
+      this.carts = data;
+      console.log(`[From Product Info Page] Get Cart Successful!`);
+      console.log(this.carts);
+    });
   }
 
   addToCart(product: Product): void {
-    let cartSize =  this.carts.length + 1;
-    
-    const cartItem = {
-      id: cartSize.toString(),
-       userId: "1", 
-       productId: product.id,
-       productName: product.name,
-       description: product.description,
-       category: product.category, 
-       quantity: product.quantity, 
-       price: product.price,
-       status: "added", 
-       image: product.image,
-       };
-    this.cartService.addItemToCart(cartItem).subscribe(
-      item => {
-        console.log('Item added to cart:', item);
-      },
-    )
-  }
+    const cartItem: Cart = {
+      id: (this.carts.length + 1).toString(),
+      userId: '1',
+      productId: product.id,
+      productName: product.name,
+      description: product.description,
+      category: product.category,
+      quantity: 1,
+      price: product.price,
+      status: 'added',
+      image: product.image,
+    };
 
+    this.cartService.addItemToCart(cartItem).subscribe({
+      next: (item) => {
+        console.log('Item added to cart:', item);
+        this.getCart();
+      },
+    });
+  }
 
 }

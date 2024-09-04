@@ -100,8 +100,6 @@ export class ProductDashboardComponent implements OnInit{
     });
   }
 
-
-
   onSearch(searchType: String) {
     switch(searchType){
       case "NAME":
@@ -123,7 +121,8 @@ export class ProductDashboardComponent implements OnInit{
         }
         break;
       case "COST":
-        if((this.searchModel.productMinCost !== 0 || this.searchModel.productMaxCost !== 0) && this.searchModel.productMinCost <= this.searchModel.productMaxCost){
+        if((this.searchModel.productMinCost || this.searchModel.productMaxCost) && 
+        this.searchModel.productMinCost <= this.searchModel.productMaxCost){
           const min = this.searchModel.productMinCost
           const max = this.searchModel.productMaxCost
           this.filteredProducts = this.products.filter(product =>
