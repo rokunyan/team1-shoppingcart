@@ -1,0 +1,15 @@
+<app-header></app-header>
+<app-command-bar [commands]="add" class="command-bar mb-3"></app-command-bar>
+<br />
+<div class="shopping-cart">
+  <div class="title">Product List</div>
+  <hr class="my-1" />
+  <div *ngFor="let product of products">
+    <app-products-page-item
+      [product]="product"
+      (edit)="edit($event)"
+      (delete)="delete($event)"
+    >
+    </app-products-page-item>
+  </div>
+</div>
