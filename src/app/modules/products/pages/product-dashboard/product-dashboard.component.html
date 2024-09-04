@@ -2,9 +2,10 @@
 <h1>Dashboard</h1>
 <h2>Cart</h2>
 [<div class="cart" *ngFor="let cartProduct of carts; let i = index">
-        id:{{cartProduct.id}} | Name:{{cartProduct.productName}}
+        id:{{cartProduct.id}} | Name:{{cartProduct.productName}} | Quantity: {{cartProduct.quantity}}
 </div>
 ]
+<!-- <input type="text" placeholder="Search..." [(ngModel)]="searchQuery" (input)="onSearch()" /> -->
 
 <div class="marketing flex">
         <div class="product-container" *ngFor="let product of products">
