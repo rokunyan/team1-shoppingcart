@@ -11,7 +11,9 @@ Product Name Search
 Product Category Search
 <input type="text" placeholder="Search..." [(ngModel)]="searchModel.productCategoryQuery" (input)="onSearch('CATEGORY')" /> <br>
 Price Tag Search
-
+<input type="number" min="0"  [(ngModel)]="searchModel.productMinCost" (input)="onSearch('COST')"/> 
+- 
+<input type="number" min="0"  [(ngModel)]="searchModel.productMaxCost" (input)="onSearch('COST')"/><br/>
 <!-- <ul>
   <li *ngFor="let item of filteredItems">{{ item }}</li>
 </ul> -->

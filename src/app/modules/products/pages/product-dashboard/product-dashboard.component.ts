@@ -23,6 +23,8 @@ export class ProductDashboardComponent implements OnInit{
   searchModel = {
       productNameQuery: '',
       productCategoryQuery: '',
+      productMinCost: 0,
+      productMaxCost: 0.
   }
   
   filteredProducts: Product[] = [];
@@ -120,8 +122,19 @@ export class ProductDashboardComponent implements OnInit{
           this.filteredProducts = [...this.products]; // Reset to all items if search query is empty
         }
         break;
+      case "COST":
+        if((this.searchModel.productMinCost !== 0 || this.searchModel.productMaxCost !== 0) && this.searchModel.productMinCost <= this.searchModel.productMaxCost){
+          const min = this.searchModel.productMinCost
+          const max = this.searchModel.productMaxCost
+          this.filteredProducts = this.products.filter(product =>
+            min <= product.price && product.price <= max 
+          );
+        }
+        else{
+          this.filteredProducts = [...this.products]; // Reset to all items if price range filter is empty
+        }
+        break;
     }
-   
   }
 
   /**
