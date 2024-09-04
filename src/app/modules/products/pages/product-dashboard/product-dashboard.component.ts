@@ -8,49 +8,46 @@ import { Cart } from '../../../cart/model/cart';
 @Component({
   selector: 'app-product-dashboard',
   templateUrl: './product-dashboard.component.html',
-  styleUrl: './product-dashboard.component.css'
+  styleUrl: './product-dashboard.component.css',
 })
-export class ProductDashboardComponent implements OnInit{
-
+export class ProductDashboardComponent implements OnInit {
   //used to diplay the available products
-  products:Product[] = []
+  products: Product[] = [];
 
   //used to display the products in the cart
-  carts:Cart[] = []
+  carts: Cart[] = [];
 
-  constructor(private productService:ProductService, private cartService: CartService){
-    
-  }
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService
+  ) {}
   ngOnInit(): void {
-    this.getProducts()
-    this.getCart()
+    this.getProducts();
+    this.getCart();
   }
-  
-  executeAction(event: {data: Product, action: string }) {
-    switch(event.action){
+
+  executeAction(event: { data: Product; action: string }) {
+    switch (event.action) {
       case 'ADD TO CART':
-        this.addToCart(event.data)
-      break;
+        this.addToCart(event.data);
+        break;
     }
   }
-  
-  getProducts(){
-    this.productService.getProducts().subscribe(
-      (data: any) => {
-        this.products = data;
-        console.log(`[From Dashboard Page] Get Products Successful!`)
-        console.log(this.products)
-      })
+
+  getProducts() {
+    this.productService.getProducts().subscribe((data: any) => {
+      this.products = data;
+      console.log(`[From Dashboard Page] Get Products Successful!`);
+      console.log(this.products);
+    });
   }
 
-  getCart(){
-    this.cartService.getCarts().subscribe(
-      (data: any) => {
-        this.carts = data;
-        console.log(`[From Dashboard Page] Get Cart Successful!`)
-        console.log(this.carts)
-      }
-    )
+  getCart() {
+    this.cartService.getCarts().subscribe((data: any) => {
+      this.carts = data;
+      console.log(`[From Dashboard Page] Get Cart Successful!`);
+      console.log(this.carts);
+    });
   }
 
   /**
@@ -67,27 +64,26 @@ export class ProductDashboardComponent implements OnInit{
     image: string
 }
    */
-  
-    addToCart(product: Product): void {
-      let cartSize =  this.carts.length + 1;
-      
-      const cartItem = {
-        id: cartSize.toString(),
-         userId: "1", 
-         productId: product.id,
-         productName: product.name,
-         description: product.description,
-         category: product.category, 
-         quantity: product.quantity, 
-         price: product.price,
-         status: "added", 
-         image: product.image,
-         };
-      this.cartService.addItemToCart(cartItem).subscribe(
-        item => {
-          console.log('Item added to cart:', item);
-        },
-      )
-    }
 
+  addToCart(product: Product): void {
+    const cartItem: Cart = {
+      id: (this.carts.length + 1).toString(),
+      userId: '1',
+      productId: product.id,
+      productName: product.name,
+      description: product.description,
+      category: product.category,
+      quantity: 1,
+      price: product.price,
+      status: 'added',
+      image: product.image,
+    };
+
+    this.cartService.addItemToCart(cartItem).subscribe({
+      next: (item) => {
+        console.log('Item added to cart:', item);
+        this.getCart();
+      },
+    });
+  }
 }
