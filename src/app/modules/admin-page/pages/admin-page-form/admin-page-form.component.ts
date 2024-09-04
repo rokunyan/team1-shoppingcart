@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AdminPageService } from '../../services/admin-page.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { User } from '../../../user/models/user';
 
 @Component({
