@@ -52,7 +52,12 @@ export class ProductsPageService {
       );
   }
 
-  getMaxId(products: Product[]) {
-    return Math.max(...products.map((product) => parseInt(product.id)));
+  getMaxId(): Observable<number> {
+    return this.getProducts().pipe(
+      map((products) => {
+        if (products.length === 0) return 0;
+        return Math.max(...products.map((product) => parseInt(product.id, 10)));
+      })
+    );
   }
 }

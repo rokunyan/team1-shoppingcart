@@ -9,19 +9,11 @@ import { User } from '../../user/models/user';
 export class AdminPageService {
   private serverUrl = 'http://localhost:3000/users';
 
-  isAdmin: boolean = false;
-
   constructor(private http: HttpClient) {}
-
-  // getUsers(): Observable<User[]>{
-  //   return this.http.get<User[]>(this.serverUrl).pipe(
-  //     tap(users => console.log('Fetched users:', users)),
-  //   );
-  // }
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.serverUrl).pipe(
-      // map((users) => users.filter((user) => user.isAdmin === this.isAdmin)),
+      // map((users) => users.filter((user) => user.isAdmin === false)),
       tap((guests) => console.log('Customers:', guests))
     );
   }

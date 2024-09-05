@@ -102,13 +102,11 @@ export class ProductsPageFormComponent implements OnInit, OnDestroy {
           },
         });
       } else {
-        this.productsPageService.getProducts().subscribe({
-          next: (products: Product[]) => {
-            const newId: string = (
-              this.productsPageService.getMaxId(products) + 1
-            ).toString();
+        this.productsPageService.getMaxId().subscribe({
+          next: (maxId: number) => {
+            const newId: string = (maxId + 1).toString();
             product.id = newId;
-            this.sub = this.productsPageService.addProduct(product).subscribe({
+            this.productsPageService.addProduct(product).subscribe({
               next: () => {
                 this.router.navigate(['/products-page']);
               },
