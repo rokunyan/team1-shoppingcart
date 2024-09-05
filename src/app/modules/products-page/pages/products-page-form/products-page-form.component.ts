@@ -104,7 +104,9 @@ export class ProductsPageFormComponent implements OnInit, OnDestroy {
       } else {
         this.productsPageService.getProducts().subscribe({
           next: (products: Product[]) => {
-            const newId: string = (products.length + 1).toString();
+            const newId: string = (
+              this.productsPageService.getMaxId(products) + 1
+            ).toString();
             product.id = newId;
             this.sub = this.productsPageService.addProduct(product).subscribe({
               next: () => {
