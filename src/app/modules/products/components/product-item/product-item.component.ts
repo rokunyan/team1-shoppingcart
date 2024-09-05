@@ -23,7 +23,7 @@ export class ProductItemComponent {
     switch(action){
       case 'ADD TO CART':
       let quantity = this.form.get('quantity')?.value
-      if(quantity > 0){
+      if(this.form.valid){
         this.actionEmitter.emit({data, action, quantity})
       }
       break
