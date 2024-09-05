@@ -4,4 +4,19 @@
     id:{{cartProduct.id}} | Name:{{cartProduct.productName}} | Quantity:{{cartProduct.quantity}}
 </div>]
 
-<app-product-item [productsInput]="product" (actionEmitter)="executeAction($event)"></app-product-item>
+<div class="product-container">
+    Id: {{product?.id}} 
+    <h3 class="fw-normal">{{product?.name}}</h3>    
+    <h5 class="fw-light">({{product?.category}})<br/></h5>
+    <h3>₱ {{product?.price  | number:'1.2-2' }}</h3> 
+    <img class="image" src={{product?.image}} alt="{{product?.name}}"><br>
+    <p>{{product?.description}}</p>
+    <form [formGroup]="form">
+        <label for="quantity">Quantity:</label>
+        <input id="quantity" type="number" min="1" formControlName="quantity" />
+      </form>
+    <div class="button-container">
+        <button class="btn btn-secondary" [routerLink]="['product', product?.id]" routerLinkActive="router-link-active">More Info</button>
+        <button class="btn btn-success" (click)="executeAction('ADD TO CART')">ADD TO CART</button>
+    </div>
+</div> 

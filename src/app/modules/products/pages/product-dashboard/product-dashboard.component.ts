@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../../cart/services/cart.service';
 import { Cart } from '../../../cart/model/cart';
 import { filter } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { numericValidator } from '../../validators/custom.validator';
 
 @Component({
   selector: 'app-product-dashboard',
@@ -12,6 +14,8 @@ import { filter } from 'rxjs';
   styleUrl: './product-dashboard.component.css'
 })
 export class ProductDashboardComponent implements OnInit{
+
+  productForm:FormGroup;
 
   //used to diplay the available products
   products: Product[] = [];
@@ -24,15 +28,25 @@ export class ProductDashboardComponent implements OnInit{
       productNameQuery: '',
       productCategoryQuery: '',
       productMinCost: 0,
-      productMaxCost: 0.
+      productMaxCost: 0,
+      sortByType: ''
   }
   
   filteredProducts: Product[] = [];
 
   constructor(
     private productService: ProductService,
-    private cartService: CartService
-  ) {}
+    private cartService: CartService,
+    private formBuilder: FormBuilder
+  ) {
+    this.productForm = this.formBuilder.group({
+      productNameQuery: '',
+      productCategoryQuery: '',
+      productMinCost: [0, numericValidator()],
+      productMaxCost: [0, numericValidator()],
+    })
+  }
+
   ngOnInit(): void {
     this.getProducts();
     this.getCart();
@@ -132,6 +146,67 @@ export class ProductDashboardComponent implements OnInit{
         else{
           this.filteredProducts = [...this.products]; // Reset to all items if price range filter is empty
         }
+        break;
+    }
+    this.checkForExistingFilters()
+  }
+
+  onSortBy(){
+    switch(this.searchModel.sortByType){
+      case 'ASCENDING NAME':
+        this.filteredProducts.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }))
+        break;
+      case 'DESCENDING NAME':
+        this.filteredProducts.sort((a, b) => b.name.localeCompare(a.name, undefined, { numeric: true }))
+        break;
+      case 'ASCENDING PRICE':
+        this.filteredProducts.sort((a,b) =>  a.price - b.price)
+        break;
+      case 'DESCENDING PRICE':
+        this.filteredProducts.sort((a,b) =>  b.price - a.price)
+        break;
+      default:
+        this.filteredProducts.sort((a,b) =>  parseInt(a.id) - parseInt(b.id))
+        break;
+    }
+    this.checkForExistingFilters()
+  }
+
+  checkForExistingFilters() {
+    
+    if (this.searchModel.productNameQuery) {
+      this.filteredProducts = this.filteredProducts.filter(product =>
+        product.name.toLowerCase().includes(this.searchModel.productNameQuery.toLowerCase())
+      );
+    } 
+    if (this.searchModel.productCategoryQuery) {
+      this.filteredProducts = this.filteredProducts.filter(product =>
+        product.category.toLowerCase().includes(this.searchModel.productCategoryQuery.toLowerCase())
+      );
+    } 
+    if((this.searchModel.productMinCost || this.searchModel.productMaxCost) && 
+    this.searchModel.productMinCost <= this.searchModel.productMaxCost){
+      const min = this.searchModel.productMinCost
+      const max = this.searchModel.productMaxCost
+      this.filteredProducts = this.filteredProducts.filter(product =>
+        min <= product.price && product.price <= max 
+      );
+    }  
+    switch(this.searchModel.sortByType){
+      case 'ASCENDING NAME':
+        this.filteredProducts.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }))
+        break;
+      case 'DESCENDING NAME':
+        this.filteredProducts.sort((a, b) => b.name.localeCompare(a.name, undefined, { numeric: true }))
+        break;
+      case 'ASCENDING PRICE':
+        this.filteredProducts.sort((a,b) =>  a.price - b.price)
+        break;
+      case 'DESCENDING PRICE':
+        this.filteredProducts.sort((a,b) =>  b.price - a.price)
+        break;
+      default:
+        this.filteredProducts.sort((a,b) =>  parseInt(a.id) - parseInt(b.id))
         break;
     }
   }

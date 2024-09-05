@@ -14,6 +14,14 @@ Price Tag Search
 <input type="number" min="0"  [(ngModel)]="searchModel.productMinCost" (input)="onSearch('COST')"/> 
 - 
 <input type="number" min="0"  [(ngModel)]="searchModel.productMaxCost" (input)="onSearch('COST')"/><br/>
+Sort by
+<select class="form-control" [(ngModel)]="searchModel.sortByType" (change)="onSortBy()">
+        <option value="DEFAULT">Default</option>
+        <option value="ASCENDING NAME">Name (A-Z)</option>
+        <option value="DESCENDING NAME">Name (Z-A)</option>
+        <option value="ASCENDING PRICE">Price (low-high)</option>
+        <option value="DESCENDING PRICE">Price (high-low)</option>
+</select>
 <!-- <ul>
   <li *ngFor="let item of filteredItems">{{ item }}</li>
 </ul> -->
