@@ -142,7 +142,8 @@ export class ProductDashboardComponent implements OnInit{
       case "COST":
         if((this.searchModel.productMinCost || this.searchModel.productMaxCost) && 
         this.searchModel.productMinCost <= this.searchModel.productMaxCost &&
-        (this.searchModel.productMinCost > 0 && this.searchModel.productMaxCost > 0)){
+        (this.searchModel.productMinCost >= 0 && this.searchModel.productMaxCost >= 0)){
+         
           const min = this.searchModel.productMinCost
           const max = this.searchModel.productMaxCost
           this.filteredProducts = this.products.filter(product =>
@@ -192,7 +193,7 @@ export class ProductDashboardComponent implements OnInit{
     } 
     if((this.searchModel.productMinCost || this.searchModel.productMaxCost) && 
     this.searchModel.productMinCost <= this.searchModel.productMaxCost &&
-    (this.searchModel.productMinCost > 0 && this.searchModel.productMaxCost > 0)){
+    (this.searchModel.productMinCost >= 0 && this.searchModel.productMaxCost >= 0)){
       const min = this.searchModel.productMinCost
       const max = this.searchModel.productMaxCost
       this.filteredProducts = this.filteredProducts.filter(product =>
