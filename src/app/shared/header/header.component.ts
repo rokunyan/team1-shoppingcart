@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from '../../modules/user/services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -7,18 +8,22 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   isAdmin: boolean = false;
-  private getCurrentUser = () => {
-    let session = localStorage.getItem('session');
-    if (session) {
-      return JSON.parse(session);
+  isActive: boolean = false;
+
+  constructor(private userService: UserService) {}
+
+  getAdminAndActive = () => {
+    const user = this.userService.getCurrentUser();
+    if (user && user.id && user.isActive) {
+      return user.isAdmin;
     }
-    return null;
+    return false;
   };
 
-  getCurrentUserIsAdmin = () => {
-    const user = this.getCurrentUser();
-    if (user && user.id) {
-      return user.isAdmin;
+  getCustomerAndActive = () => {
+    const user = this.userService.getCurrentUser();
+    if (user && user.id && user.isActive) {
+      return user.isActive;
     }
     return false;
   };

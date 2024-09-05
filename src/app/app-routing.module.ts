@@ -13,26 +13,28 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () =>
-      import('./modules/products/products.module').then((m) => m.ProductsModule),
-    canActivate: [userGuard]
+      import('./modules/products/products.module').then(
+        (m) => m.ProductsModule
+      ),
+    canActivate: [userGuard],
   },
   {
     path: 'admin-dashboard',
     loadChildren: () =>
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
-    // canActivate: [adminGuard]
+    canActivate: [adminGuard],
   },
   {
     path: 'login',
     loadChildren: () =>
       import('./modules/login/login.module').then((m) => m.LoginModule),
-    canActivate: [loginGuard]
+    canActivate: [loginGuard],
   },
   {
     path: 'user-profile',
     loadChildren: () =>
       import('./modules/user/user.module').then((m) => m.UserModule),
-    canActivate: [userGuard]
+    canActivate: [userGuard],
   },
   {
     path: 'cart',
@@ -42,12 +44,23 @@ const routes: Routes = [
   {
     path: 'admin-page',
     loadChildren: () =>
-      import('./modules/admin-page/admin-page.module').then((m) => m.AdminPageModule),
+      import('./modules/admin-page/admin-page.module').then(
+        (m) => m.AdminPageModule
+      ),
+    canActivate: [adminGuard],
+  },
+  {
+    path: 'products-page',
+    loadChildren: () =>
+      import('./modules/products-page/products-page.module').then(
+        (m) => m.ProductsPageModule
+      ),
+    canActivate: [adminGuard],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

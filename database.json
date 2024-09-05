@@ -2,7 +2,8 @@
   "products": [
     {
       "id": "1",
-      "name": "Smartphone",
+      "name": "Smartphones",
+      "description": "A high-end smartphone with a sleek design and powerful features.",
       "category": "Electronics",
       "quantity": 50,
       "price": 299.99,
@@ -78,6 +79,17 @@
       "description": "A detailed action figure that will delight collectors and kids alike."
     },
     {
+      "id": "8",
+      "name": "Electric Fan",
+      "category": "Accessories",
+      "quantity": 500,
+      "price": 5.99,
+      "status": "Available",
+      "image": "https://img.lazcdn.com/g/p/10a3c6b13dabcd37e86113569811818a.jpg_400x400q75.jpg_.webp",
+      "itemsSold": 300,
+      "description": "Fresh and delicious organic apples, perfect for a healthy snack."
+    },
+    {
       "id": "9",
       "name": "Car Battery",
       "category": "Automotive",
@@ -89,15 +101,76 @@
       "description": "A reliable car battery with long-lasting performance."
     },
     {
-      "id": "10",
-      "name": "Diamond Ring",
-      "category": "Jewelry",
-      "quantity": 5,
-      "price": 499.99,
+      "id": "11",
+      "name": "Glasses",
+      "description": "black",
+      "category": "Accessories",
+      "quantity": 100,
+      "price": 1,
       "status": "Available",
-      "image": "https://img.lazcdn.com/g/p/5148f4db4b388e1672e8060fdfe4be11.jpg_400x400q75.jpg_.webp",
-      "itemsSold": 15,
-      "description": "A stunning diamond ring that exudes elegance and luxury."
+      "image": "https://img.lazcdn.com/g/p/7d3fd13cb8c27de50bb46d5fecc6ccae.jpg_400x400q75.jpg_.webp",
+      "itemsSold": 0
+    },
+    {
+      "id": "12",
+      "name": "Glasses",
+      "description": "sadfsad",
+      "category": "Accessories",
+      "quantity": 1,
+      "price": 1,
+      "status": "Available",
+      "image": "https://img.lazcdn.com/g/p/7d3fd13cb8c27de50bb46d5fecc6ccae.jpg_400x400q75.jpg_.webp",
+      "itemsSold": 0
+    }
+  ],
+  "carts": [
+    {
+      "id": "1",
+      "userId": "1",
+      "productId": "1",
+      "productName": "Smartphone",
+      "description": "A high-end smartphone with a sleek design and powerful features.",
+      "category": "Electronics",
+      "quantity": 1,
+      "price": 299.99,
+      "status": "added",
+      "image": "https://img.lazcdn.com/g/p/111d3e07a02ea335d70d7d97c797299b.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "2",
+      "userId": "1",
+      "productId": "2",
+      "productName": "Fiction Book",
+      "description": "An intriguing fiction book that will keep you hooked from start to finish.",
+      "category": "Books",
+      "quantity": 1,
+      "price": 19.99,
+      "status": "added",
+      "image": "https://img.lazcdn.com/g/p/af46826f71983b075df3a9c24c7f3bec.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "4",
+      "userId": "1",
+      "productId": "4",
+      "productName": "Face Cream",
+      "description": "A nourishing face cream that leaves your skin feeling smooth and hydrated.",
+      "category": "Beauty",
+      "quantity": 1,
+      "price": 24.99,
+      "status": "added",
+      "image": "https://img.lazcdn.com/g/p/a51c77096f9503d20ece5ac4b9e0c3f7.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "5",
+      "userId": "1",
+      "productId": "5",
+      "productName": "Basketball",
+      "description": "A durable basketball suitable for both indoor and outdoor play.",
+      "category": "Sports",
+      "quantity": 1,
+      "price": 99.99,
+      "status": "added",
+      "image": "https://img.lazcdn.com/g/p/01a841e1a839165ed7c4abf855cab170.jpg_400x400q75.jpg_.webp"
     }
   ],
   "carts": [],
@@ -114,9 +187,7 @@
       "mobileNumber": "63918485697",
       "isActive": true,
       "isAdmin": false,
-      "interests": [
-        "swimming"
-      ]
+      "interests": ["swimming"]
     },
     {
       "id": "2",
@@ -124,15 +195,41 @@
       "firstName": "Any Names",
       "middleName": "",
       "lastName": "Okay",
-      "birthDate": "2001-01-01",
-      "password": "X93j4qmR",
+      "birthDate": "",
+      "interests": [""],
+      "password": "1234abcd",
       "email": "sample1@gmail.com",
       "mobileNumber": "09999999999",
       "isActive": true,
-      "isAdmin": true,
-      "interests": [
-        "reading"
-      ]
+      "isAdmin": true
+    },
+    {
+      "id": "3",
+      "userName": "asdgsad",
+      "firstName": "sadfs",
+      "middleName": "",
+      "lastName": "fsafsa",
+      "birthDate": "",
+      "interests": [""],
+      "password": "1234567890",
+      "email": "sample3@gmail.com",
+      "mobileNumber": "09999999999",
+      "isActive": false,
+      "isAdmin": false
+    },
+    {
+      "id": "4",
+      "userName": "asfsa",
+      "firstName": "sadfas",
+      "middleName": "",
+      "lastName": "safas",
+      "birthDate": "",
+      "interests": [""],
+      "password": "6yALob30",
+      "email": "sample4@gmail.com",
+      "mobileNumber": "00000000000",
+      "isActive": true,
+      "isAdmin": false
     }
   ]
 }

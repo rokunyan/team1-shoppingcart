@@ -10,12 +10,13 @@ import { get } from 'node:http';
 @Component({
   selector: 'app-product-information',
   templateUrl: './product-information.component.html',
-  styleUrl: './product-information.component.css'
+  styleUrl: './product-information.component.css',
 })
 export class ProductInformationComponent implements OnInit {
-  productId:string = ''
-  product:Product|undefined
+  productId: string = '';
+  product: Product | undefined;
   //used to display the products in the cart
+
   carts:Cart[] = []
   
   form:FormGroup

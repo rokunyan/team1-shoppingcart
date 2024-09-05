@@ -2,34 +2,25 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Cart } from '../model/cart';
 import { map, Observable, of, switchMap, tap } from 'rxjs';
+import { UserService } from '../../user/services/user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
   private serverUrl = 'http://localhost:3000/carts';
-  // userId: string = '1';
   status: string = 'added';
 
-  constructor(private http: HttpClient) {}
-
-  private getCurrentUser = () => {
-    let session = localStorage.getItem('session');
-    if (session) {
-      return JSON.parse(session);
-    }
-    return null;
-  };
+  constructor(private http: HttpClient, private userService: UserService) {}
 
   getCurrentUserId = () => {
-    const user = this.getCurrentUser();
+    const user = this.userService.getCurrentUser();
     if (user && user.id) {
       return user.id;
     }
     return null;
   };
 
-  // with getCurrentUserId
   getCarts(): Observable<Cart[]> {
     const currentUserId = this.getCurrentUserId();
     if (currentUserId === null || currentUserId === '0') {
@@ -50,26 +41,16 @@ export class CartService {
     );
   }
 
-  // hard-code userId
-  // getCarts(): Observable<Cart[]> {
-  //   if (this.userId === null || this.userId === '0') {
-  //     console.log('Cart is empty');
-  //     return of([]);
-  //   }
-
-  //   return this.http.get<Cart[]>(this.serverUrl).pipe(
-  //     map((carts) =>
-  //       carts.filter(
-  //         (cart) =>
-  //           (this.userId ? cart.userId === this.userId : true) &&
-  //           (this.status ? cart.status === this.status : true)
-  //       )
-  //     ),
-  //     tap((filteredCarts) =>
-  //       console.log('Fetched and filtered arts:', filteredCarts)
-  //     )
-  //   );
-  // }
+  getCartById(id: string): Observable<Cart> {
+    const url = `${this.serverUrl}/${id}`;
+    return this.http
+      .get<Cart>(url)
+      .pipe(
+        tap((filteredCarts) =>
+          console.log('Fetched and filtered carts:', filteredCarts)
+        )
+      );
+  }
 
   addItemToCart(newItem: Cart): Observable<Cart> {
     return this.getCarts().pipe(
@@ -170,6 +151,10 @@ export class CartService {
       }),
       switchMap((result) => result as Observable<Cart>)
     );
+  }
+
+  getMaxId(carts: Cart[]) {
+    return Math.max(...carts.map((cart) => parseInt(cart.id)));
   }
 
   // derek's

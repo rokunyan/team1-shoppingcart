@@ -11,8 +11,9 @@ import { numericValidator } from '../../validators/custom.validator';
 @Component({
   selector: 'app-product-dashboard',
   templateUrl: './product-dashboard.component.html',
-  styleUrl: './product-dashboard.component.css'
+  styleUrl: './product-dashboard.component.css',
 })
+
 export class ProductDashboardComponent implements OnInit{
 
   productForm:FormGroup;
@@ -22,6 +23,7 @@ export class ProductDashboardComponent implements OnInit{
 
   //used to display the products in the cart
   carts: Cart[] = [];
+
 
   //used for search filters
   searchModel = {
@@ -53,6 +55,7 @@ export class ProductDashboardComponent implements OnInit{
     this.getCart();
   }
 
+
   executeAction(event: { data: Product; action: string, quantity:number }) {
     switch (event.action) {
       case 'ADD TO CART':
@@ -65,6 +68,7 @@ export class ProductDashboardComponent implements OnInit{
     this.productService.getProducts().subscribe((data: any) => {
       this.products = data;
       this.filteredProducts = data;
+
       console.log(`[From Dashboard Page] Get Products Successful!`);
       console.log(this.products);
     });
@@ -213,14 +217,4 @@ export class ProductDashboardComponent implements OnInit{
         break;
     }
   }
-
-  /**
-   * function searchEmployee(empList, employeeName){
-    let employee  = empList.find(obj => obj['employee']  && obj['employee'].includes(employeeName));
-    if(employee){
-        return true;
-    }
-    return false;
-  }
-   */
 }

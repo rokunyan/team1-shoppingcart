@@ -9,13 +9,11 @@ import { SharedModule } from '../../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { HttpClientModule } from '@angular/common/http';
 
-
-
 @NgModule({
   declarations: [
     ProductDashboardComponent,
     ProductItemComponent,
-    ProductInformationComponent
+    ProductInformationComponent,
   ],
   imports: [
     CommonModule,
@@ -25,8 +23,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     //HttpClientModule
   ],
-  providers: [
-    provideHttpClient()
-  ],
+  providers: [provideHttpClient()],
 })
-export class ProductsModule { }
+export class ProductsModule {}

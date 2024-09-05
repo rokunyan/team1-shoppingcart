@@ -1,5 +1,5 @@
 <div>
-  <div *ngIf="getCurrentUserIsAdmin()">
+  <div *ngIf="getAdminAndActive()">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <h3 class="m-2">Shopping Application</h3>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -28,6 +28,14 @@
               ><i class="fa-solid fa-user-tie"></i> Admin Page</a
             >
           </li>
+          <li>
+            <a
+              routerLink="/products-page"
+              routerLinkActive="router-link-active"
+              class="nav-item nav-link"
+              ><i class="fa-solid fa-list"></i> Products Page</a
+            >
+          </li>
         </ul>
       </div>
       <ul class="navbar-nav d-flex justify-content-end">
@@ -43,11 +51,19 @@
       </ul>
     </nav>
   </div>
-  <div *ngIf="!getCurrentUserIsAdmin()">
+  <div *ngIf="getCustomerAndActive() && !getAdminAndActive()">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <h3 class="m-2">Shopping Application</h3>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+          <li>
+            <a
+              routerLink="/dashboard"
+              routerLinkActive="router-link-active"
+              class="nav-item nav-link"
+              ><i class="fa-solid fa-shop"></i> Dashboard</a
+            >
+          </li>
           <li>
             <a
               routerLink="/cart"
