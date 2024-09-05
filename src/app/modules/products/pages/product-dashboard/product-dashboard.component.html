@@ -11,9 +11,12 @@ Product Name Search
 Product Category Search
 <input type="text" placeholder="Search..." [(ngModel)]="searchModel.productCategoryQuery" (input)="onSearch('CATEGORY')" /> <br>
 Price Tag Search
-<input type="number" min="0"  [(ngModel)]="searchModel.productMinCost" (input)="onSearch('COST')"/> 
+<input type="number" min="0"  [(ngModel)]="searchModel.productMinCost"  #minCost="ngModel" (input)="onSearch('COST')"/> 
 - 
-<input type="number" min="0"  [(ngModel)]="searchModel.productMaxCost" (input)="onSearch('COST')"/><br/>
+<input type="number" min="0"  [(ngModel)]="searchModel.productMaxCost"  #maxCost="ngModel" (input)="onSearch('COST')"/><br/>
+<div *ngIf="(minCost.errors && minCost.touched) || (maxCost.errors && maxCost.touched)">
+        <div *ngIf="minCost?.errors?.['min'] || maxCost?.errors?.['min']">The number must be at least 0 for min and max cost.</div>
+</div>
 Sort by
 <select class="form-control" [(ngModel)]="searchModel.sortByType" (change)="onSortBy()">
         <option value="DEFAULT">Default</option>
