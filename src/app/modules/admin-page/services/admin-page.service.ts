@@ -21,7 +21,7 @@ export class AdminPageService {
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.serverUrl).pipe(
-      map((users) => users.filter((user) => user.isAdmin === this.isAdmin)),
+      // map((users) => users.filter((user) => user.isAdmin === this.isAdmin)),
       tap((guests) => console.log('Customers:', guests))
     );
   }
