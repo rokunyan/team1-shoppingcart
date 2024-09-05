@@ -2,14 +2,14 @@
   "products": [
     {
       "id": "1",
-      "name": "Smartphone",
+      "name": "Smartphones",
+      "description": "A high-end smartphone with a sleek design and powerful features.",
       "category": "Electronics",
       "quantity": 50,
       "price": 299.99,
       "status": "Available",
-      "image": "https://i5.walmartimages.com/asr/20caa881-9f84-478b-8259-b9c3448e1007_1.0872b05362d97ff68033417572228b40.jpeg",
-      "itemsSold": 120,
-      "desc": "A high-end smartphone with a sleek design and powerful features."
+      "image": "https://img.lazcdn.com/g/p/111d3e07a02ea335d70d7d97c797299b.jpg_400x400q75.jpg_.webp",
+      "itemsSold": 120
     },
     {
       "id": "2",
@@ -18,9 +18,9 @@
       "quantity": 120,
       "price": 19.99,
       "status": "Available",
-      "image": "https://i5.walmartimages.com/asr/a58297ac-8ecb-4f0a-84c0-448c4e19ecdf_1.43b633adf7684c59828db8231c0be073.jpeg",
+      "image": "https://img.lazcdn.com/g/p/af46826f71983b075df3a9c24c7f3bec.jpg_400x400q75.jpg_.webp",
       "itemsSold": 60,
-      "desc": "An intriguing fiction book that will keep you hooked from start to finish."
+      "description": "An intriguing fiction book that will keep you hooked from start to finish."
     },
     {
       "id": "3",
@@ -29,9 +29,9 @@
       "quantity": 200,
       "price": 49.99,
       "status": "Available",
-      "image": "https://www.filmyvastra.com/wp-content/uploads/2019/06/Black-Wide-tshirt-without-hanger-Recovered-scaled.jpg",
+      "image": "https://img.lazcdn.com/g/p/58c9c49c1f5c96e453acfae51a2c335d.jpg_400x400q75.jpg_.webp",
       "itemsSold": 150,
-      "desc": "A comfortable and stylish t-shirt perfect for everyday wear."
+      "description": "A comfortable and stylish t-shirt perfect for everyday wear."
     },
     {
       "id": "4",
@@ -40,9 +40,9 @@
       "quantity": 75,
       "price": 24.99,
       "status": "Available",
-      "image": "https://i5.walmartimages.com/seo/Pond-s-Dry-Skin-Face-Moisturizer-Cream-Daily-Facial-Moisturizing-10-1-oz_55227e41-ecf5-48f2-8c52-8038d490741d_1.c0d83fae8668961ab4bd1c583d1a9da1.jpeg",
+      "image": "https://img.lazcdn.com/g/p/a51c77096f9503d20ece5ac4b9e0c3f7.jpg_400x400q75.jpg_.webp",
       "itemsSold": 80,
-      "desc": "A nourishing face cream that leaves your skin feeling smooth and hydrated."
+      "description": "A nourishing face cream that leaves your skin feeling smooth and hydrated."
     },
     {
       "id": "5",
@@ -51,9 +51,9 @@
       "quantity": 30,
       "price": 99.99,
       "status": "Available",
-      "image": "https://res-2.cloudinary.com/russell-corp-australia-pty-ltd/image/upload/c_lpad,dpr_2.0,f_auto,h_400,q_auto,w_400/media/catalog/product/5/1/5197-exc_tf-500_excel_sz7-s1.jpg",
+      "image": "https://img.lazcdn.com/g/p/01a841e1a839165ed7c4abf855cab170.jpg_400x400q75.jpg_.webp",
       "itemsSold": 40,
-      "desc": "A durable basketball suitable for both indoor and outdoor play."
+      "description": "A durable basketball suitable for both indoor and outdoor play."
     },
     {
       "id": "6",
@@ -62,9 +62,9 @@
       "quantity": 10,
       "price": 399.99,
       "status": "Available",
-      "image": "https://m.media-amazon.com/images/I/61VqPRU2-UL._AC_SL1500_.jpg",
+      "image": "https://img.lazcdn.com/g/p/7073dfe5ce82148ac95b039b4a8a81f8.jpg_400x400q75.jpg_.webp",
       "itemsSold": 25,
-      "desc": "A comfortable and spacious sofa perfect for relaxing at home."
+      "description": "A comfortable and spacious sofa perfect for relaxing at home."
     },
     {
       "id": "7",
@@ -73,9 +73,9 @@
       "quantity": 150,
       "price": 29.99,
       "status": "Available",
-      "image": "https://dynamic.zacdn.com/9-VD_kgVgmdzdtKicZ43tdZIdUk=/filters:quality(70):format(webp)/https://static-ph.zacdn.com/p/aquaman-4267-2495613-2.jpg",
+      "image": "https://img.lazcdn.com/g/p/27347d9a8e694c48ba9833869e6138cb.jpg_400x400q75.jpg_.webp",
       "itemsSold": 90,
-      "desc": "A detailed action figure that will delight collectors and kids alike."
+      "description": "A detailed action figure that will delight collectors and kids alike."
     },
     {
       "id": "8",
@@ -84,9 +84,9 @@
       "quantity": 500,
       "price": 5.99,
       "status": "Available",
-      "image": "https://d1rlzxa98cyc61.cloudfront.net/catalog/product/1/6/169956.jpg?auto=webp&format=pjpg&width=640",
+      "image": "https://img.lazcdn.com/g/p/10a3c6b13dabcd37e86113569811818a.jpg_400x400q75.jpg_.webp",
       "itemsSold": 300,
-      "desc": "Fresh and delicious organic apples, perfect for a healthy snack."
+      "description": "Fresh and delicious organic apples, perfect for a healthy snack."
     },
     {
       "id": "9",
@@ -95,77 +95,81 @@
       "quantity": 20,
       "price": 129.99,
       "status": "Available",
-      "image": "https://cdn.media.halfords.ie/i/washford/950295?w=620&h=480&qlt=default&fmt=auto&v=1",
+      "image": "https://img.lazcdn.com/g/p/ac89116416219a1320a4f44435e63982.png_400x400q75.png_.webp",
       "itemsSold": 10,
-      "desc": "A reliable car battery with long-lasting performance."
+      "description": "A reliable car battery with long-lasting performance."
     },
     {
-      "id": "10",
-      "name": "Diamond Ring",
-      "category": "Jewelry",
-      "quantity": 5,
-      "price": 499.99,
+      "id": "11",
+      "name": "Glasses",
+      "description": "black",
+      "category": "Accessories",
+      "quantity": 100,
+      "price": 1,
       "status": "Available",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEo0LzPLh2Xaeu9XkMshpoHCe-rfmL81hscA&s",
-      "itemsSold": 15,
-      "desc": "A stunning diamond ring that exudes elegance and luxury."
+      "image": "https://img.lazcdn.com/g/p/7d3fd13cb8c27de50bb46d5fecc6ccae.jpg_400x400q75.jpg_.webp",
+      "itemsSold": 0
+    },
+    {
+      "id": "12",
+      "name": "Glasses",
+      "description": "sadfsad",
+      "category": "Accessories",
+      "quantity": 1,
+      "price": 1,
+      "status": "Available",
+      "image": "https://img.lazcdn.com/g/p/7d3fd13cb8c27de50bb46d5fecc6ccae.jpg_400x400q75.jpg_.webp",
+      "itemsSold": 0
     }
   ],
   "carts": [
     {
       "id": "1",
       "userId": "1",
-      "productName": "Cake Bento Pan",
-      "description": "heart-shaped",
-      "category": "Kitchen & Dining",
-      "quantity": 2,
-      "price": 110,
+      "productId": "1",
+      "productName": "Smartphone",
+      "description": "A high-end smartphone with a sleek design and powerful features.",
+      "category": "Electronics",
+      "quantity": 1,
+      "price": 299.99,
       "status": "added",
-      "image": "https://img.lazcdn.com/g/p/26df99add205ff922b0b2e3ba2c5f84e.jpg_400x400q75.jpg_.webp"
+      "image": "https://img.lazcdn.com/g/p/111d3e07a02ea335d70d7d97c797299b.jpg_400x400q75.jpg_.webp"
     },
     {
       "id": "2",
       "userId": "1",
-      "productName": "Diving Mask Swimming Goggles",
-      "description": "Black",
-      "category": "Sports & Outdoors",
-      "quantity": 2,
-      "price": 420,
-      "status": "added",
-      "image": "https://img.lazcdn.com/g/ff/kf/Sc65805c4c3fe4e5c87360f90c85b0ba5u.jpg_720x720q80.jpg"
-    },
-    {
-      "id": "3",
-      "userId": "2",
-      "productName": "Diving Mask Swimming Goggles",
-      "description": "Black",
-      "category": "Sports & Outdoors",
+      "productId": "2",
+      "productName": "Fiction Book",
+      "description": "An intriguing fiction book that will keep you hooked from start to finish.",
+      "category": "Books",
       "quantity": 1,
-      "price": 210,
+      "price": 19.99,
       "status": "added",
-      "image": "https://img.lazcdn.com/g/ff/kf/Sc65805c4c3fe4e5c87360f90c85b0ba5u.jpg_720x720q80.jpg"
+      "image": "https://img.lazcdn.com/g/p/af46826f71983b075df3a9c24c7f3bec.jpg_400x400q75.jpg_.webp"
     },
     {
       "id": "4",
-      "userId": "2",
-      "productName": "Diving Mask Swimming Goggles",
-      "description": "Black",
-      "category": "Sports & Outdoors",
+      "userId": "1",
+      "productId": "4",
+      "productName": "Face Cream",
+      "description": "A nourishing face cream that leaves your skin feeling smooth and hydrated.",
+      "category": "Beauty",
       "quantity": 1,
-      "price": 210,
+      "price": 24.99,
       "status": "added",
-      "image": "https://img.lazcdn.com/g/ff/kf/Sc65805c4c3fe4e5c87360f90c85b0ba5u.jpg_720x720q80.jpg"
+      "image": "https://img.lazcdn.com/g/p/a51c77096f9503d20ece5ac4b9e0c3f7.jpg_400x400q75.jpg_.webp"
     },
     {
-      "id": "3",
+      "id": "5",
       "userId": "1",
-      "productId": "2",
-      "productName": "Fiction Book",
-      "category": "Books",
-      "quantity": 120,
-      "price": 19.99,
+      "productId": "5",
+      "productName": "Basketball",
+      "description": "A durable basketball suitable for both indoor and outdoor play.",
+      "category": "Sports",
+      "quantity": 1,
+      "price": 99.99,
       "status": "added",
-      "image": "https://i5.walmartimages.com/asr/a58297ac-8ecb-4f0a-84c0-448c4e19ecdf_1.43b633adf7684c59828db8231c0be073.jpeg"
+      "image": "https://img.lazcdn.com/g/p/01a841e1a839165ed7c4abf855cab170.jpg_400x400q75.jpg_.webp"
     }
   ],
   "users": [
@@ -181,9 +185,49 @@
       "mobileNumber": "63918485697",
       "isActive": true,
       "isAdmin": false,
-      "interests": [
-        "swimming"
-      ]
+      "interests": ["swimming"]
+    },
+    {
+      "id": "2",
+      "userName": "anynamesokay",
+      "firstName": "Any Names",
+      "middleName": "",
+      "lastName": "Okay",
+      "birthDate": "",
+      "interests": [""],
+      "password": "1234abcd",
+      "email": "sample1@gmail.com",
+      "mobileNumber": "09999999999",
+      "isActive": true,
+      "isAdmin": true
+    },
+    {
+      "id": "3",
+      "userName": "asdgsad",
+      "firstName": "sadfs",
+      "middleName": "",
+      "lastName": "fsafsa",
+      "birthDate": "",
+      "interests": [""],
+      "password": "1234567890",
+      "email": "sample3@gmail.com",
+      "mobileNumber": "09999999999",
+      "isActive": false,
+      "isAdmin": false
+    },
+    {
+      "id": "4",
+      "userName": "asfsa",
+      "firstName": "sadfas",
+      "middleName": "",
+      "lastName": "safas",
+      "birthDate": "",
+      "interests": [""],
+      "password": "6yALob30",
+      "email": "sample4@gmail.com",
+      "mobileNumber": "00000000000",
+      "isActive": true,
+      "isAdmin": false
     }
   ]
 }

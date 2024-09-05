@@ -51,4 +51,8 @@ export class ProductsPageService {
         )
       );
   }
+
+  getMaxId(products: Product[]) {
+    return Math.max(...products.map((product) => parseInt(product.id)));
+  }
 }
