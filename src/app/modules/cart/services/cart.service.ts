@@ -165,9 +165,9 @@ export class CartService {
   //   )
   // }
 
-  updateCart(updatedCart: Cart) {
-    return this.http
-      .put(`${this.serverUrl}/carts/${updatedCart.id}`, updatedCart)
-      .pipe(tap((x) => console.log('[From Cart Service] updating ', x)));
-  }
+  // updateCart(updatedCart: Cart) {
+  //   return this.http
+  //     .put(`${this.serverUrl}/${updatedCart.id}`, updatedCart)
+  //     .pipe(tap((x) => console.log('[From Cart Service] updating ', x)));
+  // }
 }

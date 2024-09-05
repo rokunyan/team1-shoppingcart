@@ -6,7 +6,7 @@ import { ProductItemComponent } from './components/product-item/product-item.com
 import { provideHttpClient } from '@angular/common/http';
 import { ProductInformationComponent } from './pages/product-information/product-information.component';
 import { SharedModule } from '../../shared/shared.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     ProductRoutingModule,
     SharedModule,
+    ReactiveFormsModule,
     FormsModule,
     //HttpClientModule
   ],

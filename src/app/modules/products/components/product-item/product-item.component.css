@@ -13,3 +13,13 @@
 .btn {
     flex: 1;
 }
+
+.flex{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#quantity{
+    margin-top: 5px;
+}
