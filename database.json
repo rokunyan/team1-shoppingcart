@@ -9,7 +9,8 @@
       "price": 299.99,
       "status": "Available",
       "image": "https://img.lazcdn.com/g/p/111d3e07a02ea335d70d7d97c797299b.jpg_400x400q75.jpg_.webp",
-      "itemsSold": 120
+      "itemsSold": 120,
+      "description": "A high-end smartphone with a sleek design and powerful features."
     },
     {
       "id": "2",
@@ -172,6 +173,7 @@
       "image": "https://img.lazcdn.com/g/p/01a841e1a839165ed7c4abf855cab170.jpg_400x400q75.jpg_.webp"
     }
   ],
+  "carts": [],
   "users": [
     {
       "id": "1",
