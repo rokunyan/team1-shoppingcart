@@ -13,10 +13,8 @@ import { numericValidator } from '../../validators/custom.validator';
   templateUrl: './product-dashboard.component.html',
   styleUrl: './product-dashboard.component.css',
 })
-
-export class ProductDashboardComponent implements OnInit{
-
-  productForm:FormGroup;
+export class ProductDashboardComponent implements OnInit {
+  productForm: FormGroup;
 
   //used to diplay the available products
   products: Product[] = [];
@@ -24,16 +22,15 @@ export class ProductDashboardComponent implements OnInit{
   //used to display the products in the cart
   carts: Cart[] = [];
 
-
   //used for search filters
   searchModel = {
-      productNameQuery: '',
-      productCategoryQuery: '',
-      productMinCost: 0,
-      productMaxCost: 0,
-      sortByType: ''
-  }
-  
+    productNameQuery: '',
+    productCategoryQuery: '',
+    productMinCost: 0,
+    productMaxCost: 0,
+    sortByType: '',
+  };
+
   filteredProducts: Product[] = [];
 
   constructor(
@@ -46,8 +43,8 @@ export class ProductDashboardComponent implements OnInit{
       productCategoryQuery: '',
       productMinCost: [0, numericValidator()],
       productMaxCost: [0, numericValidator()],
-      productQuantity: [0, numericValidator(), ]
-    })
+      productQuantity: [0, numericValidator()],
+    });
   }
 
   ngOnInit(): void {
@@ -55,8 +52,7 @@ export class ProductDashboardComponent implements OnInit{
     this.getCart();
   }
 
-
-  executeAction(event: { data: Product; action: string, quantity:number }) {
+  executeAction(event: { data: Product; action: string; quantity: number }) {
     switch (event.action) {
       case 'ADD TO CART':
         this.addToCart(event.data, event.quantity);
@@ -97,9 +93,9 @@ export class ProductDashboardComponent implements OnInit{
 }
    */
 
-  addToCart(product: Product, quantity:number): void {
+  addToCart(product: Product, quantity: number): void {
     const cartItem: Cart = {
-      id: (this.carts.length + 1).toString(),
+      id: '',
       userId: this.cartService.getCurrentUserId(),
       productId: product.id,
       productName: product.name,
@@ -120,101 +116,121 @@ export class ProductDashboardComponent implements OnInit{
   }
 
   onSearch(searchType: String) {
-    switch(searchType){
-      case "NAME":
+    switch (searchType) {
+      case 'NAME':
         if (this.searchModel.productNameQuery) {
-          this.filteredProducts = this.products.filter(product =>
-            product.name.toLowerCase().includes(this.searchModel.productNameQuery.toLowerCase())
+          this.filteredProducts = this.products.filter((product) =>
+            product.name
+              .toLowerCase()
+              .includes(this.searchModel.productNameQuery.toLowerCase())
           );
         } else {
           this.filteredProducts = [...this.products]; // Reset to all items if search query is empty
         }
         break;
-      case "CATEGORY":
+      case 'CATEGORY':
         if (this.searchModel.productCategoryQuery) {
-          this.filteredProducts = this.products.filter(product =>
-            product.category.toLowerCase().includes(this.searchModel.productCategoryQuery.toLowerCase())
+          this.filteredProducts = this.products.filter((product) =>
+            product.category
+              .toLowerCase()
+              .includes(this.searchModel.productCategoryQuery.toLowerCase())
           );
         } else {
           this.filteredProducts = [...this.products]; // Reset to all items if search query is empty
         }
         break;
-      case "COST":
-        if((this.searchModel.productMinCost || this.searchModel.productMaxCost) && 
-        this.searchModel.productMinCost <= this.searchModel.productMaxCost &&
-        (this.searchModel.productMinCost >= 0 && this.searchModel.productMaxCost >= 0)){
-         
-          const min = this.searchModel.productMinCost
-          const max = this.searchModel.productMaxCost
-          this.filteredProducts = this.products.filter(product =>
-            min <= product.price && product.price <= max 
+      case 'COST':
+        if (
+          (this.searchModel.productMinCost ||
+            this.searchModel.productMaxCost) &&
+          this.searchModel.productMinCost <= this.searchModel.productMaxCost &&
+          this.searchModel.productMinCost >= 0 &&
+          this.searchModel.productMaxCost >= 0
+        ) {
+          const min = this.searchModel.productMinCost;
+          const max = this.searchModel.productMaxCost;
+          this.filteredProducts = this.products.filter(
+            (product) => min <= product.price && product.price <= max
           );
-        }
-        else{
+        } else {
           this.filteredProducts = [...this.products]; // Reset to all items if price range filter is empty
         }
         break;
     }
-    this.checkForExistingFilters()
+    this.checkForExistingFilters();
   }
 
-  onSortBy(){
-    switch(this.searchModel.sortByType){
+  onSortBy() {
+    switch (this.searchModel.sortByType) {
       case 'ASCENDING NAME':
-        this.filteredProducts.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }))
+        this.filteredProducts.sort((a, b) =>
+          a.name.localeCompare(b.name, undefined, { numeric: true })
+        );
         break;
       case 'DESCENDING NAME':
-        this.filteredProducts.sort((a, b) => b.name.localeCompare(a.name, undefined, { numeric: true }))
+        this.filteredProducts.sort((a, b) =>
+          b.name.localeCompare(a.name, undefined, { numeric: true })
+        );
         break;
       case 'ASCENDING PRICE':
-        this.filteredProducts.sort((a,b) =>  a.price - b.price)
+        this.filteredProducts.sort((a, b) => a.price - b.price);
         break;
       case 'DESCENDING PRICE':
-        this.filteredProducts.sort((a,b) =>  b.price - a.price)
+        this.filteredProducts.sort((a, b) => b.price - a.price);
         break;
       default:
-        this.filteredProducts.sort((a,b) =>  parseInt(a.id) - parseInt(b.id))
+        this.filteredProducts.sort((a, b) => parseInt(a.id) - parseInt(b.id));
         break;
     }
-    this.checkForExistingFilters()
+    this.checkForExistingFilters();
   }
 
   checkForExistingFilters() {
-    
     if (this.searchModel.productNameQuery) {
-      this.filteredProducts = this.filteredProducts.filter(product =>
-        product.name.toLowerCase().includes(this.searchModel.productNameQuery.toLowerCase())
+      this.filteredProducts = this.filteredProducts.filter((product) =>
+        product.name
+          .toLowerCase()
+          .includes(this.searchModel.productNameQuery.toLowerCase())
       );
-    } 
+    }
     if (this.searchModel.productCategoryQuery) {
-      this.filteredProducts = this.filteredProducts.filter(product =>
-        product.category.toLowerCase().includes(this.searchModel.productCategoryQuery.toLowerCase())
+      this.filteredProducts = this.filteredProducts.filter((product) =>
+        product.category
+          .toLowerCase()
+          .includes(this.searchModel.productCategoryQuery.toLowerCase())
       );
-    } 
-    if((this.searchModel.productMinCost || this.searchModel.productMaxCost) && 
-    this.searchModel.productMinCost <= this.searchModel.productMaxCost &&
-    (this.searchModel.productMinCost >= 0 && this.searchModel.productMaxCost >= 0)){
-      const min = this.searchModel.productMinCost
-      const max = this.searchModel.productMaxCost
-      this.filteredProducts = this.filteredProducts.filter(product =>
-        min <= product.price && product.price <= max 
+    }
+    if (
+      (this.searchModel.productMinCost || this.searchModel.productMaxCost) &&
+      this.searchModel.productMinCost <= this.searchModel.productMaxCost &&
+      this.searchModel.productMinCost >= 0 &&
+      this.searchModel.productMaxCost >= 0
+    ) {
+      const min = this.searchModel.productMinCost;
+      const max = this.searchModel.productMaxCost;
+      this.filteredProducts = this.filteredProducts.filter(
+        (product) => min <= product.price && product.price <= max
       );
-    }  
-    switch(this.searchModel.sortByType){
+    }
+    switch (this.searchModel.sortByType) {
       case 'ASCENDING NAME':
-        this.filteredProducts.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }))
+        this.filteredProducts.sort((a, b) =>
+          a.name.localeCompare(b.name, undefined, { numeric: true })
+        );
         break;
       case 'DESCENDING NAME':
-        this.filteredProducts.sort((a, b) => b.name.localeCompare(a.name, undefined, { numeric: true }))
+        this.filteredProducts.sort((a, b) =>
+          b.name.localeCompare(a.name, undefined, { numeric: true })
+        );
         break;
       case 'ASCENDING PRICE':
-        this.filteredProducts.sort((a,b) =>  a.price - b.price)
+        this.filteredProducts.sort((a, b) => a.price - b.price);
         break;
       case 'DESCENDING PRICE':
-        this.filteredProducts.sort((a,b) =>  b.price - a.price)
+        this.filteredProducts.sort((a, b) => b.price - a.price);
         break;
       default:
-        this.filteredProducts.sort((a,b) =>  parseInt(a.id) - parseInt(b.id))
+        this.filteredProducts.sort((a, b) => parseInt(a.id) - parseInt(b.id));
         break;
     }
   }

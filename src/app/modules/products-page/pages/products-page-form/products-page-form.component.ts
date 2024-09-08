@@ -13,13 +13,15 @@ import { Product } from '../../../products/models/product';
 @Component({
   selector: 'app-products-page-form',
   templateUrl: './products-page-form.component.html',
-  styleUrl: './products-page-form.component.css',
+  styleUrls: ['./products-page-form.component.css'],
 })
 export class ProductsPageFormComponent implements OnInit, OnDestroy {
   productForm!: FormGroup;
   productId?: string;
   sub: Subscription | undefined;
   imageSrc: string | null = null;
+  selectedFile: File | null = null;
+  fileName: string | null = null;
 
   categories = [
     { value: 'Electronics', label: 'Electronics' },
@@ -34,6 +36,12 @@ export class ProductsPageFormComponent implements OnInit, OnDestroy {
     { value: 'Jewelry', label: 'Jewelry' },
   ];
 
+  statuses = [
+    {
+      value: 'Available',
+      label: 'Available',
+    },
+  ];
   constructor(
     private fb: FormBuilder,
     private productsPageService: ProductsPageService,
@@ -47,7 +55,6 @@ export class ProductsPageFormComponent implements OnInit, OnDestroy {
       quantity: new FormControl('', [Validators.required, Validators.min(0)]),
       price: new FormControl('', [Validators.required, Validators.min(1)]),
       status: new FormControl('', Validators.required),
-      image: new FormControl('', Validators.required),
       itemsSold: new FormControl('', [Validators.required, Validators.min(0)]),
     });
   }
@@ -59,7 +66,7 @@ export class ProductsPageFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.productId = this.route.snapshot.paramMap.get('id') || undefined;
     if (this.productId) {
-      const product = this.productsPageService
+      this.sub = this.productsPageService
         .getProductById(this.productId)
         .subscribe({
           next: (product: Product) => {
@@ -70,12 +77,24 @@ export class ProductsPageFormComponent implements OnInit, OnDestroy {
               quantity: product.quantity,
               price: product.price,
               status: product.status,
-              image: product.image,
               itemsSold: product.itemsSold,
             });
             this.imageSrc = product.image;
           },
         });
+    }
+  }
+
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+      this.fileName = file.name;
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imageSrc = reader.result as string;
+      };
+      reader.readAsDataURL(file);
     }
   }
 
@@ -90,30 +109,26 @@ export class ProductsPageFormComponent implements OnInit, OnDestroy {
         quantity: formValue.quantity,
         price: formValue.price,
         status: formValue.status,
-        image: formValue.image,
+        image: this.imageSrc || '',
         itemsSold: formValue.itemsSold,
       };
 
       if (this.productId) {
-        const request = this.productsPageService.updateProduct(product);
-        request.subscribe({
-          next: () => {
-            this.router.navigate(['/products-page']);
-          },
+        this.productsPageService.updateProduct(product).subscribe({
+          next: () => this.router.navigate(['/products-page']),
+          error: (err) => console.error('Update failed', err),
         });
       } else {
-        this.productsPageService.getProducts().subscribe({
-          next: (products: Product[]) => {
-            const newId: string = (
-              this.productsPageService.getMaxId(products) + 1
-            ).toString();
+        this.productsPageService.getMaxId().subscribe({
+          next: (maxId: number) => {
+            const newId: string = (maxId + 1).toString();
             product.id = newId;
-            this.sub = this.productsPageService.addProduct(product).subscribe({
-              next: () => {
-                this.router.navigate(['/products-page']);
-              },
+            this.productsPageService.addProduct(product).subscribe({
+              next: () => this.router.navigate(['/products-page']),
+              error: (err) => console.error('Add failed', err),
             });
           },
+          error: (err) => console.error('Failed to get max ID', err),
         });
       }
     } else {
@@ -129,9 +144,11 @@ export class ProductsPageFormComponent implements OnInit, OnDestroy {
       quantity: '',
       price: '',
       status: '',
-      image: '',
       itemsSold: '',
     });
+    this.imageSrc = null;
+    this.selectedFile = null;
+    this.fileName = null;
   }
 
   onCancel(): void {

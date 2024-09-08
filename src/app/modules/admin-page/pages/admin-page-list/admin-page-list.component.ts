@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { User } from '../../../user/models/user';
 import { AdminPageService } from '../../services/admin-page.service';
 import { Router } from '@angular/router';
-import { UserService } from '../../../user/services/user.service';
 
 @Component({
   selector: 'app-admin-page-list',
