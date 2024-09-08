@@ -12,9 +12,13 @@ export class ProductsPageService {
   constructor(private http: HttpClient) {}
 
   getProducts(): Observable<Product[]> {
-    return this.http
-      .get<Product[]>(this.serverUrl)
-      .pipe(tap((products) => console.log('Fetched products:', products)));
+    return this.http.get<Product[]>(this.serverUrl).pipe(
+      map((products) =>
+        products.filter((product) => product.status === 'Available')
+      ),
+
+      tap((products) => console.log('Fetched products:', products))
+    );
   }
 
   getProductById(id: string): Observable<Product> {
@@ -56,7 +60,7 @@ export class ProductsPageService {
     return this.getProducts().pipe(
       map((products) => {
         if (products.length === 0) return 0;
-        return Math.max(...products.map((product) => parseInt(product.id, 10)));
+        return Math.max(...products.map((product) => parseInt(product.id)));
       })
     );
   }

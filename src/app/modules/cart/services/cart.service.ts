@@ -52,32 +52,63 @@ export class CartService {
       );
   }
 
-  addItemToCart(newItem: Cart): Observable<Cart> {
-    return this.getCarts().pipe(
-      switchMap((carts) => {
-        const existingCart = carts.find(
-          (cart: Cart) =>
-            cart.productId === newItem.productId && cart.status === 'added'
-        );
+  getAllCarts(): Observable<Cart[]> {
+    return this.http
+      .get<Cart[]>(this.serverUrl)
+      .pipe(
+        tap((filteredCarts) => console.log('Fetched all carts:', filteredCarts))
+      );
+  }
 
-        if (existingCart) {
-          existingCart.price = existingCart.price / existingCart.quantity;
-          existingCart.quantity += newItem.quantity;
-          existingCart.price *= existingCart.quantity;
-          return this.http
-            .patch<Cart>(`${this.serverUrl}/${existingCart.id}`, existingCart)
-            .pipe(
-              tap((updatedCart) =>
-                console.log('Updated cart item:', updatedCart)
-              )
+  getMaxId(): Observable<number> {
+    return this.getAllCarts().pipe(
+      map((carts) => {
+        if (carts.length === 0) return 0;
+        return Math.max(...carts.map((cart) => parseInt(cart.id)));
+      })
+    );
+  }
+
+  generateNewCartId(): Observable<string> {
+    return this.getMaxId().pipe(map((maxId) => (maxId + 1).toString()));
+  }
+
+  addItemToCart(newItem: Cart): Observable<Cart> {
+    return this.generateNewCartId().pipe(
+      switchMap((newCartId) => {
+        const updatedItem = { ...newItem, id: newCartId };
+        return this.getCarts().pipe(
+          switchMap((carts) => {
+            const existingCart = carts.find(
+              (cart) =>
+                cart.productId === newItem.productId && cart.status === 'added'
             );
-        } else {
-          return this.http
-            .post<Cart>(this.serverUrl, newItem)
-            .pipe(
-              tap((addedCart) => console.log('Added new cart item:', addedCart))
-            );
-        }
+
+            if (existingCart) {
+              existingCart.price = existingCart.price / existingCart.quantity;
+              existingCart.quantity += newItem.quantity;
+              existingCart.price *= existingCart.quantity;
+              return this.http
+                .patch<Cart>(
+                  `${this.serverUrl}/${existingCart.id}`,
+                  existingCart
+                )
+                .pipe(
+                  tap((updatedCart) =>
+                    console.log('Updated cart item:', updatedCart)
+                  )
+                );
+            } else {
+              return this.http
+                .post<Cart>(this.serverUrl, updatedItem)
+                .pipe(
+                  tap((addedCart) =>
+                    console.log('Added new cart item:', addedCart)
+                  )
+                );
+            }
+          })
+        );
       })
     );
   }
@@ -153,21 +184,9 @@ export class CartService {
     );
   }
 
-  getMaxId(carts: Cart[]) {
-    return Math.max(...carts.map((cart) => parseInt(cart.id)));
+  updateCart(updatedCart: Cart) {
+    return this.http
+      .put(`${this.serverUrl}/carts/${updatedCart.id}`, updatedCart)
+      .pipe(tap((x) => console.log('[From Cart Service] updating ', x)));
   }
-
-  // derek's
-  // getCart(){
-  //   console.log(`[From Cart Service] Getting cart with user id (user.id not implemented yet)...`)
-  //   return this.http.get<any[]>(`${this.serverUrl}/carts`).pipe(
-  //     map((carts) => carts.find((cart: Cart) => cart.userId === "1" ))
-  //   )
-  // }
-
-  // updateCart(updatedCart: Cart) {
-  //   return this.http
-  //     .put(`${this.serverUrl}/${updatedCart.id}`, updatedCart)
-  //     .pipe(tap((x) => console.log('[From Cart Service] updating ', x)));
-  // }
 }

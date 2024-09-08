@@ -22,7 +22,7 @@ body {
 .buttons {
   position: relative;
   padding-top: 50px;
-  margin-right: 2px;
+  margin-right: 1px;
   padding-right: 0;
 }
 
@@ -31,11 +31,13 @@ body {
   max-width: 200px;
   max-height: 200px;
   margin-right: 10px;
+  margin-left: 10px;
+  object-fit: cover;
 }
 
 .description {
   padding-top: 10px;
-  margin-right: 10px;
+  margin-right: 5px;
   width: 300px;
   align-items: center;
 }
@@ -59,20 +61,21 @@ body {
 
 button[class*="btn"] {
   display: inline-block;
-  width: 58px;
-  height: 58px;
+  width: 55px;
+  height: 55px;
   border: none;
   background-color: transparent;
+  margin-left: 0;
   padding: 0;
 }
 
 .price {
-  width: 100px;
+  width: 130px;
   padding-top: 65px;
   text-align: center;
-  font-size: 20px;
+  font-size: 16px;
   color: orangered;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 @media (max-width: 800px) {
@@ -85,8 +88,6 @@ button[class*="btn"] {
 
   .image {
     display: flex;
-    max-width: 150px;
-    max-height: 150px;
     margin-right: 5px;
     margin-top: 2px;
   }
@@ -108,5 +109,10 @@ button[class*="btn"] {
 
   .buttons {
     margin-right: 20px;
+    padding-top: 0;
+  }
+
+  .price {
+    padding-top: 10px;
   }
 }
