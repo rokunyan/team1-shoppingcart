@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <div class="container-fluid">
-  <app-command-bar [commands]="add" class="command-bar mb-3"></app-command-bar>
+  <app-command-bar [commands]="add" class="command-bar"></app-command-bar>
 
   <div class="empty-cart-container" *ngIf="users && users.length === 0">
     <h2 class="text-center">There are no customers.</h2>
@@ -16,14 +16,14 @@
       <table class="table table-striped table-bordered table-responsive">
         <thead>
           <tr>
-            <th scope="col">User ID</th>
-            <th scope="col">Username</th>
-            <th scope="col">Full Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Interests</th>
-            <th scope="col">Role</th>
-            <th scope="col">Status</th>
-            <th scope="col"></th>
+            <th class="user-id">User ID</th>
+            <th class="username">Username</th>
+            <th class="full-name">Full Name</th>
+            <th class="email">Email</th>
+            <th class="interests">Interests</th>
+            <th class="role">Role</th>
+            <th class="status">Status</th>
+            <th class="action">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -34,7 +34,17 @@
             <td>{{ user.email }}</td>
             <td class="flex-wrap">{{ user.interests.join(", ") }}</td>
             <td>{{ user.isAdmin ? "Admin" : "Customer" }}</td>
-            <td>{{ user.isActive ? "Active" : "Inactive" }}</td>
+            <td class="align-content-center text-center">
+              <span
+                class="badge"
+                [ngClass]="{
+                  'bg-primary': user.isActive,
+                  'bg-secondary': !user.isActive
+                }"
+              >
+                {{ user.isActive ? "Active" : "Inactive" }}
+              </span>
+            </td>
             <td>
               <button
                 *ngIf="user.isActive && !user.isAdmin"

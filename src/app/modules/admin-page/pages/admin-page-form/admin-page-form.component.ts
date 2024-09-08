@@ -10,7 +10,6 @@ import { Subscription } from 'rxjs';
 import { AdminPageService } from '../../services/admin-page.service';
 import { Router } from '@angular/router';
 import { User } from '../../../user/models/user';
-import { UserService } from '../../../user/services/user.service';
 
 @Component({
   selector: 'app-admin-page-form',
@@ -44,7 +43,7 @@ export class AdminPageFormComponent implements OnDestroy {
         Validators.pattern('^[0-9]{11}$'),
       ]),
       isActive: new FormControl(true),
-      isAdmin: new FormControl(false),
+      isAdmin: new FormControl('', Validators.required),
     });
   }
 
@@ -54,7 +53,7 @@ export class AdminPageFormComponent implements OnDestroy {
 
   private generatePassword(): string {
     const characters =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*_+-';
     let result = '';
     const charactersLength = characters.length;
     for (let i = 0; i < this.passwordLength; i++) {
@@ -111,7 +110,7 @@ export class AdminPageFormComponent implements OnDestroy {
       email: '',
       mobileNumber: '',
       isActive: true,
-      isAdmin: false,
+      isAdmin: '',
     });
   }
 
