@@ -3,7 +3,6 @@
     {
       "id": "1",
       "name": "Smartphones",
-      "description": "A high-end smartphone with a sleek design and powerful features.",
       "category": "Electronics",
       "quantity": 50,
       "price": 299.99,
