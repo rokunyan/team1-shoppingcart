@@ -189,4 +189,28 @@ export class CartService {
       .put(`${this.serverUrl}/carts/${updatedCart.id}`, updatedCart)
       .pipe(tap((x) => console.log('[From Cart Service] updating ', x)));
   }
+
+  getPendingCarts = () => {
+
+    let statusPending = "pending"
+    const currentUserId = this.getCurrentUserId();
+
+    if (currentUserId === null || currentUserId === '0') {
+      console.log('Pending transactions is empty');
+      return of([]);
+    }
+    return this.http.get<Cart[]>(this.serverUrl).pipe(
+      map((carts) =>
+        carts.filter(
+          (cart) =>
+            cart.userId === currentUserId &&
+            (statusPending ? cart.status === statusPending : true)
+        )
+      ),
+      tap((filteredCarts) =>
+        console.log('Fetched and filtered carts:', filteredCarts)
+      )
+    );
+
+  }
 }
