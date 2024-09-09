@@ -1,0 +1,37 @@
+<div class="item">
+  <div class="buttons">
+    <button class="delete-btn" (click)="onDelete()">
+      <i class="fa-regular fa-trash-can" style="color: #eb3434"></i>
+    </button>
+  </div>
+  <div class="image">
+    <img
+      class="img-fluid rounded"
+      src="{{ cart.image }}"
+      alt="{{ cart.productName }}"
+    />
+  </div>
+  <div class="description">
+    <span>{{ cart.productName }}</span>
+    <span>{{ cart.description }}</span>
+  </div>
+  <div class="price">
+    <h5>₱ {{ cart.price | number : "1.2-2" }}</h5>
+    <div class="d-flex align-items-center">
+      <button class="btn btn-outline-secondary me-2" (click)="onDecrement()">
+        <i class="fa-solid fa-minus"></i>
+      </button>
+      <h6
+        class="input mx-2"
+        contenteditable="true"
+        (blur)="onEdit($event)"
+        [textContent]="quantity"
+      >
+        {{ cart.quantity }}
+      </h6>
+      <button class="btn btn-outline-secondary ms-2" (click)="onIncrement()">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<h1>product-information works!</h1>
+
+[<div *ngFor="let cartProduct of carts; let i = index">
+    id:{{cartProduct.id}} | Name:{{cartProduct.productName}} | Quantity:{{cartProduct.quantity}}
+</div>]
+
+<div class="product-container">
+    Id: {{product?.id}} 
+    <h3 class="fw-normal">{{product?.name}}</h3>    
+    <h5 class="fw-light">({{product?.category}})<br/></h5>
+    <h3>₱ {{product?.price  | number:'1.2-2' }}</h3> 
+    <img class="image" src={{product?.image}} alt="{{product?.name}}"><br>
+    <p>{{product?.description}}</p>
+    <form [formGroup]="form" (ngSubmit)="executeAction('ADD TO CART')">
+        <label for="quantity">Quantity:</label>
+        <input id="quantity" type="number" formControlName="quantity" />
+        <div *ngIf="quantity?.errors && quantity?.touched">
+            <div *ngIf="quantity?.errors?.['min']">The quantity must be at least 1.</div>
+        </div>
+    <div class="button-container">
+        <button class="btn btn-success" >ADD TO CART</button>
+    </div>
+    </form>
+</div> 

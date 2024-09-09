@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.item {
+  padding: 20px 20px;
+  height: 160px;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.buttons {
+  position: relative;
+  padding-top: 30px;
+  margin-right: 2px;
+  padding-right: 0;
+}
+
+.image {
+  display: flex;
+  max-width: 125px;
+  max-height: 125px;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.description {
+  padding-top: 10px;
+  margin-right: 10px;
+  width: 400px;
+  align-items: center;
+}
+
+.description span {
+  display: block;
+}
+
+.description span:first-child {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 1px;
+  color: #43484d;
+}
+
+.description span:last-child {
+  font-weight: normal;
+  color: #86939e;
+  font-size: 16px;
+}
+
+button[class*="btn"] {
+  display: inline-block;
+  width: 58px;
+  height: 58px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.price {
+  width: 100px;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 22px;
+  color: orangered;
+  margin-right: 20px;
+}
+
+.input {
+  width: 150px;
+  height: 30px;
+  text-align: center;
+  justify-content: center;
+  font-size: 20px;
+  color: gray;
+  border: 1px solid #ddd;
+}
+
+@media (max-width: 800px) {
+  .item {
+    height: auto;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+  }
+
+  .image {
+    display: flex;
+    max-width: 150px;
+    max-height: 150px;
+    margin-right: 5px;
+    margin-top: 2px;
+  }
+
+  .quantity {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    margin: 6px 0;
+    align-items: center;
+  }
+
+  .description {
+    width: 100%;
+    text-align: center;
+    margin: 2px 0;
+  }
+
+  .buttons {
+    padding-top: 1px;
+    margin-right: 20px;
+    margin-top: 0;
+  }
+}

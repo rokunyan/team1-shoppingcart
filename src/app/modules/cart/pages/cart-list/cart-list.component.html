@@ -1,0 +1,32 @@
+<app-header></app-header>
+<!-- <div *ngIf="carts && carts.length > 0">
+  <app-command-bar [commands]="pay" class="pay"></app-command-bar>
+</div> -->
+<br />
+<div class="shopping-cart">
+  <div class="empty-cart-container" *ngIf="carts && carts.length === 0">
+    <div>
+      <h2>There are no items in this cart.</h2>
+      <!-- <app-command-bar [commands]="continue" class="continue"></app-command-bar> -->
+    </div>
+  </div>
+  <div *ngIf="carts && carts.length > 0">
+    <div class="title">Shopping Cart</div>
+    <hr class="my-1" />
+    <div *ngFor="let cart of carts">
+      <app-cart-item
+        [cart]="cart"
+        (edit)="edit($event.id, $event.quantity)"
+        (delete)="delete($event)"
+        (increment)="increment($event)"
+        (decrement)="decrement($event)"
+      >
+      </app-cart-item>
+    </div>
+    <div class="button-container">
+      <button class="btn btn-info" routerLink="/checkout" routerLinkActive="router-link-active">
+        Go to Checkout
+      </button>
+    </div>
+  </div>
+</div>

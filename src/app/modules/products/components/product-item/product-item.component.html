@@ -1,0 +1,18 @@
+<div class="product-container">
+    Id: {{product?.id}} 
+    <h3 class="fw-normal">{{product?.name}}</h3>    
+    <h5 class="fw-light">({{product?.category}})<br/></h5>
+    <h3>₱ {{product?.price  | number:'1.2-2' }}</h3> 
+    <img class="image" src={{product?.image}} alt="{{product?.name}}"><br>
+    <form [formGroup]="form" (ngSubmit)="executeAction(product, 'ADD TO CART')">
+        <label for="quantity">Quantity:</label>
+        <input id="quantity" type="number" min="1" formControlName="quantity" />
+        <div *ngIf="quantity?.errors && quantity?.touched">
+            <div *ngIf="quantity?.errors?.['min']">The quantity must be at least 1.</div>
+        </div>
+    <div class="button-container">
+        <button class="btn btn-secondary" [routerLink]="['product', product?.id]" routerLinkActive="router-link-active">More Info</button>
+        <button class="btn btn-success">ADD TO CART</button>
+    </div>
+    </form>
+</div> 

@@ -1,0 +1,20 @@
+<app-header></app-header>
+<br />
+<div class="shopping-cart">
+  <div class="empty-cart-container" *ngIf="pendingCarts && pendingCarts.length === 0">
+    <div>
+      <h2>There are no order history.</h2>
+    </div>
+  </div>
+  <div *ngIf="pendingCarts && pendingCarts.length > 0">
+    <div class="title">Order History</div>
+    <hr class="my-1" />
+    <div *ngFor="let cart of pendingCarts">
+      <app-pending-items
+        [cart]="cart"
+      >
+      </app-pending-items>
+    </div>
+  </div>
+</div>
+

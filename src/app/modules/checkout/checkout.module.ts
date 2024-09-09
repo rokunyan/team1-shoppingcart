@@ -1,0 +1,20 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CheckoutRoutingModule } from './checkout-routing.module';
+import { CheckoutListComponent } from './pages/checkout-list/checkout-list.component';
+import { CheckoutItemsComponent } from './components/checkout-items/checkout-items.component';
+import { SharedModule } from '../../shared/shared.module';
+
+
+@NgModule({
+  declarations: [
+    CheckoutListComponent,
+    CheckoutItemsComponent
+  ],
+  imports: [
+    CommonModule,
+    CheckoutRoutingModule,
+    SharedModule
+  ]
+})
+export class CheckoutModule { }

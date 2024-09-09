@@ -1,0 +1,25 @@
+.image {
+    max-width: 200px;
+    max-height: 200px;
+    
+}
+
+.button-container {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.btn {
+    flex: 1;
+}
+
+.flex{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#quantity{
+    margin-top: 5px;
+}

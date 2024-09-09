@@ -1,0 +1,21 @@
+<div class="item">
+    <div class="image">
+      <img
+        class="img-fluid rounded"
+        src="{{ cart.image }}"
+        alt="{{ cart.productName }}"
+      />
+    </div>
+    <div class="description">
+      <span>{{ cart.productName }}</span>
+      <span>{{ cart.description }}</span>
+    </div>
+    <div>
+        <br>
+        <h6>Total Qty: {{cart.quantity}}</h6>
+        <h6>Total Price: ₱ {{ cart.price | number : "1.2-2" }}</h6> 
+        <h6>Order Status: <span
+            class="badge bg-secondary">Pending</span></h6>
+    </div>
+    </div>
+   

@@ -1,0 +1,338 @@
+<div class="container">
+  <div class="customer">
+    <div>
+      <div class="title text-start">Product Form</div>
+      <br />
+      <hr class="my-1" />
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <!-- Image -->
+          <div
+            *ngIf="imageSrc"
+            class="col-12 col-md-4 d-flex justify-content-center align-items-center mt-1"
+          >
+            <img
+              [src]="imageSrc"
+              alt="Product Image"
+              class="img-fluid rounded"
+              style="
+                height: 150px;
+                width: 150px;
+                padding: 0;
+                margin: 0;
+                object-fit: cover;
+              "
+            />
+          </div>
+
+          <!-- Image -->
+          <div
+            *ngIf="!imageSrc"
+            class="col-12 col-md-4 d-flex justify-content-center align-items-center mb-1 mt-2"
+          >
+            <img
+              src="https://placehold.co/400x400?text=No Image to Display"
+              alt="Product Image"
+              class="img-fluid rounded"
+              style="
+                height: 150px;
+                width: 150px;
+                padding: 0;
+                margin: 0;
+                object-fit: cover;
+              "
+            />
+          </div>
+
+          <!-- Product Name Field -->
+          <div class="col-12 col-md-8 mb-3">
+            <div class="mb-3">
+              <label for="name" class="form-label">Product Name</label>
+              <input
+                id="name"
+                formControlName="name"
+                type="text"
+                class="form-control"
+              />
+              <div
+                *ngIf="
+                  productForm.get('name')?.invalid &&
+                  (productForm.get('name')?.dirty ||
+                    productForm.get('name')?.touched)
+                "
+              >
+                <small
+                  class="text-danger"
+                  *ngIf="productForm.get('name')?.errors?.['required']"
+                >
+                  Product Name is required.
+                </small>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Status Field -->
+              <div class="col-6 col-md-6">
+                <label for="status" class="form-label">Status</label>
+                <select
+                  id="status"
+                  formControlName="status"
+                  class="form-control"
+                >
+                  <option value="">Select a Status</option>
+                  <option
+                    *ngFor="let status of statuses"
+                    [value]="status.value"
+                  >
+                    {{ status.label }}
+                  </option>
+                </select>
+                <div
+                  *ngIf="
+                    productForm.get('status')?.invalid &&
+                    (productForm.get('status')?.dirty ||
+                      productForm.get('status')?.touched)
+                  "
+                >
+                  <small
+                    class="text-danger"
+                    *ngIf="productForm.get('status')?.errors?.['required']"
+                  >
+                    Status is required.
+                  </small>
+                </div>
+              </div>
+
+              <!-- Category Field -->
+              <div class="col-6 col-md-6">
+                <label for="category" class="form-label">Category</label>
+                <select
+                  id="category"
+                  formControlName="category"
+                  class="form-control"
+                >
+                  <option value="">Select a Category</option>
+                  <option
+                    *ngFor="let category of categories"
+                    [value]="category.value"
+                  >
+                    {{ category.label }}
+                  </option>
+                </select>
+                <div
+                  *ngIf="
+                    productForm.get('category')?.invalid &&
+                    (productForm.get('category')?.dirty ||
+                      productForm.get('category')?.touched)
+                  "
+                >
+                  <small
+                    class="text-danger"
+                    *ngIf="productForm.get('category')?.errors?.['required']"
+                  >
+                    Category is required.
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6 col-md-4 mt-2">
+            <label for="image"></label>
+            <input
+              id="image"
+              type="file"
+              (change)="onFileChange($event)"
+              class="form-control"
+            />
+            <small
+              class="text-danger"
+              *ngIf="productForm.get('image')?.errors?.['required']"
+            >
+              Image is required.
+            </small>
+          </div>
+          <!-- Stock Field -->
+          <div class="col-12 col-md-3">
+            <label for="quantity" class="form-label">Stock</label>
+            <input
+              id="quantity"
+              formControlName="quantity"
+              type="number"
+              class="form-control"
+            />
+            <div
+              *ngIf="
+                productForm.get('quantity')?.invalid &&
+                (productForm.get('quantity')?.dirty ||
+                  productForm.get('quantity')?.touched)
+              "
+            >
+              <small
+                class="text-danger"
+                *ngIf="productForm.get('quantity')?.errors?.['required']"
+              >
+                Quantity is required.
+              </small>
+              <small
+                class="text-danger"
+                *ngIf="productForm.get('quantity')?.errors?.['min']"
+              >
+                Quantity must be zero or greater than.
+              </small>
+            </div>
+          </div>
+
+          <!-- Price Field -->
+          <div class="col-12 col-md-3">
+            <label for="price" class="form-label">Price</label>
+            <input
+              id="price"
+              formControlName="price"
+              type="number"
+              class="form-control"
+            />
+            <div
+              *ngIf="
+                productForm.get('price')?.invalid &&
+                (productForm.get('price')?.dirty ||
+                  productForm.get('price')?.touched)
+              "
+            >
+              <small
+                class="text-danger"
+                *ngIf="productForm.get('price')?.errors?.['required']"
+              >
+                Price is required.
+              </small>
+              <small
+                class="text-danger"
+                *ngIf="productForm.get('price')?.errors?.['min']"
+              >
+                Price must be greater than PHP 1.00.
+              </small>
+            </div>
+          </div>
+
+          <!-- Items Sold Field -->
+          <div class="col-12 col-md-2">
+            <label for="itemsSold" class="form-label">Items Sold</label>
+            <input
+              id="itemsSold"
+              formControlName="itemsSold"
+              type="number"
+              class="form-control"
+            />
+            <div
+              *ngIf="
+                productForm.get('itemsSold')?.invalid &&
+                (productForm.get('itemsSold')?.dirty ||
+                  productForm.get('itemsSold')?.touched)
+              "
+            >
+              <small
+                class="text-danger"
+                *ngIf="productForm.get('itemsSold')?.errors?.['required']"
+              >
+                Items Sold is required.
+              </small>
+              <small
+                class="text-danger"
+                *ngIf="productForm.get('itemsSold')?.errors?.['min']"
+              >
+                Items Sold must be zero or greater than.
+              </small>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Image URL -->
+          <!-- <div class="col-12 col-md-12 mb-3">
+            <label for="image" class="form-label">Image URL</label>
+            <input
+              id="image"
+              formControlName="image"
+              type="text"
+              class="form-control"
+            />
+            <div
+              *ngIf="
+                productForm.get('image')?.invalid &&
+                (productForm.get('image')?.dirty ||
+                  productForm.get('image')?.touched)
+              "
+            >
+              <small
+                class="text-danger"
+                *ngIf="productForm.get('image')?.errors?.['required']"
+              >
+                Image URL is required.
+              </small>
+            </div>
+          </div> -->
+        </div>
+
+        <div class="row">
+          <!-- Description Field -->
+          <div class="col-12 col-md-12">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+              id="description"
+              formControlName="description"
+              type="text"
+              class="form-control description"
+              rows="3"
+            ></textarea>
+            <div
+              *ngIf="
+                productForm.get('description')?.invalid &&
+                (productForm.get('description')?.dirty ||
+                  productForm.get('description')?.touched)
+              "
+            >
+              <small
+                class="text-danger"
+                *ngIf="productForm.get('description')?.errors?.['required']"
+              >
+                Description is required.
+              </small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <hr class="my-3" />
+        <div
+          class="d-flex flex-column flex-md-row justify-content-between align-items-center"
+        >
+          <div>
+            <button
+              type="button"
+              class="btn btn-outline-danger mb-2 mb-md-0 me-2"
+              (click)="onCancel()"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary mb-2 mb-md-0"
+              (click)="onClear()"
+            >
+              Clear
+            </button>
+          </div>
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="productForm.invalid"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<app-header></app-header>
+<br />
+<div class="shopping-cart">
+  <div class="empty-cart-container" *ngIf="carts && carts.length === 0">
+    <div>
+      <h2>There are no items in this cart.</h2>
+    </div>
+  </div>
+  <div *ngIf="carts && carts.length > 0">
+    <div class="title">Shopping Cart</div>
+    <hr class="my-1" />
+    <div *ngFor="let cart of carts">
+      <app-checkout-items
+        [cart]="cart"
+      >
+      </app-checkout-items>
+    </div>
+    <div class="total">Total: ₱ {{ this.total | number : "1.2-2" }}</div>
+    <div class="button-container">
+      <button class="btn btn-success" (click)="checkout()" routerLink="/dashboard" routerLinkActive="router-link-active">
+        Checkout
+      </button>
+    </div>
+  </div>
+</div>
