@@ -1,1 +1,9 @@
-<p>admin-dashboard works!</p>
+<app-header></app-header>
+<h1>Top Sales</h1>
+<div *ngFor="let product of topSales; let i = index">
+    <div *ngIf="i < 5">
+      {{product.name}}
+      {{product.price*product.itemsSold}}
+    </div><br>
+</div>
+
