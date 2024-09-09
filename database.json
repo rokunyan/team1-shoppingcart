@@ -9,7 +9,8 @@
       "price": 299.99,
       "status": "Available",
       "image": "https://img.lazcdn.com/g/p/111d3e07a02ea335d70d7d97c797299b.jpg_400x400q75.jpg_.webp",
-      "itemsSold": 120
+      "itemsSold": 120,
+      "description": "A high-end smartphone with a sleek design and powerful features."
     },
     {
       "id": "2",
@@ -130,9 +131,9 @@
       "productName": "Smartphone",
       "description": "A high-end smartphone with a sleek design and powerful features.",
       "category": "Electronics",
-      "quantity": 2,
-      "price": 599.98,
-      "status": "pending",
+      "quantity": 1,
+      "price": 299.99,
+      "status": "added",
       "image": "https://img.lazcdn.com/g/p/111d3e07a02ea335d70d7d97c797299b.jpg_400x400q75.jpg_.webp"
     },
     {
@@ -154,8 +155,8 @@
       "productName": "Face Cream",
       "description": "A nourishing face cream that leaves your skin feeling smooth and hydrated.",
       "category": "Beauty",
-      "quantity": 2,
-      "price": 49.98,
+      "quantity": 1,
+      "price": 24.99,
       "status": "added",
       "image": "https://img.lazcdn.com/g/p/a51c77096f9503d20ece5ac4b9e0c3f7.jpg_400x400q75.jpg_.webp"
     },
@@ -172,6 +173,7 @@
       "image": "https://img.lazcdn.com/g/p/01a841e1a839165ed7c4abf855cab170.jpg_400x400q75.jpg_.webp"
     }
   ],
+  "carts": [],
   "users": [
     {
       "id": "1",
@@ -185,9 +187,7 @@
       "mobileNumber": "63918485697",
       "isActive": true,
       "isAdmin": false,
-      "interests": [
-        "swimming"
-      ]
+      "interests": ["swimming"]
     },
     {
       "id": "2",
@@ -196,9 +196,7 @@
       "middleName": "",
       "lastName": "Okay",
       "birthDate": "",
-      "interests": [
-        ""
-      ],
+      "interests": [""],
       "password": "1234abcd",
       "email": "sample1@gmail.com",
       "mobileNumber": "09999999999",
@@ -212,9 +210,7 @@
       "middleName": "",
       "lastName": "fsafsa",
       "birthDate": "",
-      "interests": [
-        ""
-      ],
+      "interests": [""],
       "password": "1234567890",
       "email": "sample3@gmail.com",
       "mobileNumber": "09999999999",
@@ -228,9 +224,7 @@
       "middleName": "",
       "lastName": "safas",
       "birthDate": "",
-      "interests": [
-        ""
-      ],
+      "interests": [""],
       "password": "6yALob30",
       "email": "sample4@gmail.com",
       "mobileNumber": "00000000000",
