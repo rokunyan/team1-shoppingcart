@@ -14,7 +14,7 @@ export class LoginPageComponent {
   constructor(private authService: AuthService, private fb: FormBuilder, private router: Router){
 
     this.loginForm = this.fb.group({
-      email: ['', new EmailValidator],
+      email: ['', [Validators.email,Validators.required]],
       password: ['', Validators.required]
     })
       
@@ -23,7 +23,7 @@ export class LoginPageComponent {
   login() {
     let user = this.authService.isValidCred(this.loginForm.value.email, this.loginForm.value.password)
     if(!user){
-      alert("Invalid username or password")
+      alert("Invalid email or password")
     } else{
       if(user.isAdmin){
         this.router.navigateByUrl('/admin-dashboard')
