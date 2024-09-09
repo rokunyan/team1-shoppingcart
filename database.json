@@ -110,17 +110,6 @@
       "status": "Available",
       "image": "https://img.lazcdn.com/g/p/7d3fd13cb8c27de50bb46d5fecc6ccae.jpg_400x400q75.jpg_.webp",
       "itemsSold": 0
-    },
-    {
-      "id": "12",
-      "name": "Glasses",
-      "description": "sadfsad",
-      "category": "Accessories",
-      "quantity": 1,
-      "price": 1,
-      "status": "Available",
-      "image": "https://img.lazcdn.com/g/p/7d3fd13cb8c27de50bb46d5fecc6ccae.jpg_400x400q75.jpg_.webp",
-      "itemsSold": 0
     }
   ],
   "carts": [
@@ -173,7 +162,6 @@
       "image": "https://img.lazcdn.com/g/p/01a841e1a839165ed7c4abf855cab170.jpg_400x400q75.jpg_.webp"
     }
   ],
-  "carts": [],
   "users": [
     {
       "id": "1",
