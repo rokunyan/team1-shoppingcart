@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { EmailValidator, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { Subscription } from 'rxjs';
@@ -31,14 +31,13 @@ export class ProfilePageComponent{
 
   constructor(private fb: FormBuilder, private userService: UserService) {
     this.user = this.userService.getCurrentUser()
-    console.log(this.user)
     this.profileForm = this.fb.group({
-      userName: this.user.userName,
-      firstName: this.user.firstName,
+      userName: [this.user.userName, Validators.required],
+      firstName: [this.user.firstName, Validators.required],
       middleName: this.user.middleName,
-      lastName: this.user.lastName,
-      birthDate: this.user.birthDate,
-      email: this.user.email,
+      lastName: [this.user.lastName, Validators.required],
+      birthDate: [this.user.birthDate, Validators.required],
+      email: [this.user.email, [Validators.required, Validators.email]],
       interests: this.fb.array(this.user.interests),
     });
     this.interestFormArray = this.profileForm.controls['interests'] as FormArray;
@@ -60,9 +59,17 @@ export class ProfilePageComponent{
       isAdmin: this.user.isAdmin,
       interests: this.profileForm.value.interests
     }
-    
-    this.sub = this.userService.updateUser(user).pipe().subscribe()
+    if(!this.validationChecking()){
+      alert("Please check your details")
+    } else this.sub = this.userService.updateUser(user).pipe().subscribe()
   };
+
+  validationChecking = () => {
+      console.log (this.profileForm.get('email')?.errors )
+      return (this.profileForm.get('firstName')?.errors === null && this.profileForm.get('lastName')?.errors === null
+      && this.profileForm.get('email')?.errors === null && this.profileForm.get('userName')?.errors === null && this.profileForm.get('birthDate')?.errors === null)  
+  }
+
 
   addInterest = () => {
     this.interestFormArray.push(new FormControl(''));

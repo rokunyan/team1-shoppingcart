@@ -20,7 +20,7 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
   constructor(private userService: UserService, private fb: FormBuilder, private router: Router, private loginService : LoginService){
     this.forgotForm = this.fb.group({
       userName: ['', Validators.required],
-      email: ['', new EmailValidator],
+      email: ['', [Validators.email, Validators.required]],
       mobileNumber: ['', Validators.required]
     })
       

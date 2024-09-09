@@ -40,6 +40,7 @@ const routes: Routes = [
     path: 'cart',
     loadChildren: () =>
       import('./modules/cart/cart.module').then((m) => m.CartModule),
+    canActivate:[userGuard]
   },
   {
     path: 'admin-page',
@@ -56,6 +57,14 @@ const routes: Routes = [
         (m) => m.ProductsPageModule
       ),
     canActivate: [adminGuard],
+  },
+  {
+    path: 'order-history',
+    loadChildren: () =>
+      import('./modules/transactions/transactions.module').then(
+        (m) => m.TransactionsModule
+      ),
+    canActivate: [userGuard],
   },
 ];
 

@@ -4,7 +4,12 @@ import { ProductService } from '../../services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { Cart } from '../../../cart/model/cart';
 import { CartService } from '../../../cart/services/cart.service';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { get } from 'node:http';
 
 @Component({
@@ -17,21 +22,25 @@ export class ProductInformationComponent implements OnInit {
   product: Product | undefined;
   //used to display the products in the cart
 
-  carts:Cart[] = []
-  
-  form:FormGroup
+  carts: Cart[] = [];
+
+  form: FormGroup;
 
   ngOnInit(): void {
-      this.productId = this.route.snapshot.paramMap.get('productId')?? '-1'
-      this.getProduct()
-      this.getCart()
+    this.productId = this.route.snapshot.paramMap.get('productId') ?? '-1';
+    this.getProduct();
+    this.getCart();
   }
-   
-  constructor(private productService:ProductService, private cartService:CartService,
-     private route:ActivatedRoute, private formBuilder:FormBuilder){
-      this.form = this.formBuilder.group({
-        quantity:[1, [Validators.required, Validators.min(1)]]
-      })
+
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder
+  ) {
+    this.form = this.formBuilder.group({
+      quantity: [1, [Validators.required, Validators.min(1)]],
+    });
   }
 
   getProduct() {
@@ -45,7 +54,7 @@ export class ProductInformationComponent implements OnInit {
   executeAction(action: string) {
     switch (action) {
       case 'ADD TO CART':
-        if(this.form.valid){
+        if (this.form.valid) {
           this.addToCart(this.product!);
         }
         break;
@@ -60,11 +69,10 @@ export class ProductInformationComponent implements OnInit {
     });
   }
 
-
   addToCart(product: Product): void {
     const cartItem: Cart = {
-      id: (this.carts.length + 1).toString(),
-      userId: '1',
+      id: '',
+      userId: this.cartService.getCurrentUserId(),
       productId: product.id,
       productName: product.name,
       description: product.description,
@@ -83,7 +91,7 @@ export class ProductInformationComponent implements OnInit {
     });
   }
 
-  get quantity(){
+  get quantity() {
     return this.form.get('quantity');
   }
 }

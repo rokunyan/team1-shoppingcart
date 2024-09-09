@@ -12,7 +12,7 @@ import { AdminPageModule } from './modules/admin-page/admin-page.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +24,7 @@ import { AdminPageModule } from './modules/admin-page/admin-page.module';
     AdminPageModule
   ],
   providers: [
-    provideClientHydration(),
+    // provideClientHydration(),
     provideHttpClient(withFetch()) //new http client module
   ],
   bootstrap: [AppComponent]

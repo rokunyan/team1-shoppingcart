@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../modules/user/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ export class HeaderComponent {
   isAdmin: boolean = false;
   isActive: boolean = false;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   getAdminAndActive = () => {
     const user = this.userService.getCurrentUser();
@@ -27,4 +28,10 @@ export class HeaderComponent {
     }
     return false;
   };
+
+  logout = () => {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        localStorage.removeItem('session')
+      }
+    }
 }
