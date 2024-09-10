@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Cart } from '../model/cart';
 import { map, Observable, of, switchMap, tap } from 'rxjs';
 import { UserService } from '../../user/services/user.service';
+import { parse } from 'path';
 
 @Injectable({
   providedIn: 'root',
@@ -65,6 +66,15 @@ export class CartService {
       map((carts) => {
         if (carts.length === 0) return 0;
         return Math.max(...carts.map((cart) => parseInt(cart.id)));
+      })
+    );
+  }
+
+  getTotal(): Observable<number> {
+    return this.getCarts().pipe(
+      map((carts) => {
+        if (carts.length === 0) return 0;
+        return carts.reduce((total, cart) => total + (cart.price*cart.quantity), 0);
       })
     );
   }
@@ -213,4 +223,30 @@ export class CartService {
     );
 
   }
+
+  pendingStatus(id: string): Observable<Cart> {
+    const url = `${this.serverUrl}/${id}`;
+    return this.http.get<Cart>(url).pipe(
+      map((cart) => {
+        cart.status = "pending"
+        return cart;
+      }),
+      switchMap((updateCart) => this.http.patch<Cart>(url, updateCart)),
+      tap((updatedCart) => console.log(`Updated status for cart ${id}`))
+    );
+  }
+
+  // incrementCount(id: string): Observable<Cart> {
+  //   const url = `${this.serverUrl}/${id}`;
+  //   return this.http.get<Cart>(url).pipe(
+  //     map((cart) => {
+  //       cart.price = cart.price / cart.quantity;
+  //       cart.quantity += 1;
+  //       cart.price *= cart.quantity;
+  //       return cart;
+  //     }),
+  //     switchMap((updateCart) => this.http.patch<Cart>(url, updateCart)),
+  //     tap((updatedCart) => console.log(`Added quantity for cart ${id}`))
+  //   );
+  // }
 }

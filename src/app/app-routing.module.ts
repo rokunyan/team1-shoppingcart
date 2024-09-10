@@ -3,10 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { loginGuard } from './core/guards/login.guard';
 import { userGuard } from './core/guards/user.guard';
 import { adminGuard } from './core/guards/admin.guard';
+import { loginGuard } from './core/guards/login.guard';
+import { userGuard } from './core/guards/user.guard';
+import { adminGuard } from './core/guards/admin.guard';
 
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'login',
     redirectTo: 'login',
     pathMatch: 'full',
   },
@@ -17,10 +21,16 @@ const routes: Routes = [
         (m) => m.ProductsModule
       ),
     canActivate: [userGuard],
+      import('./modules/products/products.module').then(
+        (m) => m.ProductsModule
+      ),
+    canActivate: [userGuard],
   },
   {
     path: 'admin-dashboard',
     loadChildren: () =>
+      import('./modules/admin/admin.module').then((m) => m.AdminModule),
+    canActivate: [adminGuard],
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
     canActivate: [adminGuard],
   },
@@ -66,10 +76,19 @@ const routes: Routes = [
       ),
     canActivate: [userGuard],
   },
+  {
+    path: 'checkout',
+    loadChildren: () =>
+      import('./modules/checkout/checkout.module').then(
+        (m) => m.CheckoutModule
+      ),
+    canActivate: [userGuard],
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule],
 })
+export class AppRoutingModule {}
 export class AppRoutingModule {}
