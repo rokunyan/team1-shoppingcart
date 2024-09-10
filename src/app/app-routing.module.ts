@@ -66,10 +66,18 @@ const routes: Routes = [
       ),
     canActivate: [userGuard],
   },
+  {
+    path: 'checkout',
+    loadChildren: () =>
+      import('./modules/checkout/checkout.module').then(
+        (m) => m.CheckoutModule
+      ),
+    canActivate: [userGuard],
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

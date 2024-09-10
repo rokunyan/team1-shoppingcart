@@ -47,6 +47,19 @@ body {
   margin: 10px;
 }
 
+.button-container {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+  justify-content: flex-end;
+}
+
+.btn {
+  flex: 1;
+  max-width: 180px;
+  color: white;
+}
+
 @media (max-width: 800px) {
   .shopping-cart {
     width: 100%;

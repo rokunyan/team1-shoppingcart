@@ -121,7 +121,7 @@
       "category": "Electronics",
       "quantity": 1,
       "price": 299.99,
-      "status": "added",
+      "status": "pending",
       "image": "https://img.lazcdn.com/g/p/111d3e07a02ea335d70d7d97c797299b.jpg_400x400q75.jpg_.webp"
     },
     {
@@ -133,7 +133,7 @@
       "category": "Books",
       "quantity": 1,
       "price": 19.99,
-      "status": "added",
+      "status": "pending",
       "image": "https://img.lazcdn.com/g/p/af46826f71983b075df3a9c24c7f3bec.jpg_400x400q75.jpg_.webp"
     },
     {
@@ -145,7 +145,7 @@
       "category": "Beauty",
       "quantity": 1,
       "price": 24.99,
-      "status": "added",
+      "status": "pending",
       "image": "https://img.lazcdn.com/g/p/a51c77096f9503d20ece5ac4b9e0c3f7.jpg_400x400q75.jpg_.webp"
     },
     {
@@ -157,44 +157,8 @@
       "category": "Sports",
       "quantity": 1,
       "price": 99.99,
-      "status": "added",
+      "status": "pending",
       "image": "https://img.lazcdn.com/g/p/01a841e1a839165ed7c4abf855cab170.jpg_400x400q75.jpg_.webp"
-    },
-    {
-      "id": "7",
-      "userId": "4",
-      "productId": "2",
-      "productName": "Fiction Book",
-      "description": "An intriguing fiction book that will keep you hooked from start to finish.",
-      "category": "Books",
-      "quantity": 2,
-      "price": 39.98,
-      "status": "added",
-      "image": "https://img.lazcdn.com/g/p/af46826f71983b075df3a9c24c7f3bec.jpg_400x400q75.jpg_.webp"
-    },
-    {
-      "id": "8",
-      "userId": "4",
-      "productId": "3",
-      "productName": "T-Shirt",
-      "description": "A comfortable and stylish t-shirt perfect for everyday wear.",
-      "category": "Clothing",
-      "quantity": 2,
-      "price": 99.98,
-      "status": "added",
-      "image": "https://img.lazcdn.com/g/p/58c9c49c1f5c96e453acfae51a2c335d.jpg_400x400q75.jpg_.webp"
-    },
-    {
-      "id": "9",
-      "userId": "4",
-      "productId": "4",
-      "productName": "Face Cream",
-      "description": "A nourishing face cream that leaves your skin feeling smooth and hydrated.",
-      "category": "Beauty",
-      "quantity": 3,
-      "price": 74.97,
-      "status": "added",
-      "image": "https://img.lazcdn.com/g/p/a51c77096f9503d20ece5ac4b9e0c3f7.jpg_400x400q75.jpg_.webp"
     }
   ],
   "users": [
