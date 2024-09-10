@@ -1,33 +1,37 @@
 <app-header></app-header>
-<h1>Dashboard</h1>
+<h1 class="title">Dashboard</h1>
 
-Product Name Search
-<input type="text" placeholder="Search..." [(ngModel)]="searchModel.productNameQuery" (input)="onSearch('NAME')" /> <br>
-Product Category Search
-<input type="text" placeholder="Search..." [(ngModel)]="searchModel.productCategoryQuery" (input)="onSearch('CATEGORY')" /> <br>
-Price Tag Search
-<input type="number" min="0"  [(ngModel)]="searchModel.productMinCost"  #minCost="ngModel" (input)="onSearch('COST')"/> 
-- 
-<input type="number" min="0"  [(ngModel)]="searchModel.productMaxCost"  #maxCost="ngModel" (input)="onSearch('COST')"/><br/>
-<div *ngIf="(minCost.errors && minCost.touched) || (maxCost.errors && maxCost.touched)">
-        <div *ngIf="minCost?.errors?.['min'] || maxCost?.errors?.['min']">The number must be at least 0 for min and max cost.</div>
+<div class="dropdown">
+        <div class="dropdown-btn"><button class="btn btn-outline-dark" (click)="toggleDropdown()">Filters</button></div>
+        <div class="dropdown-content" *ngIf="isOpen">
+                <div class="left">
+                        Product Name Search
+                        <input type="text" placeholder="Search..." [(ngModel)]="searchModel.productNameQuery" (input)="onSearch('NAME')" /> <br>
+                        Product Category Search
+                        <input type="text" placeholder="Search..." [(ngModel)]="searchModel.productCategoryQuery" (input)="onSearch('CATEGORY')" /> <br>
+                        Price Tag Search
+                        <input type="number" min="0"  [(ngModel)]="searchModel.productMinCost"  #minCost="ngModel" (input)="onSearch('COST')"/> 
+                        - 
+                        <input type="number" min="0"  [(ngModel)]="searchModel.productMaxCost"  #maxCost="ngModel" (input)="onSearch('COST')"/><br/>
+                        <div *ngIf="(minCost.errors && minCost.touched) || (maxCost.errors && maxCost.touched)">
+                                <div *ngIf="minCost?.errors?.['min'] || maxCost?.errors?.['min']">The number must be at least 0 for min and max cost.</div>
+                        </div>
+                </div>
+                <div class="right">
+                        Sort by
+                        <select [(ngModel)]="searchModel.sortByType" (change)="onSortBy()">
+                                <option value="DEFAULT">Default</option>
+                                <option value="ASCENDING NAME">Name (A-Z)</option>
+                                <option value="DESCENDING NAME">Name (Z-A)</option>
+                                <option value="ASCENDING PRICE">Price (low-high)</option>
+                                <option value="DESCENDING PRICE">Price (high-low)</option>
+                        </select>
+                </div>
+        </div>
 </div>
-Sort by
-<select          [(ngModel)]="searchModel.sortByType" (change)="onSortBy()">
-        <option value="DEFAULT">Default</option>
-        <option value="ASCENDING NAME">Name (A-Z)</option>
-        <option value="DESCENDING NAME">Name (Z-A)</option>
-        <option value="ASCENDING PRICE">Price (low-high)</option>
-        <option value="DESCENDING PRICE">Price (high-low)</option>
-</select>
 
-<h2>Cart</h2>
-<div class="container mt-3" *ngFor="let cartProduct of carts; let i = index">
-        <ul class="list-group list-group-vertical">
-           id:{{cartProduct.id}} | Name:{{cartProduct.productName}} | Quantity: {{cartProduct.quantity}}
-        </ul>
-</div>
-<br/>
+
+
  
 
 <!-- <ul>

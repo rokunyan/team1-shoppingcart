@@ -159,6 +159,42 @@
       "price": 99.99,
       "status": "added",
       "image": "https://img.lazcdn.com/g/p/01a841e1a839165ed7c4abf855cab170.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "7",
+      "userId": "4",
+      "productId": "2",
+      "productName": "Fiction Book",
+      "description": "An intriguing fiction book that will keep you hooked from start to finish.",
+      "category": "Books",
+      "quantity": 2,
+      "price": 39.98,
+      "status": "added",
+      "image": "https://img.lazcdn.com/g/p/af46826f71983b075df3a9c24c7f3bec.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "8",
+      "userId": "4",
+      "productId": "3",
+      "productName": "T-Shirt",
+      "description": "A comfortable and stylish t-shirt perfect for everyday wear.",
+      "category": "Clothing",
+      "quantity": 2,
+      "price": 99.98,
+      "status": "added",
+      "image": "https://img.lazcdn.com/g/p/58c9c49c1f5c96e453acfae51a2c335d.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "9",
+      "userId": "4",
+      "productId": "4",
+      "productName": "Face Cream",
+      "description": "A nourishing face cream that leaves your skin feeling smooth and hydrated.",
+      "category": "Beauty",
+      "quantity": 3,
+      "price": 74.97,
+      "status": "added",
+      "image": "https://img.lazcdn.com/g/p/a51c77096f9503d20ece5ac4b9e0c3f7.jpg_400x400q75.jpg_.webp"
     }
   ],
   "users": [
@@ -174,7 +210,9 @@
       "mobileNumber": "63918485697",
       "isActive": true,
       "isAdmin": false,
-      "interests": ["swimming"]
+      "interests": [
+        "swimming"
+      ]
     },
     {
       "id": "2",
@@ -183,7 +221,9 @@
       "middleName": "",
       "lastName": "Okay",
       "birthDate": "",
-      "interests": [""],
+      "interests": [
+        ""
+      ],
       "password": "1234abcd",
       "email": "sample1@gmail.com",
       "mobileNumber": "09999999999",
@@ -197,7 +237,9 @@
       "middleName": "",
       "lastName": "fsafsa",
       "birthDate": "",
-      "interests": [""],
+      "interests": [
+        ""
+      ],
       "password": "1234567890",
       "email": "sample3@gmail.com",
       "mobileNumber": "09999999999",
@@ -211,7 +253,9 @@
       "middleName": "",
       "lastName": "safas",
       "birthDate": "",
-      "interests": [""],
+      "interests": [
+        ""
+      ],
       "password": "6yALob30",
       "email": "sample4@gmail.com",
       "mobileNumber": "00000000000",
