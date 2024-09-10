@@ -159,18 +159,6 @@
       "price": 99.99,
       "status": "pending",
       "image": "https://img.lazcdn.com/g/p/01a841e1a839165ed7c4abf855cab170.jpg_400x400q75.jpg_.webp"
-    },
-    {
-      "id": "6",
-      "userId": "1",
-      "productId": "7",
-      "productName": "Action Figure",
-      "description": "A detailed action figure that will delight collectors and kids alike.",
-      "category": "Toys",
-      "quantity": 1,
-      "price": 29.99,
-      "status": "added",
-      "image": "https://img.lazcdn.com/g/p/27347d9a8e694c48ba9833869e6138cb.jpg_400x400q75.jpg_.webp"
     }
   ],
   "users": [

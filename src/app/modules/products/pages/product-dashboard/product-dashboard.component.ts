@@ -234,4 +234,15 @@ export class ProductDashboardComponent implements OnInit {
         break;
     }
   }
+
+  isOpen = false
+
+  toggleDropdown(){
+    if(this.isOpen){
+      this.isOpen = false;
+    }
+    else{
+      this.isOpen = true;
+    }
+  }
 }
