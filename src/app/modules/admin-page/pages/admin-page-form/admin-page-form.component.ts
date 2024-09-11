@@ -65,10 +65,10 @@ export class AdminPageFormComponent implements OnDestroy {
 
   onSubmit(): void {
     if (this.userForm.valid) {
-      this.adminPageService.getUsers().subscribe({
-        next: (users: User[]) => {
+      this.adminPageService.getMaxId().subscribe({
+        next: (maxId: number) => {
           const formValue = this.userForm.value;
-          const newId: string = (users.length + 1).toString();
+          const newId: string = (maxId + 1).toString();
           const user: User = {
             id: newId,
             userName: formValue.userName,
@@ -85,7 +85,6 @@ export class AdminPageFormComponent implements OnDestroy {
           };
 
           const request = this.adminPageService.addUser(user);
-
           this.sub = request.subscribe({
             next: () => {
               this.router.navigate(['/admin-page']);
