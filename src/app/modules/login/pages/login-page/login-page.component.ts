@@ -23,7 +23,7 @@ export class LoginPageComponent {
   login() {
     let user = this.authService.isValidCred(this.loginForm.value.email, this.loginForm.value.password)
     if(!user){
-      alert("Invalid email or password")
+      alert('Invalid email or password. Please check your details.')
     } else{
       if(user.isAdmin){
         this.router.navigateByUrl('/admin-dashboard')

@@ -38,7 +38,7 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
     let user = this.validUsers?.find((u) => u.email === this.forgotForm.value.email && u.userName === this.forgotForm.value.userName 
     && u.mobileNumber === this.forgotForm.value.mobileNumber && u.isActive)
     if(!user){
-      alert("Attempt is invalid. Check your details")
+      alert("Attempt is invalid. Check your details.")
     } else {
         this.loginService.setRetrievePassword(user.password),
         this.router.navigateByUrl('/login/password-retrieval')
