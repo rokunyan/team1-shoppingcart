@@ -18,6 +18,25 @@ export class AdminPageService {
     );
   }
 
+  getAllCustomers(): Observable<User[]> {
+    return this.http.get<User[]>(this.serverUrl).pipe(
+      map((users) => users.filter((user) => user.isAdmin === false)),
+      tap((guests) => console.log('Customers:', guests))
+    );
+  }
+
+  getMaxId(): Observable<number> {
+    return this.getUsers().pipe(
+      map((users) => {
+        if (users.length === 0) return 0;
+        const ids = users
+          .map((user) => user.id)
+          .filter((id): id is string => id !== undefined);
+        return Math.max(...ids.map((id) => parseInt(id)));
+      })
+    );
+  }
+
   getUserById(id: string): Observable<User> {
     const url = `${this.serverUrl}/${id}`;
     return this.http
