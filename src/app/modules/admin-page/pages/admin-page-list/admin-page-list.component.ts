@@ -23,7 +23,7 @@ export class AdminPageListComponent {
 
   loadUsers(): void {
     this.adminPageService
-      .getUsers()
+      .getAllCustomers()
       .subscribe((users: User[]) => (this.users = users));
   }
 

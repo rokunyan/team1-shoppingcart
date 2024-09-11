@@ -60,8 +60,8 @@ export class ProfilePageComponent{
       interests: this.profileForm.value.interests
     }
     if(!this.validationChecking()){
-      alert("Please check your details")
-    } else this.sub = this.userService.updateUser(user).pipe().subscribe()
+      alert("Please check your details.")
+    } else {alert("User profile successfully updated."),this.sub = this.userService.updateUser(user).pipe().subscribe()}
   };
 
   validationChecking = () => {

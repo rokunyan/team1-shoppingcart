@@ -159,6 +159,66 @@
       "price": 99.99,
       "status": "pending",
       "image": "https://img.lazcdn.com/g/p/01a841e1a839165ed7c4abf855cab170.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "6",
+      "userId": "2",
+      "productId": "2",
+      "productName": "Fiction Book",
+      "description": "An intriguing fiction book that will keep you hooked from start to finish.",
+      "category": "Books",
+      "quantity": 1,
+      "price": 19.99,
+      "status": "pending",
+      "image": "https://img.lazcdn.com/g/p/af46826f71983b075df3a9c24c7f3bec.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "7",
+      "userId": "2",
+      "productId": "3",
+      "productName": "T-Shirt",
+      "description": "A comfortable and stylish t-shirt perfect for everyday wear.",
+      "category": "Clothing",
+      "quantity": 1,
+      "price": 49.99,
+      "status": "pending",
+      "image": "https://img.lazcdn.com/g/p/58c9c49c1f5c96e453acfae51a2c335d.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "8",
+      "userId": "2",
+      "productId": "7",
+      "productName": "Action Figure",
+      "description": "A detailed action figure that will delight collectors and kids alike.",
+      "category": "Toys",
+      "quantity": 1,
+      "price": 29.99,
+      "status": "pending",
+      "image": "https://img.lazcdn.com/g/p/27347d9a8e694c48ba9833869e6138cb.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "9",
+      "userId": "1",
+      "productId": "6",
+      "productName": "Chair",
+      "description": "A comfortable and spacious sofa perfect for relaxing at home.",
+      "category": "Furniture",
+      "quantity": 1,
+      "price": 399.99,
+      "status": "pending",
+      "image": "https://img.lazcdn.com/g/p/7073dfe5ce82148ac95b039b4a8a81f8.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "10",
+      "userId": "1",
+      "productId": "3",
+      "productName": "T-Shirt",
+      "description": "A comfortable and stylish t-shirt perfect for everyday wear.",
+      "category": "Clothing",
+      "quantity": 1,
+      "price": 49.99,
+      "status": "pending",
+      "image": "https://img.lazcdn.com/g/p/58c9c49c1f5c96e453acfae51a2c335d.jpg_400x400q75.jpg_.webp"
     }
   ],
   "users": [
@@ -175,7 +235,9 @@
       "isActive": true,
       "isAdmin": false,
       "interests": [
-        "swimming"
+        "swimming",
+        "reading",
+        "sleeping"
       ]
     },
     {
@@ -190,39 +252,39 @@
       ],
       "password": "1234abcd",
       "email": "sample1@gmail.com",
-      "mobileNumber": "09999999999",
+      "mobileNumber": "63918485698",
       "isActive": true,
       "isAdmin": true
     },
     {
       "id": "3",
-      "userName": "asdgsad",
-      "firstName": "sadfs",
+      "userName": "angpangatlo",
+      "firstName": "Tatlo",
       "middleName": "",
-      "lastName": "fsafsa",
+      "lastName": "Three",
       "birthDate": "",
       "interests": [
         ""
       ],
       "password": "1234567890",
       "email": "sample3@gmail.com",
-      "mobileNumber": "09999999999",
+      "mobileNumber": "63918485693",
       "isActive": false,
       "isAdmin": false
     },
     {
       "id": "4",
-      "userName": "asfsa",
-      "firstName": "sadfas",
+      "userName": "sample4",
+      "firstName": "Sample",
       "middleName": "",
-      "lastName": "safas",
+      "lastName": "Four",
       "birthDate": "",
       "interests": [
         ""
       ],
       "password": "6yALob30",
       "email": "sample4@gmail.com",
-      "mobileNumber": "00000000000",
+      "mobileNumber": "63918485692",
       "isActive": true,
       "isAdmin": false
     }
