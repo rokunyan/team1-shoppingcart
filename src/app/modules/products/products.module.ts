@@ -28,5 +28,9 @@ import { provideToastr } from 'ngx-toastr';
   providers: [
     provideHttpClient(),
   ],
+  exports:[
+    ProductDashboardComponent,
+    ProductInformationComponent
+  ]
 })
 export class ProductsModule {}

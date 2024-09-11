@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { SharedModule } from '../../shared/shared.module';
+import { ProductsModule } from '../products/products.module';
 
 
 
@@ -13,7 +14,8 @@ import { SharedModule } from '../../shared/shared.module';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    SharedModule
+    SharedModule,
+    ProductsModule
   ]
 })
 export class AdminModule { }

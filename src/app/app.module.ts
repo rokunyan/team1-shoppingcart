@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { CartModule } from './modules/cart/cart.module';
 import { AdminPageModule } from './modules/admin-page/admin-page.module';
 import { provideToastr } from 'ngx-toastr';
+import { ProductsModule } from './modules/products/products.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { provideToastr } from 'ngx-toastr';
     RouterModule,
     SharedModule,
     CartModule,
-    AdminPageModule,
+    AdminPageModule
   ],
   providers: [
     // provideClientHydration(),
