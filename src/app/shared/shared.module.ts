@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { CommandBarComponent } from './command-bar/command-bar.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -17,7 +18,8 @@ import { CommandBarComponent } from './command-bar/command-bar.component';
   ],
   exports:[
     HeaderComponent,
-    CommandBarComponent
+    CommandBarComponent,
+    ToastrModule,
   ]
 })
 export class SharedModule { }
