@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { User } from '../../../user/models/user';
 import { Subscription, tap } from 'rxjs';
 import { LoginService } from '../../services/login.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-forgot-password',
@@ -17,7 +18,7 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
   validUsers : User[] | undefined
   sub: Subscription | undefined
 
-  constructor(private userService: UserService, private fb: FormBuilder, private router: Router, private loginService : LoginService){
+  constructor(private userService: UserService, private fb: FormBuilder, private router: Router, private loginService : LoginService, private toastr:ToastrService){
     this.forgotForm = this.fb.group({
       userName: ['', Validators.required],
       email: ['', [Validators.email, Validators.required]],
@@ -38,7 +39,11 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
     let user = this.validUsers?.find((u) => u.email === this.forgotForm.value.email && u.userName === this.forgotForm.value.userName 
     && u.mobileNumber === this.forgotForm.value.mobileNumber && u.isActive)
     if(!user){
-      alert("Attempt is invalid. Check your details.")
+      //alert("Attempt is invalid. Check your details.")
+      this.toastr.error(`Attempt is invalid. Check your details.`, 'Attempt Failed!', {
+        progressBar: true,
+        timeOut: 5000
+      });
     } else {
         this.loginService.setRetrievePassword(user.password),
         this.router.navigateByUrl('/login/password-retrieval')

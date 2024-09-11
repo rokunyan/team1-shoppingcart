@@ -3,6 +3,7 @@ import { EmailValidator, FormArray, FormBuilder, FormControl, FormGroup, Validat
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { Subscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile-page',
@@ -29,7 +30,7 @@ export class ProfilePageComponent{
   profileForm: FormGroup;
   interestFormArray: FormArray;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(private fb: FormBuilder, private userService: UserService, private toastr:ToastrService) {
     this.user = this.userService.getCurrentUser()
     this.profileForm = this.fb.group({
       userName: [this.user.userName, Validators.required],
@@ -60,8 +61,20 @@ export class ProfilePageComponent{
       interests: this.profileForm.value.interests
     }
     if(!this.validationChecking()){
-      alert("Please check your details.")
-    } else {alert("User profile successfully updated."),this.sub = this.userService.updateUser(user).pipe().subscribe()}
+      //alert("Please check your details.")
+      this.toastr.error("Please check your details.", 'Error!', {
+        progressBar: true,
+        timeOut: 5000
+      });
+    } else {//alert("User profile successfully updated."),
+      this.sub = this.userService.updateUser(user).pipe().subscribe(
+        () =>{
+          this.toastr.success("User profile successfully updated.", 'Success!', {
+            progressBar: true,
+            timeOut: 5000
+          });
+        }
+      )}
   };
 
   validationChecking = () => {
