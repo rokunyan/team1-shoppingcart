@@ -74,7 +74,7 @@ export class CartService {
     return this.getCarts().pipe(
       map((carts) => {
         if (carts.length === 0) return 0;
-        return carts.reduce((total, cart) => total + (cart.price*cart.quantity), 0);
+        return carts.reduce((total, cart) => total + (cart.price), 0);
       })
     );
   }
