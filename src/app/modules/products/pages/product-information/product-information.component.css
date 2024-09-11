@@ -30,7 +30,12 @@ div{
 }
 
 .price {
-    width: 100px;
-    font-size: 22px;
+    font-size: 40px;
     color: orangered;
   }
+
+.price-sec{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
