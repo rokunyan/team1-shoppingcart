@@ -7,6 +7,7 @@ import { Cart } from '../../../cart/model/cart';
 import { filter } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { numericValidator } from '../../validators/custom.validator';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-dashboard',
@@ -36,7 +37,8 @@ export class ProductDashboardComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private cartService: CartService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService
   ) {
     this.productForm = this.formBuilder.group({
       productNameQuery: '',
@@ -110,6 +112,10 @@ export class ProductDashboardComponent implements OnInit {
     this.cartService.addItemToCart(cartItem).subscribe({
       next: (item) => {
         console.log('Item added to cart:', item);
+        this.toastr.success(`${item.productName} has been added to your cart.`, 'Added To Cart!', {
+          progressBar: true,
+          timeOut: 5000
+        });
         this.getCart();
       },
     });
@@ -232,6 +238,17 @@ export class ProductDashboardComponent implements OnInit {
       default:
         this.filteredProducts.sort((a, b) => parseInt(a.id) - parseInt(b.id));
         break;
+    }
+  }
+
+  isOpen = false
+
+  toggleDropdown(){
+    if(this.isOpen){
+      this.isOpen = false;
+    }
+    else{
+      this.isOpen = true;
     }
   }
 }

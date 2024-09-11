@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { CartModule } from './modules/cart/cart.module';
 import { AdminPageModule } from './modules/admin-page/admin-page.module';
+import { provideToastr } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -21,11 +22,12 @@ import { AdminPageModule } from './modules/admin-page/admin-page.module';
     RouterModule,
     SharedModule,
     CartModule,
-    AdminPageModule
+    AdminPageModule,
   ],
   providers: [
     // provideClientHydration(),
-    provideHttpClient(withFetch()) //new http client module
+    provideHttpClient(withFetch()), //new http client module
+    provideToastr(),
   ],
   bootstrap: [AppComponent]
 })

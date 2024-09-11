@@ -1,0 +1,41 @@
+div{
+    padding: 10px;
+}
+
+.container{
+    display:flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+
+.product-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+  }
+
+
+.bg-grey{
+    background-color: lightgrey;
+}
+
+.price {
+    font-size: 40px;
+    color: orangered;
+  }
+
+.price-sec{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}

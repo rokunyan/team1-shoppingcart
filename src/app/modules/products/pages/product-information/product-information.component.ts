@@ -11,6 +11,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { get } from 'node:http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-information',
@@ -36,7 +37,8 @@ export class ProductInformationComponent implements OnInit {
     private productService: ProductService,
     private cartService: CartService,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService,
   ) {
     this.form = this.formBuilder.group({
       quantity: [1, [Validators.required, Validators.min(1)]],
@@ -86,6 +88,10 @@ export class ProductInformationComponent implements OnInit {
     this.cartService.addItemToCart(cartItem).subscribe({
       next: (item) => {
         console.log('Item added to cart:', item);
+        this.toastr.success(`${item.productName} has been added to your cart.`, 'Added To Cart!', {
+          progressBar: true,
+          timeOut: 5000
+        });
         this.getCart();
       },
     });
