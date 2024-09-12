@@ -4,6 +4,7 @@ import { CheckoutRoutingModule } from './checkout-routing.module';
 import { CheckoutListComponent } from './pages/checkout-list/checkout-list.component';
 import { CheckoutItemsComponent } from './components/checkout-items/checkout-items.component';
 import { SharedModule } from '../../shared/shared.module';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { SharedModule } from '../../shared/shared.module';
   imports: [
     CommonModule,
     CheckoutRoutingModule,
-    SharedModule
+    SharedModule,
+    ToastrModule,
   ]
 })
 export class CheckoutModule { }

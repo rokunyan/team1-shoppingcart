@@ -5,6 +5,7 @@ import { LoginRoutingModule } from './login-routing.module';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { PasswordPageComponent } from './components/password-page/password-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     LoginRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule
   ]
 })
 export class LoginModule { }
