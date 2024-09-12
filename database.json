@@ -231,7 +231,7 @@
       "birthDate": "2000-02-15",
       "password": "abcd1234",
       "email": "sample@gmail.com",
-      "mobileNumber": "63918485697",
+      "mobileNumber": "639018485697",
       "isActive": true,
       "isAdmin": false,
       "interests": [
@@ -252,7 +252,7 @@
       ],
       "password": "1234abcd",
       "email": "sample1@gmail.com",
-      "mobileNumber": "63918485698",
+      "mobileNumber": "639018485698",
       "isActive": true,
       "isAdmin": true
     },
@@ -268,7 +268,7 @@
       ],
       "password": "1234567890",
       "email": "sample3@gmail.com",
-      "mobileNumber": "63918485693",
+      "mobileNumber": "639018485693",
       "isActive": false,
       "isAdmin": false
     },
@@ -284,7 +284,23 @@
       ],
       "password": "6yALob30",
       "email": "sample4@gmail.com",
-      "mobileNumber": "63918485692",
+      "mobileNumber": "639018485692",
+      "isActive": true,
+      "isAdmin": false
+    },
+    {
+      "id": "5",
+      "userName": "clifford",
+      "firstName": "cliff",
+      "middleName": "ard",
+      "lastName": "aran",
+      "birthDate": "",
+      "interests": [
+        ""
+      ],
+      "password": "-7-ZLst8",
+      "email": "pulang_aso@yahoo.com",
+      "mobileNumber": "639018485697",
       "isActive": true,
       "isAdmin": false
     }

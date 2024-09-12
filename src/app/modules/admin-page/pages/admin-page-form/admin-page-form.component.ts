@@ -38,9 +38,9 @@ export class AdminPageFormComponent implements OnDestroy {
       email: new FormControl('', Validators.required),
       mobileNumber: new FormControl('', [
         Validators.required,
-        Validators.minLength(11),
-        Validators.maxLength(11),
-        Validators.pattern('^[0-9]{11}$'),
+        Validators.minLength(12),
+        Validators.maxLength(12),
+        Validators.pattern('^[0-9]{12}$'),
       ]),
       isActive: new FormControl(true),
       isAdmin: new FormControl('', Validators.required),

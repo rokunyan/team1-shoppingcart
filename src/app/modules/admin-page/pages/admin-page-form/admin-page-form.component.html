@@ -37,7 +37,7 @@
             class="form-control"
             type="password"
             style="background-color: #d3d3d3"
-            readonly
+            
           />
         </div>
         <!-- Role Field -->
@@ -167,12 +167,12 @@
             <small
               class="text-danger"
               *ngIf="userForm.get('mobileNumber')?.errors?.['minlength']"
-              >Mobile Number must be exactly 11 characters long.</small
+              >Mobile Number must be exactly 12 characters long.</small
             >
             <small
               class="text-danger"
               *ngIf="userForm.get('mobileNumber')?.errors?.['maxlength']"
-              >Mobile Number must be exactly 11 characters long.</small
+              >Mobile Number must be exactly 12 characters long.</small
             >
             <small
               class="text-danger"
