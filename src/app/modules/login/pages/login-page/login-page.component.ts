@@ -24,7 +24,11 @@ export class LoginPageComponent {
   login() {
     let user = this.authService.isValidCred(this.loginForm.value.email, this.loginForm.value.password)
     if(!user){
-      alert('Invalid email or password. Please check your details.')
+      // alert('Invalid email or password. Please check your details.')
+      this.toastr.error(`Invalid email or password. Please check your details.`, 'Failed!', {
+        progressBar: true,
+        timeOut: 5000
+      });
     } else{
       this.toastr.success(`You Logged In!`, 'Success!', {
         progressBar: true,
