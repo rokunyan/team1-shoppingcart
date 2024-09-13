@@ -1,19 +1,23 @@
 <app-header></app-header>
 <br />
 <div class="shopping-cart">
-  <div class="empty-cart-container" *ngIf="pendingCarts && pendingCarts.length === 0">
+  <div class="empty-cart-container" *ngIf="pendingTransactions && pendingTransactions.length === 0">
     <div>
       <h2>There are no order history.</h2>
     </div>
   </div>
-  <div *ngIf="pendingCarts && pendingCarts.length > 0">
+  <div *ngIf="pendingTransactions && pendingTransactions.length > 0">
     <div class="title">Order History</div>
     <hr class="my-1" />
-    <div *ngFor="let cart of pendingCarts">
-      <app-pending-items
-        [cart]="cart"
+    <div *ngFor="let transaction of pendingTransactions">
+      <h5>Order ID: <b>{{transaction.id|uppercase}}</b> </h5>
+      <p><i>{{transaction.dateOfTransaction | date : 'medium'}}</i></p>
+      <app-per-transaction
+        [transaction]="transaction"
       >
-      </app-pending-items>
+      </app-per-transaction>
+    <div class="total">Total: ₱ {{ transaction.totalTransaction| number : "1.2-2" }}</div>
+    <hr class="my-1" />
     </div>
   </div>
 </div>

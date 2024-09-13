@@ -1,0 +1,7 @@
+<div *ngIf="pendingCarts && pendingCarts.length > 0">
+    <div *ngFor="let cart of pendingCarts">
+      <app-pending-items
+        [cart]="cart">
+      </app-pending-items>
+    </div>
+</div>
