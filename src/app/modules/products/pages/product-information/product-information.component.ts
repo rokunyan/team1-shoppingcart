@@ -56,7 +56,24 @@ export class ProductInformationComponent implements OnInit {
   executeAction(action: string) {
     switch (action) {
       case 'ADD TO CART':
-        if (this.form.valid) {
+        let quantity = this.form.get('quantity')?.value
+        if(!this.form.valid){
+          this.toastr.error(
+            `Quantity inserted should at least be 1`, 
+            'Error!', {
+            progressBar: true,
+            timeOut: 5000
+          });
+        }
+        else if(quantity > this.product!.quantity){
+          this.toastr.error(
+            `Quantity exceeds product's stock (${this.product!.name}'s stock: ${this.product!.quantity})`, 
+            'Error!', {
+            progressBar: true,
+            timeOut: 5000
+          });
+        }
+        else {
           this.addToCart(this.product!);
         }
         break;
