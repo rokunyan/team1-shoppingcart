@@ -4,6 +4,7 @@ import { AdminPageService } from '../../services/admin-page.service';
 import { Router } from '@angular/router';
 import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-page-list',
@@ -17,7 +18,8 @@ export class AdminPageListComponent {
   constructor(
     private adminPageService: AdminPageService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -50,6 +52,14 @@ export class AdminPageListComponent {
     this.adminPageService
       .activate(user)
       .subscribe((updatedUser) => this.loadUsers());
+    this.toastr.success(
+      `${user.userName} has been activated.`,
+      'Activated Customer!',
+      {
+        progressBar: true,
+        timeOut: 5000,
+      }
+    );
   }
 
   onAdd(): void {

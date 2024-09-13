@@ -159,6 +159,7 @@ export class CartService {
               throw new Error('Exceeds available product stock');
             }
 
+            this.forCheckOut = true;
             const updatedCart = { ...cart };
             updatedCart.quantity += 1;
             updatedCart.price =
@@ -230,16 +231,22 @@ export class CartService {
           map((product) => {
             if (quantity > product.quantity) {
               this.forCheckOut = false;
-              throw new Error('Exceeds available product stock');
+              throw new Error('Exceeds available product stock.');
             }
 
+            if (quantity <= 0) {
+              this.forCheckOut = false;
+              throw new Error('Quantity must be greater than zero.');
+            }
+
+            this.forCheckOut = true;
+
             const updatedCart = { ...cart };
+
             updatedCart.quantity = quantity;
 
             updatedCart.price =
               (cart.price / cart.quantity) * updatedCart.quantity;
-
-            this.forCheckOut = true;
 
             return updatedCart;
           }),
@@ -252,7 +259,7 @@ export class CartService {
       }),
       catchError((error) => {
         console.error('Error updating cart quantity:', error);
-        alert('Exceeds product stock.');
+        alert(`Please enter a valid value.`);
         return throwError(() => error);
       })
     );
