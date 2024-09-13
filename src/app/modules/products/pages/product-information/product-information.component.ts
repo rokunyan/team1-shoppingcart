@@ -38,7 +38,7 @@ export class ProductInformationComponent implements OnInit {
     private cartService: CartService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private toastr: ToastrService,
+    private toastr: ToastrService
   ) {
     this.form = this.formBuilder.group({
       quantity: [1, [Validators.required, Validators.min(1)]],
@@ -80,7 +80,7 @@ export class ProductInformationComponent implements OnInit {
       description: product.description,
       category: product.category,
       quantity: this.quantity?.value,
-      price: product.price,
+      price: product.price * this.quantity?.value,
       status: 'added',
       image: product.image,
     };
@@ -88,10 +88,14 @@ export class ProductInformationComponent implements OnInit {
     this.cartService.addItemToCart(cartItem).subscribe({
       next: (item) => {
         console.log('Item added to cart:', item);
-        this.toastr.success(`${item.productName} has been added to your cart.`, 'Added To Cart!', {
-          progressBar: true,
-          timeOut: 5000
-        });
+        this.toastr.success(
+          `${item.productName} has been added to your cart.`,
+          'Added To Cart!',
+          {
+            progressBar: true,
+            timeOut: 5000,
+          }
+        );
         this.getCart();
       },
     });

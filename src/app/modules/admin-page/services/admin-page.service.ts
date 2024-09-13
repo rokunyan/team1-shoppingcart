@@ -56,6 +56,18 @@ export class AdminPageService {
       );
   }
 
+  activate(user: User): Observable<User> {
+    const url = `${this.serverUrl}/${user.id}`;
+    const updateUser = { ...user, isActive: true };
+    return this.http
+      .put<User>(url, updateUser)
+      .pipe(
+        tap((updatedUser: User) =>
+          console.log(`Updated user ${updateUser.id} `, updateUser)
+        )
+      );
+  }
+
   addUser(user: User): Observable<User> {
     return this.http
       .post<User>(this.serverUrl, user)

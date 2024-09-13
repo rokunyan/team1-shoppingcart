@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 import { AdminPageService } from '../../services/admin-page.service';
 import { Router } from '@angular/router';
 import { User } from '../../../user/models/user';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-page-form',
@@ -25,7 +26,8 @@ export class AdminPageFormComponent implements OnDestroy {
   constructor(
     private fb: FormBuilder,
     private adminPageService: AdminPageService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {
     this.userForm = this.fb.group({
       userName: new FormControl('', Validators.required),
@@ -90,6 +92,14 @@ export class AdminPageFormComponent implements OnDestroy {
               this.router.navigate(['/admin-page']);
             },
           });
+          this.toastr.success(
+            `${user.userName} has been registered.`,
+            'Added To Customer List!',
+            {
+              progressBar: true,
+              timeOut: 5000,
+            }
+          );
         },
       });
     } else {

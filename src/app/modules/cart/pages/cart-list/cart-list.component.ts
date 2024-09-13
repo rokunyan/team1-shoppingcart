@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Cart } from '../../model/cart';
 import { CartService } from '../../services/cart.service';
-import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-cart-list',
@@ -10,17 +11,9 @@ import { Router } from '@angular/router';
 })
 export class CartListComponent {
   carts: Cart[] = [];
-  // continue = [
-  //   {
-  //     label: 'Continue Shopping',
-  //     action: () => this.continueShopping(),
-  //     type: 'danger',
-  //   },
-  // ];
+  isForCheckout: boolean = false;
 
-  // pay = [{ label: 'Pay', action: () => this.payment(), type: 'primary' }];
-
-  constructor(private cartService: CartService, private router: Router) {}
+  constructor(private cartService: CartService, private dialog: MatDialog) {}
   ngOnInit(): void {
     this.loadCarts();
   }
@@ -32,9 +25,19 @@ export class CartListComponent {
   }
 
   delete(id: string): void {
-    this.cartService
-      .deleteItemFromCart(id)
-      .subscribe(() => console.log(this.loadCarts()));
+    const message = `Are you sure you want to delete this item from the cart?`;
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: { message },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.cartService
+          .deleteItemFromCart(id)
+          .subscribe(() => console.log(this.loadCarts()));
+      }
+    });
   }
 
   increment(id: string): void {
@@ -55,11 +58,7 @@ export class CartListComponent {
       .subscribe((updatedCart) => this.loadCarts());
   }
 
-  // continueShopping(): void {
-  //   this.router.navigate(['/admin-page']);
-  // }
-
-  // payment(): void {
-  //   this.router.navigate(['/user-profile']);
-  // }
+  showButton() {
+    return (this.isForCheckout = this.cartService.forCheckOut);
+  }
 }

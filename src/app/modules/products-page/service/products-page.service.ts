@@ -28,11 +28,16 @@ export class ProductsPageService {
       .pipe(tap((product) => console.log('Fetched product:', product)));
   }
 
-  deleteItemFromProducts(id: string): Observable<Product> {
-    const url = `${this.serverUrl}/${id}`;
+  deleteItemFromProducts(product: Product): Observable<Product> {
+    const url = `${this.serverUrl}/${product.id}`;
+    const deleteProduct = { ...product, status: 'Removed' };
     return this.http
-      .delete<Product>(url)
-      .pipe(tap(() => console.log(`Deleted cart ${id}`)));
+      .put<Product>(url, deleteProduct)
+      .pipe(
+        tap((deletedProduct) =>
+          console.log(`Changed status to removed ${product.id}`, deleteProduct)
+        )
+      );
   }
 
   updateProduct(updatedProduct: Product): Observable<Product> {
