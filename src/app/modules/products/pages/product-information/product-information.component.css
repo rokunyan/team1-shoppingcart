@@ -2,6 +2,20 @@ div{
     padding: 10px;
 }
 
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.bg-grey{
+    background-color: lightgrey;
+}
+
+.btn {
+    padding: 5px 10px;
+}
+
 .container{
     display:flex;
     flex-direction: row;
@@ -10,6 +24,7 @@ div{
 }
 
 .product-container {
+    position:relative;
     padding: 20px;
     background-color: #f8f9fa;
     border: 1px solid #ddd;
@@ -24,10 +39,6 @@ div{
     height: 100%;
   }
 
-
-.bg-grey{
-    background-color: lightgrey;
-}
 
 .price {
     font-size: 40px;

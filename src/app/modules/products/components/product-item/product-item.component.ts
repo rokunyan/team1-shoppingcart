@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../models/product';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-item',
@@ -14,7 +15,7 @@ export class ProductItemComponent {
   
   form:FormGroup
 
-  constructor(private formBuilder:FormBuilder){
+  constructor(private formBuilder:FormBuilder, private toastr:ToastrService){
     this.form = this.formBuilder.group({
       quantity:[1, [Validators.required, Validators.min(1)]]
     })
@@ -23,7 +24,23 @@ export class ProductItemComponent {
     switch(action){
       case 'ADD TO CART':
       let quantity = this.form.get('quantity')?.value
-      if(this.form.valid){
+      if(!this.form.valid){
+        this.toastr.error(
+          `Quantity inserted should at least be 1`, 
+          'Error!', {
+          progressBar: true,
+          timeOut: 5000
+        });
+      }
+      else if(quantity > this.product!.quantity){
+        this.toastr.error(
+          `Quantity exceeds product's stock (${this.product!.name}'s stock: ${this.product!.quantity})`, 
+          'Error!', {
+          progressBar: true,
+          timeOut: 5000
+        });
+      }
+      else{
         this.actionEmitter.emit({data, action, quantity})
       }
       break

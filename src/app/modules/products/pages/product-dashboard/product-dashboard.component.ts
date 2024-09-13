@@ -64,8 +64,8 @@ export class ProductDashboardComponent implements OnInit {
 
   getProducts() {
     this.productService.getProducts().subscribe((data: any) => {
-      this.products = data;
-      this.filteredProducts = data;
+      this.products = data.filter((product:any) => product.status === 'Available');
+      this.filteredProducts = this.products;
 
       console.log(`[From Dashboard Page] Get Products Successful!`);
       console.log(this.products);
@@ -79,21 +79,6 @@ export class ProductDashboardComponent implements OnInit {
       console.log(this.carts);
     });
   }
-
-  /**
-   *export interface Cart {
-    id: string,
-    userId: string,
-    productId: number,
-    productName: string,
-    description: string,
-    category: string,
-    quantity: number,
-    price: number,
-    status: string,
-    image: string
-}
-   */
 
   addToCart(product: Product, quantity: number): void {
     const cartItem: Cart = {
