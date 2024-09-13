@@ -3,13 +3,13 @@
     {
       "id": "1",
       "name": "Smartphones",
+      "description": "A high-end smartphone with a sleek design and powerful features.",
       "category": "Electronics",
-      "quantity": 50,
+      "quantity": 5,
       "price": 299.99,
       "status": "Available",
       "image": "https://img.lazcdn.com/g/p/111d3e07a02ea335d70d7d97c797299b.jpg_400x400q75.jpg_.webp",
-      "itemsSold": 120,
-      "description": "A high-end smartphone with a sleek design and powerful features."
+      "itemsSold": 120
     },
     {
       "id": "2",
@@ -230,6 +230,18 @@
       "quantity": 1,
       "price": 299.99,
       "status": "pending",
+      "image": "https://img.lazcdn.com/g/p/111d3e07a02ea335d70d7d97c797299b.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "12",
+      "userId": "2",
+      "productId": "1",
+      "productName": "Smartphones",
+      "description": "A high-end smartphone with a sleek design and powerful features.",
+      "category": "Electronics",
+      "quantity": 5,
+      "price": 1499.95,
+      "status": "added",
       "image": "https://img.lazcdn.com/g/p/111d3e07a02ea335d70d7d97c797299b.jpg_400x400q75.jpg_.webp"
     }
   ],

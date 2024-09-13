@@ -3,20 +3,25 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
-  background-color: #7EC855;
+  background-color: #7ec855;
 }
 
 .customer {
   width: 850px;
   height: 450px;
   margin: 30px auto;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 6px;
 }
 
 .title {
   height: 10px;
-  color: #5E6977;
+  color: #5e6977;
   font-size: 18px;
   font-weight: bold;
+}
+
+.text-danger {
+  display: block;
+  margin-bottom: 5px;
 }

@@ -1,13 +1,9 @@
 <app-header></app-header>
-<!-- <div *ngIf="carts && carts.length > 0">
-  <app-command-bar [commands]="pay" class="pay"></app-command-bar>
-</div> -->
 <br />
 <div class="shopping-cart">
   <div class="empty-cart-container" *ngIf="carts && carts.length === 0">
     <div>
       <h2>There are no items in this cart.</h2>
-      <!-- <app-command-bar [commands]="continue" class="continue"></app-command-bar> -->
     </div>
   </div>
   <div *ngIf="carts && carts.length > 0">
@@ -24,7 +20,12 @@
       </app-cart-item>
     </div>
     <div class="button-container">
-      <button class="btn btn-info" routerLink="/checkout" routerLinkActive="router-link-active">
+      <button
+        class="btn btn-info"
+        routerLink="/checkout"
+        routerLinkActive="router-link-active"
+        [class.disabled]="!showButton()"
+      >
         Go to Checkout
       </button>
     </div>

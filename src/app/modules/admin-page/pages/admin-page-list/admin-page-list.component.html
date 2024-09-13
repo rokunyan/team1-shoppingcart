@@ -54,6 +54,14 @@
               >
                 Deactivate
               </button>
+              <button
+                *ngIf="!user.isActive && !user.isAdmin"
+                (click)="activate(user)"
+                class="btn btn-outline-primary btn-sm"
+                type="button"
+              >
+                &nbsp;&nbsp;Activate&nbsp;&nbsp;
+              </button>
             </td>
           </tr>
         </tbody>

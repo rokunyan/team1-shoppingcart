@@ -104,7 +104,7 @@ export class ProductDashboardComponent implements OnInit {
       description: product.description,
       category: product.category,
       quantity: quantity,
-      price: product.price,
+      price: product.price * quantity,
       status: 'added',
       image: product.image,
     };
@@ -112,10 +112,14 @@ export class ProductDashboardComponent implements OnInit {
     this.cartService.addItemToCart(cartItem).subscribe({
       next: (item) => {
         console.log('Item added to cart:', item);
-        this.toastr.success(`${item.productName} has been added to your cart.`, 'Added To Cart!', {
-          progressBar: true,
-          timeOut: 5000
-        });
+        this.toastr.success(
+          `${item.productName} has been added to your cart.`,
+          'Added To Cart!',
+          {
+            progressBar: true,
+            timeOut: 5000,
+          }
+        );
         this.getCart();
       },
     });
@@ -241,13 +245,12 @@ export class ProductDashboardComponent implements OnInit {
     }
   }
 
-  isOpen = false
+  isOpen = false;
 
-  toggleDropdown(){
-    if(this.isOpen){
+  toggleDropdown() {
+    if (this.isOpen) {
       this.isOpen = false;
-    }
-    else{
+    } else {
       this.isOpen = true;
     }
   }

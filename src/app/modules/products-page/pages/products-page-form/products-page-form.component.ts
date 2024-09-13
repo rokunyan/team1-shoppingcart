@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 import { ProductsPageService } from '../../service/products-page.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../../products/models/product';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-products-page-form',
@@ -46,16 +47,23 @@ export class ProductsPageFormComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private productsPageService: ProductsPageService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {
     this.productForm = this.fb.group({
       name: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
+      description: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(300),
+      ]),
       category: new FormControl('', Validators.required),
       quantity: new FormControl('', [Validators.required, Validators.min(0)]),
       price: new FormControl('', [Validators.required, Validators.min(1)]),
       status: new FormControl('', Validators.required),
-      itemsSold: new FormControl('', [Validators.required, Validators.min(0)]),
+      itemsSold: new FormControl({ value: '', disabled: true }, [
+        Validators.required,
+        Validators.min(0),
+      ]),
     });
   }
 
@@ -80,11 +88,15 @@ export class ProductsPageFormComponent implements OnInit, OnDestroy {
               itemsSold: product.itemsSold,
             });
             this.imageSrc = product.image;
+            this.productForm.get('itemsSold')?.enable();
           },
         });
+    } else {
+      this.productForm.patchValue({
+        itemsSold: 0,
+      });
     }
   }
-
   onFileChange(event: any) {
     const file = event.target.files[0];
     if (file) {
@@ -118,6 +130,14 @@ export class ProductsPageFormComponent implements OnInit, OnDestroy {
           next: () => this.router.navigate(['/products-page']),
           error: (err) => console.error('Update failed', err),
         });
+        this.toastr.success(
+          `${product.name} has been updated.`,
+          'Updated Product!',
+          {
+            progressBar: true,
+            timeOut: 5000,
+          }
+        );
       } else {
         this.productsPageService.getMaxId().subscribe({
           next: (maxId: number) => {
@@ -130,6 +150,14 @@ export class ProductsPageFormComponent implements OnInit, OnDestroy {
           },
           error: (err) => console.error('Failed to get max ID', err),
         });
+        this.toastr.success(
+          `${product.name} has been added to the list.`,
+          'Added To Product List!',
+          {
+            progressBar: true,
+            timeOut: 5000,
+          }
+        );
       }
     } else {
       this.productForm.markAllAsTouched();

@@ -193,6 +193,7 @@
               formControlName="price"
               type="number"
               class="form-control"
+              step="0.01"
             />
             <div
               *ngIf="
@@ -249,35 +250,8 @@
         </div>
 
         <div class="row">
-          <!-- Image URL -->
-          <!-- <div class="col-12 col-md-12 mb-3">
-            <label for="image" class="form-label">Image URL</label>
-            <input
-              id="image"
-              formControlName="image"
-              type="text"
-              class="form-control"
-            />
-            <div
-              *ngIf="
-                productForm.get('image')?.invalid &&
-                (productForm.get('image')?.dirty ||
-                  productForm.get('image')?.touched)
-              "
-            >
-              <small
-                class="text-danger"
-                *ngIf="productForm.get('image')?.errors?.['required']"
-              >
-                Image URL is required.
-              </small>
-            </div>
-          </div> -->
-        </div>
-
-        <div class="row">
           <!-- Description Field -->
-          <div class="col-12 col-md-12">
+          <div class="col-12 col-md-12 mt-3">
             <label for="description" class="form-label">Description</label>
             <textarea
               id="description"
@@ -298,6 +272,12 @@
                 *ngIf="productForm.get('description')?.errors?.['required']"
               >
                 Description is required.
+              </small>
+              <small
+                class="text-danger"
+                *ngIf="productForm.get('description')?.errors?.['maxlength']"
+              >
+                Description maximum length: 300
               </small>
             </div>
           </div>

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { User } from '../../../user/models/user';
 import { AdminPageService } from '../../services/admin-page.service';
 import { Router } from '@angular/router';
+import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-admin-page-list',
@@ -14,7 +16,8 @@ export class AdminPageListComponent {
 
   constructor(
     private adminPageService: AdminPageService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -28,8 +31,24 @@ export class AdminPageListComponent {
   }
 
   deactivate(user: User): void {
+    const message = `Are you sure you want to deactivate user ${user.userName}?`;
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: { message },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.adminPageService
+          .deactivate(user)
+          .subscribe(() => this.loadUsers());
+      }
+    });
+  }
+
+  activate(user: User): void {
     this.adminPageService
-      .deactivate(user)
+      .activate(user)
       .subscribe((updatedUser) => this.loadUsers());
   }
 

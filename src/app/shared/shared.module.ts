@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { CommandBarComponent } from './command-bar/command-bar.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 
 
@@ -12,6 +13,7 @@ import { ToastrModule } from 'ngx-toastr';
   declarations: [
     HeaderComponent,
     CommandBarComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     CommonModule, RouterModule
