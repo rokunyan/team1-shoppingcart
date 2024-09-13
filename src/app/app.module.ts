@@ -10,7 +10,8 @@ import { SharedModule } from './shared/shared.module';
 import { CartModule } from './modules/cart/cart.module';
 import { AdminPageModule } from './modules/admin-page/admin-page.module';
 import { provideToastr } from 'ngx-toastr';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
+import { ProductsModule } from './modules/products/products.module';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -23,13 +24,12 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
     RouterModule,
     SharedModule,
     CartModule,
-    AdminPageModule,
-    BrowserAnimationsModule
+    AdminPageModule
   ],
   providers: [
     // provideClientHydration(),
     provideHttpClient(withFetch()), //new http client module
-    provideToastr(),
+    provideToastr(), provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent]
 })
