@@ -4,13 +4,15 @@ import { PendingTransactionComponent } from './pages/pending-transaction/pending
 import { TransactionRoutingModule } from './transaction-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { PendingItemsComponent } from './components/pending-items/pending-items.component';
+import { PerTransactionComponent } from './components/per-transaction/per-transaction.component';
 
 
 
 @NgModule({
   declarations: [
     PendingTransactionComponent,
-    PendingItemsComponent
+    PendingItemsComponent,
+    PerTransactionComponent
   ],
   imports: [
     CommonModule,
