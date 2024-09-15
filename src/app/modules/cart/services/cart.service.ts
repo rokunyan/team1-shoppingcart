@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Cart } from '../model/cart';
 import {
+  BehaviorSubject,
   catchError,
   map,
   Observable,
@@ -21,6 +22,8 @@ import { Product } from '../../products/models/product';
 export class CartService {
   private serverUrl = 'http://localhost:3000/carts';
   private productServerUrl = 'http://localhost:3000/products';
+  private totalQtySubject = new BehaviorSubject<number>(0);
+  totalQty$ = this.totalQtySubject.asObservable();
   status: string = 'added';
   forCheckOut: boolean = true;
 
@@ -52,9 +55,15 @@ export class CartService {
             (this.status ? cart.status === this.status : true)
         )
       ),
-      tap((filteredCarts) =>
-        console.log('Fetched and filtered carts:', filteredCarts)
-      )
+      tap((filteredCarts) => {
+        console.log('Fetched and filtered carts:', filteredCarts);
+        const totalQty = filteredCarts.reduce(
+          (quantity, cart) => quantity + cart.quantity,
+          0
+        );
+        console.log('Total quantity:', totalQty);
+        this.totalQtySubject.next(totalQty);
+      })
     );
   }
 

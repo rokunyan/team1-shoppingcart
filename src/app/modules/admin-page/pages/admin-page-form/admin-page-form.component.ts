@@ -6,7 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { forkJoin, Subscription } from 'rxjs';
 import { AdminPageService } from '../../services/admin-page.service';
 import { Router } from '@angular/router';
 import { User } from '../../../user/models/user';
@@ -65,41 +65,67 @@ export class AdminPageFormComponent implements OnDestroy {
     return result;
   }
 
+  // admin-page-form.component.ts
+
   onSubmit(): void {
     if (this.userForm.valid) {
-      this.adminPageService.getMaxId().subscribe({
-        next: (maxId: number) => {
-          const formValue = this.userForm.value;
-          const newId: string = (maxId + 1).toString();
-          const user: User = {
-            id: newId,
-            userName: formValue.userName,
-            firstName: formValue.firstName,
-            middleName: formValue.middleName,
-            lastName: formValue.lastName,
-            birthDate: formValue.birthDate,
-            interests: formValue.interests,
-            password: formValue.password,
-            email: formValue.email,
-            mobileNumber: formValue.mobileNumber,
-            isActive: formValue.isActive,
-            isAdmin: formValue.isAdmin,
-          };
+      const formValue = this.userForm.value;
 
-          const request = this.adminPageService.addUser(user);
-          this.sub = request.subscribe({
-            next: () => {
-              this.router.navigate(['/admin-page']);
+      this.sub = forkJoin([
+        this.adminPageService.checkUserNameExists(formValue.userName),
+        this.adminPageService.checkEmailExists(formValue.email),
+      ]).subscribe({
+        next: ([userNameExists, emailExists]: [boolean, boolean]) => {
+          let hasErrors = false;
+
+          if (userNameExists) {
+            this.userForm.get('userName')?.setErrors({ userNameTaken: true });
+            hasErrors = true;
+          }
+
+          if (emailExists) {
+            this.userForm.get('email')?.setErrors({ emailTaken: true });
+            hasErrors = true;
+          }
+
+          if (hasErrors) {
+            this.userForm.markAllAsTouched();
+            return;
+          }
+
+          this.adminPageService.getMaxId().subscribe({
+            next: (maxId: number) => {
+              const newId: string = (maxId + 1).toString();
+              const user: User = {
+                id: newId,
+                userName: formValue.userName,
+                firstName: formValue.firstName,
+                middleName: formValue.middleName,
+                lastName: formValue.lastName,
+                birthDate: formValue.birthDate,
+                interests: formValue.interests,
+                password: formValue.password,
+                email: formValue.email,
+                mobileNumber: formValue.mobileNumber,
+                isActive: formValue.isActive,
+                isAdmin: formValue.isAdmin,
+              };
+
+              this.adminPageService.addUser(user).subscribe({
+                next: () => {
+                  this.router.navigate(['/admin-page']);
+                  this.toastr.success(
+                    `${user.userName} has been registered.`,
+                    'Added To Customer List!',
+                    {
+                      progressBar: true,
+                      timeOut: 5000,
+                    }
+                  );
+                },
+              });
             },
           });
-          this.toastr.success(
-            `${user.userName} has been registered.`,
-            'Added To Customer List!',
-            {
-              progressBar: true,
-              timeOut: 5000,
-            }
-          );
         },
       });
     } else {

@@ -1,5 +1,8 @@
 <div class="container">
   <div class="customer">
+    <br />
+    <br />
+    <br />
     <div class="title text-start">Add New Customer</div>
     <br />
     <hr class="my-1" />
@@ -27,6 +30,12 @@
               >User Name is required.</small
             >
           </div>
+          <small
+            *ngIf="userForm.get('userName')?.errors?.['userNameTaken']"
+            class="text-danger"
+          >
+            Username already exists.
+          </small>
         </div>
         <!-- Password Field -->
         <div class="col-12 col-md-4 mb-3">
@@ -142,6 +151,12 @@
               *ngIf="userForm.get('email')?.errors?.['required']"
               >Email is required.</small
             >
+            <small
+              *ngIf="userForm.get('email')?.errors?.['emailTaken']"
+              class="text-danger"
+            >
+              Email already exists. Please use a different email.
+            </small>
           </div>
         </div>
         <div class="col-12 col-md-6 mb-3">
