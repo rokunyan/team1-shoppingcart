@@ -1,13 +1,19 @@
 <div>
   <div *ngIf="getAdminAndActive()">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
       <a class="navbar-brand" routerLink="/admin-dashboard">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Shopping-cart-transparent-icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Shopping-cart-transparent-icon.png"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          alt=""
+          colo
+        />
         Shopping Cart
       </a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-        </ul>
+        <ul class="navbar-nav mr-auto"></ul>
       </div>
       <ul class="navbar-nav d-flex justify-content-end">
         <li>
@@ -15,14 +21,20 @@
             routerLink="/cart"
             routerLinkActive="router-link-active"
             class="nav-item nav-link"
-            ><i class="fa-solid fa-cart-shopping"></i></a>
+          >
+            <i class="fa-solid fa-cart-shopping not-dropdown"> </i>
+          </a>
+        </li>
+        <li>
+          <span class="badge badge-pill badge-danger">{{ totalQty }}</span>
         </li>
         <li>
           <a
             routerLink="/order-history"
             routerLinkActive="router-link-active"
             class="nav-item nav-link"
-            ><i class="fa-solid fa-truck"></i></a>
+            ><i class="fa-solid fa-truck not-dropdown"></i
+          ></a>
         </li>
         <li>
           <a
@@ -30,18 +42,25 @@
             routerLinkActive="active"
             class="nav-item nav-link mr-3"
           >
-            <i class="fa-solid fa-user"></i></a
-          >
+            <i class="fa-solid fa-user not-dropdown"></i
+          ></a>
         </li>
         <li class="dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-bars"></i></a>
+          <a
+            class="nav-link dropdown-toggle not-dropdown"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+            ><i class="fa-solid fa-bars"></i
+          ></a>
           <div class="dropdown-content">
             <li>
               <a
                 routerLink="/admin-page"
                 routerLinkActive="router-link-active"
                 class="nav-item nav-link"
-                ><i class="fa-solid fa-user-tie"></i>  Admin</a
+                ><i class="fa-solid fa-user-tie"></i> Admin</a
               >
             </li>
             <li>
@@ -49,7 +68,7 @@
                 routerLink="/products-page"
                 routerLinkActive="router-link-active"
                 class="nav-item nav-link"
-                ><i class="fa-solid fa-list"></i>  Products</a
+                ><i class="fa-solid fa-list"></i> Products</a
               >
             </li>
             <li>
@@ -57,32 +76,36 @@
                 routerLink="/dashboard"
                 routerLinkActive="router-link-active"
                 class="nav-item nav-link"
-                ><i class="fa-solid fa-bag-shopping"></i>  Shop</a
+                ><i class="fa-solid fa-bag-shopping"></i> Shop</a
               >
             </li>
             <a
-            routerLinkActive="active"
-            class="nav-item nav-link mr-3"
-            (click)="logout()"
-            href="/login"
-          >
-          <i class="fa-solid fa-right-from-bracket"></i>  Logout</a
-          >
+              routerLinkActive="active"
+              class="nav-item nav-link mr-3"
+              (click)="logout()"
+              href="/login"
+            >
+              <i class="fa-solid fa-right-from-bracket"></i> Logout</a
+            >
           </div>
         </li>
       </ul>
     </nav>
   </div>
   <div *ngIf="getCustomerAndActive() && !getAdminAndActive()">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
       <a class="navbar-brand" routerLink="/dashboard">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Shopping-cart-transparent-icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Shopping-cart-transparent-icon.png"
+          width="30"
+          height="30"
+          class="d-inline-block align-top"
+          alt=""
+        />
         Shopping Cart
       </a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-         
-        </ul>
+        <ul class="navbar-nav mr-auto"></ul>
       </div>
       <ul class="navbar-nav d-flex justify-content-end">
         <li>
@@ -90,14 +113,19 @@
             routerLink="/cart"
             routerLinkActive="router-link-active"
             class="nav-item nav-link"
-            ><i class="fa-solid fa-cart-shopping"></i></a>
+            ><i class="fa-solid fa-cart-shopping not-dropdown"></i
+          ></a>
+        </li>
+        <li>
+          <span class="badge badge-pill badge-danger">{{ totalQty }}</span>
         </li>
         <li>
           <a
             routerLink="/order-history"
             routerLinkActive="router-link-active"
             class="nav-item nav-link"
-            ><i class="fa-solid fa-truck"></i></a>
+            ><i class="fa-solid fa-truck not-dropdown"></i
+          ></a>
         </li>
         <li>
           <a
@@ -105,20 +133,27 @@
             routerLinkActive="active"
             class="nav-item nav-link mr-3"
           >
-            <i class="fa-solid fa-user"></i></a
-          >
+            <i class="fa-solid fa-user not-dropdown"></i
+          ></a>
         </li>
         <li class="dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-bars"></i></a>
+          <a
+            class="nav-link dropdown-toggle not-dropdown"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+            ><i class="fa-solid fa-bars"></i
+          ></a>
           <div class="dropdown-content">
             <a
-            routerLinkActive="active"
-            class="nav-item nav-link mr-3"
-            (click)="logout()"
-            href="/login"
-          >
-          <i class="fa-solid fa-right-from-bracket"></i>  Logout</a
-          >
+              routerLinkActive="active"
+              class="nav-item nav-link mr-3"
+              (click)="logout()"
+              href="/login"
+            >
+              <i class="fa-solid fa-right-from-bracket"></i> Logout</a
+            >
           </div>
         </li>
       </ul>

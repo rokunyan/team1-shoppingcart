@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../modules/user/services/user.service';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { CartService } from '../../modules/cart/services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -9,10 +8,16 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  isAdmin: boolean = false;
-  isActive: boolean = false;
+  totalQty?: number;
 
-  constructor(private userService: UserService, private router: Router, private toastr:ToastrService) {}
+  constructor(
+    private userService: UserService,
+    private cartService: CartService
+  ) {}
+
+  ngOnInit(): void {
+    this.cartService.totalQty$.subscribe((qty) => (this.totalQty = qty));
+  }
 
   getAdminAndActive = () => {
     const user = this.userService.getCurrentUser();
@@ -31,12 +36,8 @@ export class HeaderComponent {
   };
 
   logout = () => {
-      if (typeof window !== 'undefined' && window.localStorage) {
-        // this.toastr.success(`You have logged out.`, 'Logged Out!', {
-        //   progressBar: true,
-        //   timeOut: 5000
-        // });
-        localStorage.removeItem('session')
-      }
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.removeItem('session');
     }
+  };
 }

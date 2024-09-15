@@ -12,10 +12,9 @@ export class AdminPageService {
   constructor(private http: HttpClient) {}
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.serverUrl).pipe(
-      // map((users) => users.filter((user) => user.isAdmin === false)),
-      tap((guests) => console.log('Customers:', guests))
-    );
+    return this.http
+      .get<User[]>(this.serverUrl)
+      .pipe(tap((guests) => console.log('Customers:', guests)));
   }
 
   getAllCustomers(): Observable<User[]> {
@@ -72,5 +71,17 @@ export class AdminPageService {
     return this.http
       .post<User>(this.serverUrl, user)
       .pipe(tap((newUser: User) => console.log('Adding a user ', newUser)));
+  }
+
+  checkUserNameExists(userName: string): Observable<boolean> {
+    return this.http
+      .get<User[]>(this.serverUrl)
+      .pipe(map((users) => users.some((user) => user.userName === userName)));
+  }
+
+  checkEmailExists(email: string): Observable<boolean> {
+    return this.http
+      .get<User[]>(this.serverUrl)
+      .pipe(map((users) => users.some((user) => user.email === email)));
   }
 }
