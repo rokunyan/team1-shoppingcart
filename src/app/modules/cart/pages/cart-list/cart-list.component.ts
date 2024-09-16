@@ -42,7 +42,7 @@ export class CartListComponent {
           .deleteItemFromCart(id)
           .subscribe(() => console.log(this.loadCarts()));
         this.toastr.success(
-          `Item successfuly removed from the cart.`,
+          `Item successfuly removed from cart.`,
           'Removed from Cart!',
           {
             progressBar: true,

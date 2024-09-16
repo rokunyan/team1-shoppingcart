@@ -49,22 +49,47 @@ export class CartService {
       console.log('Cart is empty');
       return of([]);
     }
-    return this.http.get<Cart[]>(this.serverUrl).pipe(
-      map((carts) =>
-        carts.filter(
-          (cart) =>
-            cart.userId === currentUserId &&
-            (this.status ? cart.status === this.status : true)
-        )
-      ),
-      tap((filteredCarts) => {
-        console.log('Fetched and filtered carts:', filteredCarts);
-        const totalQty = filteredCarts.reduce(
-          (quantity, cart) => quantity + cart.quantity,
-          0
+
+    return this.http.get<Product[]>(this.productServerUrl).pipe(
+      switchMap((products) => {
+        return this.http.get<Cart[]>(this.serverUrl).pipe(
+          map((carts) =>
+            carts.filter(
+              (cart) =>
+                cart.userId === currentUserId &&
+                (this.status ? cart.status === this.status : true)
+            )
+          ),
+          switchMap((filteredCarts) => {
+            const productMap = new Map(products.map((p) => [p.id, p]));
+            const updatedCarts = filteredCarts.map((cart) => {
+              const product = productMap.get(cart.productId);
+              if (product && cart.quantity > product.quantity) {
+                this.toastr.error(
+                  `Quantity exceeds product's stock (${product.name}'s stock: ${product.quantity})`,
+                  'Error Updating Item Quantity!',
+                  {
+                    progressBar: true,
+                    timeOut: 5000,
+                  }
+                );
+                return { ...cart, quantity: product.quantity };
+              }
+              return cart;
+            });
+            const totalQty = updatedCarts.reduce(
+              (quantity, cart) => quantity + cart.quantity,
+              0
+            );
+            console.log('Total quantity:', totalQty);
+            this.totalQtySubject.next(totalQty);
+
+            return of(updatedCarts);
+          }),
+          tap((filteredCarts) => {
+            console.log('Fetched and filtered carts:', filteredCarts);
+          })
         );
-        console.log('Total quantity:', totalQty);
-        this.totalQtySubject.next(totalQty);
       })
     );
   }
@@ -168,7 +193,7 @@ export class CartService {
           map((product) => {
             if (cart.quantity + 1 > product.quantity) {
               this.toastr.error(
-                `Quantity exceeds product's stock (${product.name}'s stock: ${cart.quantity})`,
+                `Quantity exceeds product's stock (${product.name}'s stock: ${product.quantity})`,
                 'Error Updating Item Quantity!',
                 {
                   progressBar: true,
@@ -251,7 +276,7 @@ export class CartService {
             if (quantity > product.quantity) {
               this.forCheckOut = false;
               this.toastr.error(
-                `Quantity exceeds product's stock (${product.name}'s stock: ${cart.quantity})`,
+                `Quantity exceeds product's stock (${product.name}'s stock: ${product.quantity})`,
                 'Error Updating Item Quantity!',
                 {
                   progressBar: true,
