@@ -15,6 +15,7 @@ import { UserService } from '../../user/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../shared/confirm-dialog/confirm-dialog.component';
 import { Product } from '../../products/models/product';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +31,8 @@ export class CartService {
   constructor(
     private http: HttpClient,
     private userService: UserService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private toastr: ToastrService
   ) {}
 
   getCurrentUserId = () => {
@@ -165,6 +167,14 @@ export class CartService {
         return this.http.get<Product>(productUrl).pipe(
           map((product) => {
             if (cart.quantity + 1 > product.quantity) {
+              this.toastr.error(
+                `Quantity exceeds product's stock (${product.name}'s stock: ${cart.quantity})`,
+                'Error Updating Item Quantity!',
+                {
+                  progressBar: true,
+                  timeOut: 5000,
+                }
+              );
               throw new Error('Exceeds available product stock');
             }
 
@@ -179,12 +189,12 @@ export class CartService {
           switchMap((updatedCart) => this.http.patch<Cart>(url, updatedCart)),
           tap(() => console.log(`Added quantity for cart ${id}`))
         );
-      }),
-      catchError((error) => {
-        console.error('Error updating cart quantity:', error);
-        alert('Exceeds product stock.');
-        return throwError(() => error);
       })
+      // catchError((error) => {
+      //   console.error('Error updating cart quantity:', error);
+      //   alert('Exceeds product stock.');
+      //   return throwError(() => error);
+      // })
     );
   }
 
@@ -240,12 +250,50 @@ export class CartService {
           map((product) => {
             if (quantity > product.quantity) {
               this.forCheckOut = false;
+              this.toastr.error(
+                `Quantity exceeds product's stock (${product.name}'s stock: ${cart.quantity})`,
+                'Error Updating Item Quantity!',
+                {
+                  progressBar: true,
+                  timeOut: 5000,
+                }
+              );
               throw new Error('Exceeds available product stock.');
             }
 
-            if (quantity <= 0) {
+            if (quantity < 0) {
               this.forCheckOut = false;
+              quantity = 1;
+              this.toastr.error(
+                `Quantity must be greater than 0`,
+                'Error Updating Item Quantity!',
+                {
+                  progressBar: true,
+                  timeOut: 5000,
+                }
+              );
               throw new Error('Quantity must be greater than zero.');
+            }
+
+            if (quantity === 0) {
+              this.forCheckOut = false;
+              const message = `Are you sure you want to delete this item from the cart?`;
+              const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+                data: { message },
+              });
+
+              return dialogRef.afterClosed().pipe(
+                switchMap((result) => {
+                  if (result) {
+                    return this.deleteItemFromCart(id).pipe(
+                      tap(() => console.log('Item deleted')),
+                      map(() => null)
+                    );
+                  } else {
+                    return of(cart);
+                  }
+                })
+              );
             }
 
             this.forCheckOut = true;
@@ -265,12 +313,12 @@ export class CartService {
               .pipe(tap(() => console.log(`Edited quantity for cart ${id}`)))
           )
         );
-      }),
-      catchError((error) => {
-        console.error('Error updating cart quantity:', error);
-        alert(`Please enter a valid value.`);
-        return throwError(() => error);
       })
+      // catchError((error) => {
+      //   console.error('Error updating cart quantity:', error);
+      //   alert(`Please enter a valid value.`);
+      //   return throwError(() => error);
+      // })
     );
   }
 
@@ -313,18 +361,4 @@ export class CartService {
       tap((updatedCart) => console.log(`Updated status for cart ${id}`))
     );
   }
-
-  // incrementCount(id: string): Observable<Cart> {
-  //   const url = `${this.serverUrl}/${id}`;
-  //   return this.http.get<Cart>(url).pipe(
-  //     map((cart) => {
-  //       cart.price = cart.price / cart.quantity;
-  //       cart.quantity += 1;
-  //       cart.price *= cart.quantity;
-  //       return cart;
-  //     }),
-  //     switchMap((updateCart) => this.http.patch<Cart>(url, updateCart)),
-  //     tap((updatedCart) => console.log(`Added quantity for cart ${id}`))
-  //   );
-  // }
 }

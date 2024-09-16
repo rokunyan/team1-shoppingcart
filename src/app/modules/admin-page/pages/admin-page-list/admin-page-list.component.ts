@@ -44,6 +44,14 @@ export class AdminPageListComponent {
         this.adminPageService
           .deactivate(user)
           .subscribe(() => this.loadUsers());
+        this.toastr.success(
+          `${user.userName} has been deactivated.`,
+          'Deactivated Customer!',
+          {
+            progressBar: true,
+            timeOut: 5000,
+          }
+        );
       }
     });
   }
