@@ -151,8 +151,8 @@ export class ProductsPageFormComponent implements OnInit, OnDestroy {
           error: (err) => console.error('Failed to get max ID', err),
         });
         this.toastr.success(
-          `${product.name} has been added to the list.`,
-          'Added To Product List!',
+          `${product.name} has been added to product list.`,
+          'Added to Product List!',
           {
             progressBar: true,
             timeOut: 5000,

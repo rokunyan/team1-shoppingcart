@@ -3,6 +3,7 @@ import { Cart } from '../../model/cart';
 import { CartService } from '../../services/cart.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog/confirm-dialog.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cart-list',
@@ -13,7 +14,11 @@ export class CartListComponent {
   carts: Cart[] = [];
   isForCheckout: boolean = false;
 
-  constructor(private cartService: CartService, private dialog: MatDialog) {}
+  constructor(
+    private cartService: CartService,
+    private dialog: MatDialog,
+    private toastr: ToastrService
+  ) {}
   ngOnInit(): void {
     this.loadCarts();
   }
@@ -36,6 +41,14 @@ export class CartListComponent {
         this.cartService
           .deleteItemFromCart(id)
           .subscribe(() => console.log(this.loadCarts()));
+        this.toastr.success(
+          `Item successfuly removed from the cart.`,
+          'Removed from Cart!',
+          {
+            progressBar: true,
+            timeOut: 5000,
+          }
+        );
       }
     });
   }

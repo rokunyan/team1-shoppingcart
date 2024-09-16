@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../../../user/services/user.service';
 import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-products-page-list',
@@ -20,7 +21,8 @@ export class ProductsPageListComponent {
   constructor(
     private productsPageService: ProductsPageService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -48,6 +50,14 @@ export class ProductsPageListComponent {
         this.productsPageService
           .deleteItemFromProducts(product)
           .subscribe(() => console.log(this.loadProducts()));
+        this.toastr.success(
+          `${product.name} is removed from the product list.`,
+          'Removed from Product List!',
+          {
+            progressBar: true,
+            timeOut: 5000,
+          }
+        );
       }
     });
   }
