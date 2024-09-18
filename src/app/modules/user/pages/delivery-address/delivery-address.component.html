@@ -1,0 +1,7 @@
+<div *ngIf="deliveryAddress.addressLine1 && !toEdit">
+<app-display-address [deliveryAddress]="deliveryAddress"></app-display-address>
+<p><a class="link-underline-secondary" (click)="changeEdit()">Edit Delivery Address</a></p>
+</div>
+<div *ngIf="!deliveryAddress.addressLine1">
+    <p><a class="link-underline-secondary" (click)="changeEdit()">Add delivery address</a></p>
+</div>

@@ -5,6 +5,8 @@ import { CheckoutListComponent } from './pages/checkout-list/checkout-list.compo
 import { CheckoutItemsComponent } from './components/checkout-items/checkout-items.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
+import { DisplayAddressComponent } from '../user/components/display-address/display-address.component';
+import { UserModule } from '../user/user.module';
 
 
 @NgModule({
@@ -17,6 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
     CheckoutRoutingModule,
     SharedModule,
     ToastrModule,
+    UserModule
   ]
 })
 export class CheckoutModule { }

@@ -459,22 +459,188 @@
       "price": 99.98,
       "status": "pending",
       "image": "https://img.lazcdn.com/g/p/58c9c49c1f5c96e453acfae51a2c335d.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "31",
+      "userId": "1",
+      "productId": "2",
+      "productName": "Fiction Book",
+      "description": "An intriguing fiction book that will keep you hooked from start to finish.",
+      "category": "Books",
+      "quantity": 1,
+      "price": 19.99,
+      "status": "pending",
+      "image": "https://img.lazcdn.com/g/p/af46826f71983b075df3a9c24c7f3bec.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "32",
+      "userId": "1",
+      "productId": "3",
+      "productName": "T-Shirt",
+      "description": "A comfortable and stylish t-shirt perfect for everyday wear.",
+      "category": "Clothing",
+      "quantity": 1,
+      "price": 49.99,
+      "status": "pending",
+      "image": "https://img.lazcdn.com/g/p/58c9c49c1f5c96e453acfae51a2c335d.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "33",
+      "userId": "1",
+      "productId": "4",
+      "productName": "Face Cream",
+      "description": "A nourishing face cream that leaves your skin feeling smooth and hydrated.",
+      "category": "Beauty",
+      "quantity": 1,
+      "price": 24.99,
+      "status": "pending",
+      "image": "https://img.lazcdn.com/g/p/a51c77096f9503d20ece5ac4b9e0c3f7.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "34",
+      "userId": "1",
+      "productId": "2",
+      "productName": "Fiction Book",
+      "description": "An intriguing fiction book that will keep you hooked from start to finish.",
+      "category": "Books",
+      "quantity": 1,
+      "price": 19.99,
+      "status": "pending",
+      "image": "https://img.lazcdn.com/g/p/af46826f71983b075df3a9c24c7f3bec.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "35",
+      "userId": "1",
+      "productId": "1",
+      "productName": "Smartphones",
+      "description": "A high-end smartphone with a sleek design and powerful features.",
+      "category": "Electronics",
+      "quantity": 1,
+      "price": 299.99,
+      "status": "pending",
+      "image": "https://img.lazcdn.com/g/p/111d3e07a02ea335d70d7d97c797299b.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "36",
+      "userId": "1",
+      "productId": "2",
+      "productName": "Fiction Book",
+      "description": "An intriguing fiction book that will keep you hooked from start to finish.",
+      "category": "Books",
+      "quantity": 1,
+      "price": 19.99,
+      "status": "pending",
+      "image": "https://img.lazcdn.com/g/p/af46826f71983b075df3a9c24c7f3bec.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "37",
+      "userId": "1",
+      "productId": "3",
+      "productName": "T-Shirt",
+      "description": "A comfortable and stylish t-shirt perfect for everyday wear.",
+      "category": "Clothing",
+      "quantity": 1,
+      "price": 49.99,
+      "status": "pending",
+      "image": "https://img.lazcdn.com/g/p/58c9c49c1f5c96e453acfae51a2c335d.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "38",
+      "userId": "1",
+      "productId": "2",
+      "productName": "Fiction Book",
+      "description": "An intriguing fiction book that will keep you hooked from start to finish.",
+      "category": "Books",
+      "quantity": 2,
+      "price": 39.98,
+      "status": "pending",
+      "image": "https://img.lazcdn.com/g/p/af46826f71983b075df3a9c24c7f3bec.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "39",
+      "userId": "1",
+      "productId": "3",
+      "productName": "T-Shirt",
+      "description": "A comfortable and stylish t-shirt perfect for everyday wear.",
+      "category": "Clothing",
+      "quantity": 1,
+      "price": 49.99,
+      "status": "pending",
+      "image": "https://img.lazcdn.com/g/p/58c9c49c1f5c96e453acfae51a2c335d.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "40",
+      "userId": "1",
+      "productId": "1",
+      "productName": "Smartphones",
+      "description": "A high-end smartphone with a sleek design and powerful features.",
+      "category": "Electronics",
+      "quantity": 1,
+      "price": 299.99,
+      "status": "pending",
+      "image": "https://img.lazcdn.com/g/p/111d3e07a02ea335d70d7d97c797299b.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "41",
+      "userId": "1",
+      "productId": "11",
+      "productName": "Glasses",
+      "description": "black",
+      "category": "Accessories",
+      "quantity": 5,
+      "price": 5,
+      "status": "pending",
+      "image": "https://img.lazcdn.com/g/p/7d3fd13cb8c27de50bb46d5fecc6ccae.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "42",
+      "userId": "2",
+      "productId": "3",
+      "productName": "T-Shirt",
+      "description": "A comfortable and stylish t-shirt perfect for everyday wear.",
+      "category": "Clothing",
+      "quantity": 1,
+      "price": 49.99,
+      "status": "pending",
+      "image": "https://img.lazcdn.com/g/p/58c9c49c1f5c96e453acfae51a2c335d.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "43",
+      "userId": "2",
+      "productId": "4",
+      "productName": "Face Cream",
+      "description": "A nourishing face cream that leaves your skin feeling smooth and hydrated.",
+      "category": "Beauty",
+      "quantity": 1,
+      "price": 24.99,
+      "status": "pending",
+      "image": "https://img.lazcdn.com/g/p/a51c77096f9503d20ece5ac4b9e0c3f7.jpg_400x400q75.jpg_.webp"
     }
   ],
   "users": [
     {
       "id": "1",
       "userName": "iambored",
-      "firstName": "John",
-      "middleName": "Middle",
-      "lastName": "Soon",
+      "firstName": "First Name",
+      "middleName": "",
+      "lastName": "Last",
       "birthDate": "2000-02-15",
       "password": "abcd1234",
       "email": "sample@gmail.com",
-      "mobileNumber": "639018485697",
+      "mobileNumber": "63918485697",
       "isActive": true,
       "isAdmin": false,
-      "interests": ["swimming", "reading", "sleeping"]
+      "interests": [
+        "swimming",
+        "reading",
+        "drawing",
+        "singing"
+      ],
+      "addressLine1": "184",
+      "addressLine2": "Street",
+      "city": "Tagaytay",
+      "province": "Cavite",
+      "zipcode": "1000"
     },
     {
       "id": "2",
@@ -483,12 +649,19 @@
       "middleName": "",
       "lastName": "Okay",
       "birthDate": "",
-      "interests": [""],
       "password": "1234abcd",
       "email": "sample1@gmail.com",
       "mobileNumber": "639018485698",
       "isActive": true,
-      "isAdmin": true
+      "isAdmin": true,
+      "interests": [
+        ""
+      ],
+      "addressLine1": "123",
+      "addressLine2": "Dito",
+      "city": "Calamba",
+      "province": "Laguna",
+      "zipcode": "1234"
     },
     {
       "id": "3",
@@ -497,7 +670,9 @@
       "middleName": "",
       "lastName": "Three",
       "birthDate": "",
-      "interests": [""],
+      "interests": [
+        ""
+      ],
       "password": "1234567890",
       "email": "sample3@gmail.com",
       "mobileNumber": "639018485693",
@@ -511,7 +686,9 @@
       "middleName": "",
       "lastName": "Four",
       "birthDate": "",
-      "interests": [""],
+      "interests": [
+        ""
+      ],
       "password": "6yALob30",
       "email": "sample4@gmail.com",
       "mobileNumber": "639018485692",
@@ -525,7 +702,9 @@
       "middleName": "ard",
       "lastName": "aran",
       "birthDate": "",
-      "interests": [""],
+      "interests": [
+        ""
+      ],
       "password": "-7-ZLst8",
       "email": "pulang_aso@yahoo.com",
       "mobileNumber": "639018485697",
@@ -536,7 +715,13 @@
   "transactions": [
     {
       "id": "0793",
-      "cartIds": ["18", "19", "22", "23", "24"],
+      "cartIds": [
+        "18",
+        "19",
+        "22",
+        "23",
+        "24"
+      ],
       "userId": "2",
       "dateOfTransaction": "2024-09-13T02:12:03.520Z",
       "totalTransaction": 1189.93,
@@ -548,13 +733,98 @@
     },
     {
       "id": "c01f",
-      "cartIds": ["25", "26", "27", "28", "29", "30"],
+      "cartIds": [
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30"
+      ],
       "userId": "2",
       "dateOfTransaction": "2024-09-13T03:21:19.290Z",
       "totalTransaction": 874.9300000000001,
       "addressLine1": "123",
       "addressLine2": "Any Street",
       "city": "San Pedro",
+      "province": "Laguna",
+      "zipcode": "1234"
+    },
+    {
+      "id": "6731",
+      "cartIds": [
+        "31",
+        "32",
+        "33"
+      ],
+      "userId": "1",
+      "dateOfTransaction": "2024-09-18T02:31:20.040Z",
+      "totalTransaction": 94.97,
+      "addressLine1": "123",
+      "addressLine2": "Any Street",
+      "city": "San Pedro",
+      "province": "Laguna",
+      "zipcode": "1234"
+    },
+    {
+      "id": "fc08",
+      "cartIds": [
+        "34"
+      ],
+      "userId": "1",
+      "dateOfTransaction": "2024-09-18T04:58:34.953Z",
+      "totalTransaction": 19.99,
+      "addressLine1": "123",
+      "addressLine2": "Any Street",
+      "city": "San Pedro",
+      "province": "Laguna",
+      "zipcode": "1234"
+    },
+    {
+      "id": "1d1b",
+      "cartIds": [
+        "35",
+        "36",
+        "37"
+      ],
+      "userId": "1",
+      "dateOfTransaction": "2024-09-18T06:40:31.598Z",
+      "totalTransaction": 369.97,
+      "addressLine1": "123",
+      "addressLine2": "Any Street",
+      "city": "San Pedro",
+      "province": "Laguna",
+      "zipcode": "1234"
+    },
+    {
+      "id": "e44b",
+      "cartIds": [
+        "38",
+        "39",
+        "40",
+        "41"
+      ],
+      "userId": "1",
+      "dateOfTransaction": "2024-09-18T06:50:05.659Z",
+      "totalTransaction": 394.96000000000004,
+      "addressLine1": "184",
+      "addressLine2": "Street",
+      "city": "Tagaytay",
+      "province": "Cavite",
+      "zipcode": "1000"
+    },
+    {
+      "id": "07e8",
+      "cartIds": [
+        "42",
+        "43"
+      ],
+      "userId": "2",
+      "dateOfTransaction": "2024-09-18T06:52:14.873Z",
+      "totalTransaction": 74.98,
+      "addressLine1": "123",
+      "addressLine2": "Dito",
+      "city": "Calamba",
       "province": "Laguna",
       "zipcode": "1234"
     }

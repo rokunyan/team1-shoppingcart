@@ -58,7 +58,12 @@ export class ProfilePageComponent{
       mobileNumber: this.user.mobileNumber,
       isActive: this.user.isActive,
       isAdmin: this.user.isAdmin,
-      interests: this.profileForm.value.interests
+      interests: this.profileForm.value.interests,
+      addressLine1: this.user.addressLine1,
+      addressLine2: this.user.addressLine2,
+      city: this.user.city,
+      province: this.user.province,
+      zipcode: this.user.zipcode
     }
     if(!this.validationChecking()){
       //alert("Please check your details.")
