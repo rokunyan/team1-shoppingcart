@@ -8,7 +8,10 @@
                         Product Name Search
                         <input type="text" placeholder="Search..." [(ngModel)]="searchModel.productNameQuery" (input)="onSearch('NAME')" /> <br>
                         Product Category Search
-                        <input type="text" placeholder="Search..." [(ngModel)]="searchModel.productCategoryQuery" (input)="onSearch('CATEGORY')" /> <br>
+                        <select [(ngModel)]="searchModel.productCategoryQuery" (change)="onSearch('CATEGORY')">
+                                <option value="">None</option>
+                                <option *ngFor="let category of categories" value="{{category}}">{{category}}</option>
+                        </select><br>
                         Price Tag Search
                         <input type="number" min="0"  [(ngModel)]="searchModel.productMinCost"  #minCost="ngModel" (input)="onSearch('COST')"/> 
                         - 
