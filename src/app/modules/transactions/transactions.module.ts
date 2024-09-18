@@ -5,6 +5,7 @@ import { TransactionRoutingModule } from './transaction-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { PendingItemsComponent } from './components/pending-items/pending-items.component';
 import { PerTransactionComponent } from './components/per-transaction/per-transaction.component';
+import { UserModule } from '../user/user.module';
 
 
 
@@ -17,7 +18,8 @@ import { PerTransactionComponent } from './components/per-transaction/per-transa
   imports: [
     CommonModule,
     TransactionRoutingModule,
-    SharedModule
+    SharedModule,
+    UserModule
   ]
 })
 export class TransactionsModule { }

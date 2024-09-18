@@ -6,12 +6,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../../shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
+import { DisplayAddressComponent } from './components/display-address/display-address.component';
+import { DeliveryAddressComponent } from './pages/delivery-address/delivery-address.component';
+import { DeliveryFormComponent } from './pages/delivery-form/delivery-form.component';
 
 
 
 @NgModule({
   declarations: [
-    ProfilePageComponent
+    ProfilePageComponent,
+    DisplayAddressComponent,
+    DeliveryAddressComponent,
+    DeliveryFormComponent
   ],
   imports: [
     CommonModule,
@@ -20,6 +26,10 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     SharedModule,
     ToastrModule,
+  ],
+  exports: [
+    DisplayAddressComponent,
+    DeliveryAddressComponent
   ]
 })
 export class UserModule { }
