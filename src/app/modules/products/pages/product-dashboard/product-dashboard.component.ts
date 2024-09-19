@@ -78,7 +78,7 @@ export class ProductDashboardComponent implements OnInit {
 
   getProducts() {
     this.productService.getProducts().subscribe((data: any) => {
-      this.products = data.filter((product:any) => product.status === 'Available');
+      this.products = data.filter((product:any) => product.status === 'Available' || product.status === 'Out of Stock');
       this.filteredProducts = this.products;
 
       console.log(`[From Dashboard Page] Get Products Successful!`);

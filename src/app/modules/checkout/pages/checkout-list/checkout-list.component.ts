@@ -90,15 +90,16 @@ export class CheckoutListComponent implements OnInit {
                     id: fetchedProduct.id,
                     name: fetchedProduct.name,
                     description: fetchedProduct.description,
-                    category: fetchedProduct.description,
-                    quantity: fetchedProduct.quantity,
+                    category: fetchedProduct.category,
+                    quantity: fetchedProduct.quantity - cart.quantity,
                     price: fetchedProduct.price,
-                    status: fetchedProduct.status,
+                    status: (fetchedProduct.quantity <= cart.quantity)? ("Out of Stock") : ("Available"),
                     image: fetchedProduct.image,
                     itemsSold: fetchedProduct.itemsSold + cart.quantity
                   }
                   console.log(updatedProduct);
-                  this.productService.updateProduct(updatedProduct).subscribe()
+                  this.productService.updateProduct(updatedProduct).subscribe(() =>
+                    this.router.navigateByUrl("/dashboard"))
                 }
               )
               // this.productService.updateProduct()
@@ -120,8 +121,7 @@ export class CheckoutListComponent implements OnInit {
           console.log(transaction)
 
           this.transactionService.addTransaction(transaction).subscribe()
-
-          this.router.navigateByUrl("/dashboard")
+          
         }
       });    
   }} 

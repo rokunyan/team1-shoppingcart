@@ -6,16 +6,21 @@
     <img class="image" src={{product?.image}} alt="{{product?.name}}"><br>
     <h5 [ngClass]="{'text-success': product?.status === 'Available', 'text-danger': product?.status !== 'Available'}">
         {{product?.status}}
-    </h5>
-    <form [formGroup]="form" (ngSubmit)="executeAction(product, 'ADD TO CART')">
-        <label for="quantity">Quantity:</label>
-        <input id="quantity" type="number" min="1" formControlName="quantity" />
-        <!-- <div *ngIf="quantity?.errors && quantity?.touched">
-            <div *ngIf="quantity?.errors?.['min']">The quantity must be at least 1.</div>
-        </div> -->
-    <div class="button-container">
-        <button class="btn btn-secondary" [routerLink]="['product', product?.id]" routerLinkActive="router-link-active">More Info</button>
-        <button class="btn btn-success">ADD TO CART</button>
+    </h5>  
+    <div *ngIf="product?.quantity">
+        <form [formGroup]="form" (ngSubmit)="executeAction(product, 'ADD TO CART')">
+            <label for="quantity">Quantity:</label>
+            <input id="quantity" type="number" min="1" formControlName="quantity" />
+            <!-- <div *ngIf="quantity?.errors && quantity?.touched">
+                <div *ngIf="quantity?.errors?.['min']">The quantity must be at least 1.</div>
+            </div> -->
+        <div class="button-container">
+            <button class="btn btn-secondary" [routerLink]="['product', product?.id]" routerLinkActive="router-link-active">More Info</button>
+            <button class="btn btn-success">ADD TO CART</button>
+        </div>
+        </form>
     </div>
-    </form>
+    <div class="button-container" *ngIf="!product?.quantity">
+        <button class="btn btn-secondary" [routerLink]="['product', product?.id]" routerLinkActive="router-link-active">More Info</button>
+    </div>
 </div> 
