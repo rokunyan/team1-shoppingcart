@@ -8,7 +8,7 @@
       "price": 299.99,
       "status": "Available",
       "image": "https://img.lazcdn.com/g/p/111d3e07a02ea335d70d7d97c797299b.jpg_400x400q75.jpg_.webp",
-      "itemsSold": 120,
+      "itemsSold": 0,
       "description": "A high-end smartphone with a sleek design and powerful features."
     },
     {
@@ -19,7 +19,7 @@
       "price": 19.99,
       "status": "Available",
       "image": "https://img.lazcdn.com/g/p/af46826f71983b075df3a9c24c7f3bec.jpg_400x400q75.jpg_.webp",
-      "itemsSold": 60,
+      "itemsSold": 0,
       "description": "An intriguing fiction book that will keep you hooked from start to finish."
     },
     {
@@ -30,7 +30,7 @@
       "price": 49.99,
       "status": "Available",
       "image": "https://img.lazcdn.com/g/p/58c9c49c1f5c96e453acfae51a2c335d.jpg_400x400q75.jpg_.webp",
-      "itemsSold": 150,
+      "itemsSold": 0,
       "description": "A comfortable and stylish t-shirt perfect for everyday wear."
     },
     {
@@ -41,7 +41,7 @@
       "price": 24.99,
       "status": "Available",
       "image": "https://img.lazcdn.com/g/p/a51c77096f9503d20ece5ac4b9e0c3f7.jpg_400x400q75.jpg_.webp",
-      "itemsSold": 80,
+      "itemsSold": 0,
       "description": "A nourishing face cream that leaves your skin feeling smooth and hydrated."
     },
     {
@@ -52,7 +52,7 @@
       "price": 99.99,
       "status": "Available",
       "image": "https://img.lazcdn.com/g/p/01a841e1a839165ed7c4abf855cab170.jpg_400x400q75.jpg_.webp",
-      "itemsSold": 40,
+      "itemsSold": 0,
       "description": "A durable basketball suitable for both indoor and outdoor play."
     },
     {
@@ -63,7 +63,7 @@
       "price": 399.99,
       "status": "Available",
       "image": "https://img.lazcdn.com/g/p/7073dfe5ce82148ac95b039b4a8a81f8.jpg_400x400q75.jpg_.webp",
-      "itemsSold": 25,
+      "itemsSold": 0,
       "description": "A comfortable and spacious sofa perfect for relaxing at home."
     },
     {
@@ -74,19 +74,19 @@
       "price": 29.99,
       "status": "Available",
       "image": "https://img.lazcdn.com/g/p/27347d9a8e694c48ba9833869e6138cb.jpg_400x400q75.jpg_.webp",
-      "itemsSold": 90,
+      "itemsSold": 0,
       "description": "A detailed action figure that will delight collectors and kids alike."
     },
     {
       "id": "8",
       "name": "Electric Fan",
+      "description": "Fresh and delicious organic apples, perfect for a healthy snack.",
       "category": "Accessories",
-      "quantity": 500,
+      "quantity": 0,
       "price": 5.99,
-      "status": "Available",
+      "status": "Out of Stock",
       "image": "https://img.lazcdn.com/g/p/10a3c6b13dabcd37e86113569811818a.jpg_400x400q75.jpg_.webp",
-      "itemsSold": 300,
-      "description": "Fresh and delicious organic apples, perfect for a healthy snack."
+      "itemsSold": 500
     },
     {
       "id": "9",
@@ -96,7 +96,7 @@
       "price": 129.99,
       "status": "Available",
       "image": "https://img.lazcdn.com/g/p/ac89116416219a1320a4f44435e63982.png_400x400q75.png_.webp",
-      "itemsSold": 10,
+      "itemsSold": 0,
       "description": "A reliable car battery with long-lasting performance."
     },
     {
@@ -615,6 +615,18 @@
       "price": 24.99,
       "status": "pending",
       "image": "https://img.lazcdn.com/g/p/a51c77096f9503d20ece5ac4b9e0c3f7.jpg_400x400q75.jpg_.webp"
+    },
+    {
+      "id": "44",
+      "userId": "1",
+      "productId": "8",
+      "productName": "Electric Fan",
+      "description": "Fresh and delicious organic apples, perfect for a healthy snack.",
+      "category": "Accessories",
+      "quantity": 500,
+      "price": 2995,
+      "status": "pending",
+      "image": "https://img.lazcdn.com/g/p/10a3c6b13dabcd37e86113569811818a.jpg_400x400q75.jpg_.webp"
     }
   ],
   "users": [
@@ -827,6 +839,20 @@
       "city": "Calamba",
       "province": "Laguna",
       "zipcode": "1234"
+    },
+    {
+      "id": "62a6",
+      "cartIds": [
+        "44"
+      ],
+      "userId": "1",
+      "dateOfTransaction": "2024-09-19T04:05:28.801Z",
+      "totalTransaction": 2995,
+      "addressLine1": "h3e4",
+      "addressLine2": "there",
+      "city": "every",
+      "province": "where",
+      "zipcode": "2034"
     }
   ]
 }

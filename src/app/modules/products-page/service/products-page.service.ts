@@ -14,7 +14,7 @@ export class ProductsPageService {
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.serverUrl).pipe(
       map((products) =>
-        products.filter((product) => product.status === 'Available')
+        products.filter((product) => product.status === 'Available' || product.status === 'Out of Stock')
       ),
 
       tap((products) => console.log('Fetched products:', products))

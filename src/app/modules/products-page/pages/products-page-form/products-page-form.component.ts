@@ -42,6 +42,10 @@ export class ProductsPageFormComponent implements OnInit, OnDestroy {
       value: 'Available',
       label: 'Available',
     },
+    {
+      value: 'Out of Stock',
+      label: 'Out of Stock',
+    },
   ];
   constructor(
     private fb: FormBuilder,

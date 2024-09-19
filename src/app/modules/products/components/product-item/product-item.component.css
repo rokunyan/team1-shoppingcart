@@ -1,3 +1,7 @@
+.product-container {
+    height: 429.5px;
+}
+
 .button-container {
     display: flex;
     gap: 5px;
