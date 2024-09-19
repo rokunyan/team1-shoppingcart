@@ -9,6 +9,8 @@ import { UserService } from '../../../user/services/user.service';
 import { User } from '../../../user/models/user';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog/confirm-dialog.component';
+import { ProductsPageService } from '../../../products-page/service/products-page.service';
+import { Product } from '../../../products/models/product';
 
 @Component({
   selector: 'app-checkout-list',
@@ -27,6 +29,7 @@ export class CheckoutListComponent implements OnInit {
     private router: Router, 
     private toastr: ToastrService, 
     private dialog: MatDialog,
+    private productService: ProductsPageService,
     private transactionService: TransactionsService,
     private userService: UserService
   ) {
@@ -81,6 +84,23 @@ export class CheckoutListComponent implements OnInit {
                   timeOut: 5000
                 });
               });
+              this.productService.getProductById(cart.productId).subscribe(
+                (fetchedProduct: Product) => {
+                  let updatedProduct: Product = {
+                    id: fetchedProduct.id,
+                    name: fetchedProduct.name,
+                    description: fetchedProduct.description,
+                    category: fetchedProduct.description,
+                    quantity: fetchedProduct.quantity,
+                    price: fetchedProduct.price,
+                    status: fetchedProduct.status,
+                    image: fetchedProduct.image,
+                    itemsSold: fetchedProduct.itemsSold + cart.quantity
+                  }
+                  console.log(updatedProduct);
+                  this.productService.updateProduct(updatedProduct).subscribe()
+                }
+              )
               // this.productService.updateProduct()
               // let product = this.productService.getProductById(cart.productId);
               // product.pip
