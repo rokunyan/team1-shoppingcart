@@ -34,6 +34,20 @@ export class ProductDashboardComponent implements OnInit {
 
   filteredProducts: Product[] = [];
 
+  //categories
+  categories = [
+   'Electronics', 
+   'Fiction Book',
+   'Clothing',
+   'Beauty',
+   'Sports',
+   'Furniture',
+   'Toys',
+   'Accessories',
+   'Automotive',
+   'Jewelry'
+  ];
+  
   constructor(
     private productService: ProductService,
     private cartService: CartService,
