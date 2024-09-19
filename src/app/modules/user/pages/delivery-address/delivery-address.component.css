@@ -7,6 +7,10 @@
     font-size: 12px
 }
 
+.link-underline-secondary {
+    cursor: pointer;
+}
+
 p {
     margin-bottom: 1rem;
     font-size: small;

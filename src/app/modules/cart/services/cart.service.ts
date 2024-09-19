@@ -382,7 +382,7 @@ export class CartService {
         cart.status = 'pending';
         return cart;
       }),
-      switchMap((updateCart) => this.http.patch<Cart>(url, updateCart)),
+      switchMap((updatedCart) => this.http.patch<Cart>(url, updatedCart)),
       tap((updatedCart) => console.log(`Updated status for cart ${id}`))
     );
   }

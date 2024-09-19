@@ -7,6 +7,8 @@ import { TransactionsService } from '../../../transactions/services/transactions
 import { Transactions } from '../../../transactions/models/transactions';
 import { UserService } from '../../../user/services/user.service';
 import { User } from '../../../user/models/user';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../../../shared/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-checkout-list',
@@ -20,8 +22,14 @@ export class CheckoutListComponent implements OnInit {
   currentUserId: string = ''
   currentDate = new Date();
 
-  constructor(private cartService: CartService, private router: Router, private toastr: ToastrService, private transactionService: TransactionsService,
-    private userService: UserService) {
+  constructor(
+    private cartService: CartService, 
+    private router: Router, 
+    private toastr: ToastrService, 
+    private dialog: MatDialog,
+    private transactionService: TransactionsService,
+    private userService: UserService
+  ) {
       this.user = this.userService.getCurrentUser()
   }
   
@@ -49,38 +57,52 @@ export class CheckoutListComponent implements OnInit {
 
   checkout(): void{
 
+
     if(!this.user.addressLine1){
       this.toastr.error(`Please add a delivery address`, 'Delivery Address Error!', {
         progressBar: true,
         timeOut: 5000
       })
     } else {
-    this.carts.forEach((cart) =>{
-      this.cartService
-        .pendingStatus(cart.id)
-        .subscribe(() => {
-          this.loadCarts()
-          this.toastr.success(`Cart orders are now pending!`, 'Checkout Success!', {
-            progressBar: true,
-            timeOut: 5000
-          });
-        })
-    })
-    let transaction: Transactions = {
-      cartIds: this.carts.map((data) => data.id),
-      userId: this.currentUserId,
-      dateOfTransaction: (this.currentDate as unknown) as string,
-      totalTransaction: this.total,
-      addressLine1: this.user.addressLine1,
-      addressLine2: this.user.addressLine2, 
-      city: this.user.city,
-      province: this.user.province,
-      zipcode: this.user.zipcode
-    }
-    console.log(transaction)
+      const message = `Are you sure you want to delete this item from the cart?`;
 
-    this.transactionService.addTransaction(transaction).subscribe()
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        data: { message },
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          this.carts.forEach((cart) =>{
+            this.cartService
+              .pendingStatus(cart.id)
+              .subscribe(() => {
+                this.loadCarts()
+                this.toastr.success(`Cart orders are now pending!`, 'Checkout Success!', {
+                  progressBar: true,
+                  timeOut: 5000
+                });
+              });
+              // this.productService.updateProduct()
+              // let product = this.productService.getProductById(cart.productId);
+              // product.pip
+              // this.productService.up
+          })
+          let transaction: Transactions = {
+            cartIds: this.carts.map((data) => data.id),
+            userId: this.currentUserId,
+            dateOfTransaction: (this.currentDate as unknown) as string,
+            totalTransaction: this.total,
+            addressLine1: this.user.addressLine1,
+            addressLine2: this.user.addressLine2, 
+            city: this.user.city,
+            province: this.user.province,
+            zipcode: this.user.zipcode
+          }
+          console.log(transaction)
 
-    this.router.navigateByUrl("/dashboard")
-  }}
+          this.transactionService.addTransaction(transaction).subscribe()
+
+          this.router.navigateByUrl("/dashboard")
+        }
+      });    
+  }} 
 }
